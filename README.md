@@ -51,17 +51,16 @@ ASP.NET Core 3 way of defining template functions:
 </area>
 
 @{
-
-	void RecursionTest(int level){
-		if (level <= 0)
-		{
-			return;
-		}
-			
-		<div>LEVEL: @level</div>
-		@{ RecursionTest(level - 1); }
+  void RecursionTest(int level)
+  {
+	if (level <= 0)
+	{
+		return;
 	}
 
+	<div>LEVEL: @level</div>
+	@{ RecursionTest(level - 1); }
+  }
 }
 ```
 
