@@ -63,6 +63,12 @@ ASP.NET Core 3 way of defining template functions:
   }
 }
 ```
+output:
+```
+<div>LEVEL: 3</div>
+<div>LEVEL: 2</div>
+<div>LEVEL: 1</div>
+```
 
 #### Helpers and custom members
 ```cs
