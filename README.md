@@ -64,11 +64,34 @@ ASP.NET Core 3 way of defining template functions:
 }
 ```
 
-#### Helpers
-TBD
+#### Helpers and custom members
+```cs
+string content = @"Hello @A, @B, @Decorator(123)";
 
-#### Custom references
-TBD
+RazorEngine razorEngine = new RazorEngine();
+RazorEngineCompiledTemplate<CustomModel> template = razorEngine.Compile<CustomModel>(content);
+
+string result = template.Run(instance =>
+{
+    instance.A = 10;
+    instance.B = "Alex";
+});
+
+Console.WriteLine(result);
+```
+```cs
+public class CustomModel : RazorEngineTemplateBase
+{
+    public int A { get; set; }
+    public string B { get; set; }
+
+    public string Decorator(object value)
+    {
+        return "-=" + value + "=-";
+    }
+}
+```
+
 
 
 #### Credits
