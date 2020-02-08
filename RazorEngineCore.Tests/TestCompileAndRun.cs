@@ -14,12 +14,73 @@ namespace RazorEngineCore.Tests
         }
 
         [TestMethod]
-        public void TestCompileAndRun_DynamicModel()
+        public void TestCompileAndRun_DynamicModel_Plain()
         {
             RazorEngine razorEngine = new RazorEngine();
             RazorEngineCompiledTemplate template = razorEngine.Compile("Hello @Model.Name");
-            string actual = template.Run(new { Name = "Alex" });
+            
+            string actual = template.Run(new
+            {
+                Name = "Alex"
+            });
+            
             Assert.AreEqual("Hello Alex", actual);
+        }
+
+        [TestMethod]
+        public void TestCompileAndRun_DynamicModel_Nested()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            var model = new
+            {
+                Name = "Alex",
+                Membership = new
+                {
+                    Level = "Gold"
+                }
+            };
+
+            var template = razorEngine.Compile("Name: @Model.Name, Membership: @Model.Membership.Level");
+
+            string actual = template.Run(model);
+            
+            Assert.AreEqual("Name: Alex, Membership: Gold", actual);
+        }
+
+        [TestMethod]
+        public void TestCompileAndRun_DynamicModel_Lists()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            var model = new
+            {
+                Items = new[]
+                {
+                    new
+                    {
+                        Key = "K1"
+                    },
+                    new
+                    {
+                        Key = "K2"
+                    }
+                }
+            };
+
+            var template = razorEngine.Compile(@"
+@foreach (var item in Model.Items)
+{
+<div>@item.Key</div>
+}
+");
+
+            string actual = template.Run(model);
+            string expected = @"
+<div>K1</div>
+<div>K2</div>
+";
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]

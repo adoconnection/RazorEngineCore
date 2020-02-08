@@ -43,8 +43,13 @@ namespace RazorEngineCore
 
         public string Run(object model)
         {
+            if (model.IsAnonymous())
+            {
+                model = new AnonymousTypeWrapper(model);
+            }
+
             RazorEngineTemplateBase instance = (RazorEngineTemplateBase)Activator.CreateInstance(this.templateType);
-            instance.Model = model.ToExpando();
+            instance.Model = model;
             instance.ExecuteAsync().Wait();
             return instance.Result();
         }
