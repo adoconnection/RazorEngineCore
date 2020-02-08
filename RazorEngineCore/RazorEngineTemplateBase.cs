@@ -1,9 +1,10 @@
-﻿using System.Text;
+﻿using System.Dynamic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-    public class RazorEngineTemplateBase
+    public abstract class RazorEngineTemplateBase
     {
         private readonly StringBuilder stringBuilder = new StringBuilder();
         public dynamic Model { get; set; }

@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
-using Microsoft.AspNetCore.Razor.Hosting;
 using Microsoft.AspNetCore.Razor.Language;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Emit;
-using Microsoft.CSharp.RuntimeBinder;
 
 namespace RazorEngineCore
 {
@@ -53,7 +52,6 @@ namespace RazorEngineCore
                     MetadataReference.CreateFromFile(typeof(RazorEngineTemplateBase).Assembly.Location),
                     MetadataReference.CreateFromFile(typeof(ExpandoObject).Assembly.Location),
                     MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("netstandard")).Location),
-                    MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("Microsoft.AspNetCore.Razor.Runtime")).Location),
                     MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("System.Runtime")).Location),
                 },
                 new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
@@ -61,6 +59,14 @@ namespace RazorEngineCore
             MemoryStream memoryStream = new MemoryStream();
 
             EmitResult emitResult = compilation.Emit(memoryStream);
+
+            if (!emitResult.Success)
+            {
+                RazorEngineCompilationException exception = new RazorEngineCompilationException("Unable to compile template");
+                exception.Errors = emitResult.Diagnostics.ToList();
+
+                throw exception;
+            }
 
             memoryStream.Position = 0;
 
