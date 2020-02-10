@@ -7,7 +7,10 @@ namespace RazorEngineCore
     public abstract class RazorEngineTemplateBase
     {
         private readonly StringBuilder stringBuilder = new StringBuilder();
-        private string attributeTemplate = "";
+
+        private string attributePrefix = null;
+        private string attributeSuffix = null;
+
         public dynamic Model { get; set; }
 
         public void WriteLiteral(string literal)
@@ -22,17 +25,21 @@ namespace RazorEngineCore
 
         public void BeginWriteAttribute(string name, string prefix, int prefixOffset, string suffix, int suffixOffset, int attributeValuesCount)
         {
-            attributeTemplate = prefix + "{0}" + suffix;
+            this.attributePrefix = prefix;
+            this.attributeSuffix = suffix;
         }
 
         public void WriteAttributeValue(string prefix, int prefixOffset, object value, int valueOffset, int valueLength, bool isLiteral)
         {
-            this.stringBuilder.Append(string.Format(attributeTemplate, value));
+            this.stringBuilder.Append(this.attributePrefix);
+            this.stringBuilder.Append(value);
+            this.stringBuilder.Append(this.attributeSuffix);
         }
 
         public void EndWriteAttribute()
         {
-            attributeTemplate = "";
+            this.attributePrefix = null;
+            this.attributeSuffix = null;
         }
 
         public async virtual Task ExecuteAsync()
