@@ -45,6 +45,27 @@ RazorEngineCompiledTemplate template1 = RazorEngineCompiledTemplate.LoadFromFile
 RazorEngineCompiledTemplate template2 = RazorEngineCompiledTemplate.LoadFromStream(myStream);
 ```
 
+#### Simplest thread safe caching pattern
+
+```cs
+private static ConcurrentDictionary<string, RazorEngineCompiledTemplate> TemplateCache = new ConcurrentDictionary<string, RazorEngineCompiledTemplate>();
+```
+
+```cs
+private string RenderTemplate(string template, object model)
+{
+    int hashCode = template.GetHashCode();
+
+    RazorEngineCompiledTemplate compiledTemplate = TemplateCache.GetOrAdd(hashCode, i =>
+    {
+        RazorEngine razorEngine = new RazorEngine();
+        return razorEngine.Compile(Content);
+    });
+
+    return compiledTemplate.Run(model);
+}
+```
+
 #### Template functions
 ASP.NET Core 3 way of defining template functions:
 ```
