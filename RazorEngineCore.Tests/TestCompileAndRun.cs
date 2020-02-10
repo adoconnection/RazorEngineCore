@@ -14,6 +14,34 @@ namespace RazorEngineCore.Tests
         }
 
         [TestMethod]
+        public void TestCompileAndRun_HtmlLiteral()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate template = razorEngine.Compile("<h1>Hello @Model.Name</h1>");
+            
+            string actual = template.Run(new
+            {
+                Name = "Alex"
+            });
+            
+            Assert.AreEqual("<h1>Hello Alex</h1>", actual);
+        }
+
+        [TestMethod]
+        public void TestCompileAndRun_HtmlAttribute()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate template = razorEngine.Compile("<div title=\"@Model.Name\">Hello</div>");
+            
+            string actual = template.Run(new
+            {
+                Name = "Alex"
+            });
+            
+            Assert.AreEqual("<div title=\"Alex\">Hello</div>", actual);
+        }
+
+        [TestMethod]
         public void TestCompileAndRun_DynamicModel_Plain()
         {
             RazorEngine razorEngine = new RazorEngine();

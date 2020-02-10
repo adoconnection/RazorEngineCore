@@ -20,7 +20,7 @@ namespace RazorEngineCore
             stringBuilder.AppendLine("@inherits " + typeof(T).FullName);
             stringBuilder.Append(content);
 
-            var memoryStream = this.CreateAndCompileToStream(stringBuilder.ToString(), typeof(T).Assembly);
+            MemoryStream memoryStream = this.CreateAndCompileToStream(stringBuilder.ToString(), typeof(T).Assembly);
 
             return new RazorEngineCompiledTemplate<T>(memoryStream);
         }
@@ -31,7 +31,7 @@ namespace RazorEngineCore
             stringBuilder.AppendLine("@inherits RazorEngineCore.RazorEngineTemplateBase");
             stringBuilder.Append(content);
 
-            var memoryStream = this.CreateAndCompileToStream(stringBuilder.ToString());
+            MemoryStream memoryStream = this.CreateAndCompileToStream(stringBuilder.ToString());
 
             return new RazorEngineCompiledTemplate(memoryStream);
         }

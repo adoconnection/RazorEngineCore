@@ -3,10 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2020.2.1</Version>
+    <Version>2020.2.2</Version>
     <Authors>Alexander Selishchev</Authors>
     <PackageProjectUrl>https://github.com/adoconnection/RazorEngineCore</PackageProjectUrl>
     <Description>ASP.NET Core 3.1.1 Razor Template Engine</Description>
+    <AssemblyVersion>2020.2.2.0</AssemblyVersion>
+    <FileVersion>2020.2.2.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
