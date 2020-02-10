@@ -15,6 +15,8 @@ Hello @Model.Name
     <div>- @item</div>
 }
 
+<div data-name=""@Model.Name""></div>
+
 <area>
     @{ RecursionTest(3); }
 </area>
