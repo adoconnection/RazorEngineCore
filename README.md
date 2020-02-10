@@ -102,3 +102,9 @@ public class CustomModel : RazorEngineTemplateBase
 
 #### Credits
 This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/47756437/267736)
+
+
+#### Changelog
+* 2020.2.3
+	* Html attribute rendering fix
+	* Html attribute rendering tests
