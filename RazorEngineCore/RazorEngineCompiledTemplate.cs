@@ -41,9 +41,9 @@ namespace RazorEngineCore
             File.WriteAllBytes(fileName, this.assemblyByteCode.ToArray());
         }
 
-        public string Run(object model)
+        public string Run(object model = null)
         {
-            if (model.IsAnonymous())
+            if (model != null && model.IsAnonymous())
             {
                 model = new AnonymousTypeWrapper(model);
             }

@@ -54,7 +54,7 @@ namespace RazorEngineCore
                 document,
                 null,
                 new List<RazorSourceDocument>(),
-                new List<TagHelperDescriptor>() { });
+                new List<TagHelperDescriptor>());
 
             RazorCSharpDocument razorCSharpDocument = codeDocument.GetCSharpDocument();
 
@@ -88,8 +88,10 @@ namespace RazorEngineCore
 
             if (!emitResult.Success)
             {
-                RazorEngineCompilationException exception = new RazorEngineCompilationException("Unable to compile template");
-                exception.Errors = emitResult.Diagnostics.ToList();
+                List<Diagnostic> errors = emitResult.Diagnostics.ToList();
+
+                RazorEngineCompilationException exception = new RazorEngineCompilationException("Unable to compile template: " + errors.FirstOrDefault()?.ToString());
+                exception.Errors = errors;
 
                 throw exception;
             }

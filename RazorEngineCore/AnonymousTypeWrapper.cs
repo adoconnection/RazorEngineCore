@@ -28,6 +28,11 @@ namespace RazorEngineCore
 
             result = propertyInfo.GetValue(this.model, null);
 
+            if (result == null)
+            {
+                return true;
+            }
+
             var type = result.GetType();
 
             if (result.IsAnonymous())
@@ -42,7 +47,5 @@ namespace RazorEngineCore
             
             return true;
         }
-
-        
     }
 }

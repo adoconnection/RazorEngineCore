@@ -11,15 +11,15 @@ namespace RazorEngineCore
         {
         }
 
-        protected RazorEngineCompilationException(SerializationInfo? info, StreamingContext context) : base(info, context)
+        protected RazorEngineCompilationException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
 
-        public RazorEngineCompilationException(string? message) : base(message)
+        public RazorEngineCompilationException(string message) : base(message)
         {
         }
 
-        public RazorEngineCompilationException(string? message, Exception? innerException) : base(message, innerException)
+        public RazorEngineCompilationException(string message, Exception innerException) : base(message, innerException)
         {
         }
 

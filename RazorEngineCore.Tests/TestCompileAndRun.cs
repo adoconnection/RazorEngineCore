@@ -77,6 +77,33 @@ namespace RazorEngineCore.Tests
         }
 
         [TestMethod]
+        public void TestCompileAndRun_NullModel()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            var template = razorEngine.Compile("Name: @Model");
+
+            string actual = template.Run(null);
+            
+            Assert.AreEqual("Name: ", actual);
+        }
+
+        [TestMethod]
+        public void TestCompileAndRun_NullNestedObject()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            var template = razorEngine.Compile("Name: @Model.user");
+
+            string actual = template.Run(new
+            {
+                user = (object)null
+            });
+            
+            Assert.AreEqual("Name: ", actual);
+        }
+
+        [TestMethod]
         public void TestCompileAndRun_DynamicModel_Lists()
         {
             RazorEngine razorEngine = new RazorEngine();
@@ -109,6 +136,42 @@ namespace RazorEngineCore.Tests
 <div>K2</div>
 ";
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestCompileAndRun_TestFunction()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            var template = razorEngine.Compile(@"
+@<area>
+    @{ RecursionTest(3); }
+</area>
+
+@{
+
+void RecursionTest(int level)
+{
+	if (level <= 0)
+	{
+		return;
+	}
+		
+    <div>LEVEL: @level</div>
+	@{ RecursionTest(level - 1); }
+}
+
+}");
+
+            string actual = template.Run();
+            string expected = @"
+<area>
+    <div>LEVEL: 3</div>
+    <div>LEVEL: 2</div>
+    <div>LEVEL: 1</div>
+</area>
+";
+            Assert.AreEqual(expected.Trim(), actual.Trim());
         }
 
         [TestMethod]

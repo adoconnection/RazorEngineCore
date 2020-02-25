@@ -13,12 +13,12 @@ namespace RazorEngineCore
 
         public dynamic Model { get; set; }
 
-        public void WriteLiteral(string literal)
+        public void WriteLiteral(string literal = null)
         {
             this.stringBuilder.Append(literal);
         }
 
-        public void Write(object obj)
+        public void Write(object obj = null)
         {
             this.stringBuilder.Append(obj);
         }

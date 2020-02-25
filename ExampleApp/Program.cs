@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using RazorEngineCore;
 
@@ -34,6 +35,21 @@ Hello @Model.Name
 	}
 
 }";
+
+        private static ConcurrentDictionary<int, RazorEngineCompiledTemplate> TemplateCache = new ConcurrentDictionary<int, RazorEngineCompiledTemplate>();
+
+private string RenderTemplate(string template, object model)
+{
+    int hashCode = template.GetHashCode();
+
+    RazorEngineCompiledTemplate compiledTemplate = TemplateCache.GetOrAdd(hashCode, i =>
+    {
+        RazorEngine razorEngine = new RazorEngine();
+        return razorEngine.Compile(Content);
+    });
+
+    return compiledTemplate.Run(model);
+}
 
 		static void Main(string[] args)
         {
