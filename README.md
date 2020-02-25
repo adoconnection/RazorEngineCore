@@ -4,6 +4,8 @@ NETCore 3.1.1 Razor Template Engine. No legacy code.
 [![NuGet](https://img.shields.io/nuget/dt/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
 [![NuGet](https://img.shields.io/nuget/v/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
 
+Every single star makes maintainer happy! ⭐
+
 ## NuGet
 ```
 Install-Package RazorEngineCore
@@ -41,6 +43,27 @@ template.SaveToStream(memoryStream);
 ```cs
 RazorEngineCompiledTemplate template1 = RazorEngineCompiledTemplate.LoadFromFile("myTemplate.dll");
 RazorEngineCompiledTemplate template2 = RazorEngineCompiledTemplate.LoadFromStream(myStream);
+```
+
+#### Simplest thread safe caching pattern
+
+```cs
+private static ConcurrentDictionary<string, RazorEngineCompiledTemplate> TemplateCache = new ConcurrentDictionary<string, RazorEngineCompiledTemplate>();
+```
+
+```cs
+private string RenderTemplate(string template, object model)
+{
+    int hashCode = template.GetHashCode();
+
+    RazorEngineCompiledTemplate compiledTemplate = TemplateCache.GetOrAdd(hashCode, i =>
+    {
+        RazorEngine razorEngine = new RazorEngine();
+        return razorEngine.Compile(Content);
+    });
+
+    return compiledTemplate.Run(model);
+}
 ```
 
 #### Template functions
@@ -102,3 +125,9 @@ public class CustomModel : RazorEngineTemplateBase
 
 #### Credits
 This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/47756437/267736)
+
+
+#### Changelog
+* 2020.2.3
+	* Html attribute rendering fix
+	* Html attribute rendering tests
