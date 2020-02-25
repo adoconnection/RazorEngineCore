@@ -129,7 +129,7 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 #### Changelog
 * 2020.2.4
-	* null values in model handling
+	* null values in model correct handling
 	* null model fix
 	* netstandard2 insted of netcore3.1
 * 2020.2.3
