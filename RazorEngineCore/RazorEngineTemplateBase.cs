@@ -25,20 +25,20 @@ namespace RazorEngineCore
 
         public void BeginWriteAttribute(string name, string prefix, int prefixOffset, string suffix, int suffixOffset, int attributeValuesCount)
         {
-            this.attributePrefix = prefix;
             this.attributeSuffix = suffix;
+            this.stringBuilder.Append(prefix);
+            this.stringBuilder.Append(this.attributePrefix);
         }
 
         public void WriteAttributeValue(string prefix, int prefixOffset, object value, int valueOffset, int valueLength, bool isLiteral)
         {
-            this.stringBuilder.Append(this.attributePrefix);
+            this.stringBuilder.Append(prefix);
             this.stringBuilder.Append(value);
-            this.stringBuilder.Append(this.attributeSuffix);
         }
 
         public void EndWriteAttribute()
         {
-            this.attributePrefix = null;
+            this.stringBuilder.Append(this.attributeSuffix);
             this.attributeSuffix = null;
         }
 

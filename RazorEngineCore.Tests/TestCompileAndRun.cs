@@ -18,40 +18,40 @@ namespace RazorEngineCore.Tests
         {
             RazorEngine razorEngine = new RazorEngine();
             RazorEngineCompiledTemplate template = razorEngine.Compile("<h1>Hello @Model.Name</h1>");
-            
+
             string actual = template.Run(new
             {
                 Name = "Alex"
             });
-            
+
             Assert.AreEqual("<h1>Hello Alex</h1>", actual);
         }
 
-	[TestMethod]
+        [TestMethod]
         public void TestCompileAndRun_InAttributeVariables()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate template = razorEngine.Compile("<div class=\"circle\" style=\"background-color: hsla(@Model.Colour, 70%, 80%, 1);\">");
-            
+            RazorEngineCompiledTemplate template = razorEngine.Compile("<div class=\"circle\" style=\"background-color: hsla(@Model.Colour, 70%,   80%,1);\">");
+
             string actual = template.Run(new
             {
                 Colour = 88
             });
-            
-            Assert.AreEqual("<div class=\"circle\" style=\"background-color: hsla(88, 70%, 80%, 1);\">", actual);
+
+            Assert.AreEqual("<div class=\"circle\" style=\"background-color: hsla(88, 70%,   80%,1);\">", actual);
         }
-	    
+
         [TestMethod]
         public void TestCompileAndRun_HtmlAttribute()
         {
             RazorEngine razorEngine = new RazorEngine();
             RazorEngineCompiledTemplate template = razorEngine.Compile("<div title=\"@Model.Name\">Hello</div>");
-            
+
             string actual = template.Run(new
             {
                 Name = "Alex"
             });
-            
+
             Assert.AreEqual("<div title=\"Alex\">Hello</div>", actual);
         }
 
@@ -60,12 +60,12 @@ namespace RazorEngineCore.Tests
         {
             RazorEngine razorEngine = new RazorEngine();
             RazorEngineCompiledTemplate template = razorEngine.Compile("Hello @Model.Name");
-            
+
             string actual = template.Run(new
             {
                 Name = "Alex"
             });
-            
+
             Assert.AreEqual("Hello Alex", actual);
         }
 
@@ -86,7 +86,7 @@ namespace RazorEngineCore.Tests
             var template = razorEngine.Compile("Name: @Model.Name, Membership: @Model.Membership.Level");
 
             string actual = template.Run(model);
-            
+
             Assert.AreEqual("Name: Alex, Membership: Gold", actual);
         }
 
@@ -98,7 +98,7 @@ namespace RazorEngineCore.Tests
             var template = razorEngine.Compile("Name: @Model");
 
             string actual = template.Run(null);
-            
+
             Assert.AreEqual("Name: ", actual);
         }
 
@@ -113,7 +113,7 @@ namespace RazorEngineCore.Tests
             {
                 user = (object)null
             });
-            
+
             Assert.AreEqual("Name: ", actual);
         }
 

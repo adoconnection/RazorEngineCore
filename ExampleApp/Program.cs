@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using RazorEngineCore;
 
@@ -23,7 +21,6 @@ Hello @Model.Name
 </area>
 
 @{
-
 	void RecursionTest(int level){
 		if (level <= 0)
 		{
@@ -33,9 +30,7 @@ Hello @Model.Name
 		<div>LEVEL: @level</div>
 		@{ RecursionTest(level - 1); }
 	}
-
 }";
-
 
 		static void Main(string[] args)
         {
