@@ -27,6 +27,20 @@ namespace RazorEngineCore.Tests
             Assert.AreEqual("<h1>Hello Alex</h1>", actual);
         }
 
+	[TestMethod]
+        public void TestCompileAndRun_InAttributeVariables()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate template = razorEngine.Compile("<div class=\"circle\" style=\"background-color: hsla(@Model.Colour, 70%, 80%, 1);\">");
+            
+            string actual = template.Run(new
+            {
+                Colour = 88
+            });
+            
+            Assert.AreEqual("<div class=\"circle\" style=\"background-color: hsla(88, 70%, 80%, 1);\">", actual);
+        }
+	    
         [TestMethod]
         public void TestCompileAndRun_HtmlAttribute()
         {
