@@ -3,6 +3,9 @@ NETCore 3.1.1 Razor Template Engine. No legacy code.
 
 [![NuGet](https://img.shields.io/nuget/dt/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
 [![NuGet](https://img.shields.io/nuget/v/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
+[![Gitter](https://img.shields.io/gitter/room/RazorEngineCore/community?style=flat-square)](https://gitter.im/RazorEngineCore/community?utm_source=badge&utm_medium=badge&utm_content=badge)
+
+
 
 Every single star makes maintainer happy! ⭐
 
