@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace RazorEngineCore.Tests.Models
 {
@@ -8,6 +9,8 @@ namespace RazorEngineCore.Tests.Models
         public int B { get; set; }
         public string C { get; set; }
         public DateTime D { get; set; }
+
+        public IList<int> Numbers { get; set; }
 
         public string Decorator(string text)
         {

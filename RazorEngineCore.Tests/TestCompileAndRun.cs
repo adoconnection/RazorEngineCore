@@ -220,5 +220,32 @@ void RecursionTest(int level)
 
             Assert.AreEqual("Hello -=Alex=-", actual);
         }
+
+        [TestMethod]
+        public void TestCompileAndRun_Linq()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate<TestModel2> template = razorEngine.Compile<TestModel2>(
+@"
+@foreach (var item in Model.Numbers.OrderByDescending(x => x))
+{
+    <p>@item</p>
+}
+");
+            string expected = @"
+    <p>3</p>
+    <p>2</p>
+    <p>1</p>
+";
+            string actual = template.Run(instance =>
+            {
+                instance.Initialize(new TestModel1()
+                {
+                    Numbers = new[] {2, 1, 3}
+                });
+            });
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

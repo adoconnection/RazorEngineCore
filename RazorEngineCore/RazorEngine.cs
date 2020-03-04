@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Razor.Language;
 using Microsoft.CodeAnalysis;
@@ -14,36 +12,42 @@ namespace RazorEngineCore
 {
     public class RazorEngine
     {
-        public RazorEngineCompiledTemplate<T> Compile<T>(string content) where T : RazorEngineTemplateBase
+        public RazorEngineCompiledTemplate<T> Compile<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : RazorEngineTemplateBase
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("@inherits " + typeof(T).FullName);
-            stringBuilder.Append(content);
+            RazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
+            
+            compilationOptionsBuilder.AddAssemblyReference(typeof(T).Assembly);
+            compilationOptionsBuilder.Inherits(typeof(T));
 
-            MemoryStream memoryStream = this.CreateAndCompileToStream(stringBuilder.ToString(), typeof(T).Assembly);
+            builderAction?.Invoke(compilationOptionsBuilder);
 
+            MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
+           
             return new RazorEngineCompiledTemplate<T>(memoryStream);
         }
 
-        public RazorEngineCompiledTemplate Compile(string content)
+        public RazorEngineCompiledTemplate Compile(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("@inherits RazorEngineCore.RazorEngineTemplateBase");
-            stringBuilder.Append(content);
+            RazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
+            compilationOptionsBuilder.Inherits(typeof(RazorEngineTemplateBase));
+             
+            builderAction?.Invoke(compilationOptionsBuilder);
 
-            MemoryStream memoryStream = this.CreateAndCompileToStream(stringBuilder.ToString());
+            MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
 
             return new RazorEngineCompiledTemplate(memoryStream);
         }
 
-        private MemoryStream CreateAndCompileToStream(string templateSource, params Assembly[] linkedAssemblies)
+        private MemoryStream CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options)
         {
+            templateSource = this.WriteDirectives(templateSource, options);
+
             RazorProjectEngine engine = RazorProjectEngine.Create(
                 RazorConfiguration.Default,
                 RazorProjectFileSystem.Create(@"."),
                 (builder) =>
                 {
-                    builder.SetNamespace("TemplateNamespace");
+                    builder.SetNamespace(options.TemplateNamespace);
                 });
 
             string fileName = Path.GetRandomFileName();
@@ -58,28 +62,17 @@ namespace RazorEngineCore
 
             RazorCSharpDocument razorCSharpDocument = codeDocument.GetCSharpDocument();
 
-            List<PortableExecutableReference> portableExecutableReferences = new List<PortableExecutableReference>
-            {
-                MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
-                MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("Microsoft.CSharp")).Location),
-                MetadataReference.CreateFromFile(typeof(RazorEngineTemplateBase).Assembly.Location),
-                MetadataReference.CreateFromFile(typeof(ExpandoObject).Assembly.Location),
-                MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("netstandard")).Location),
-                MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("System.Runtime")).Location),
-            };
-
-            foreach (Assembly assembly in linkedAssemblies)
-            {
-                portableExecutableReferences.Add(MetadataReference.CreateFromFile(assembly.Location));
-            }
+            SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(razorCSharpDocument.GeneratedCode);
 
             CSharpCompilation compilation = CSharpCompilation.Create(
                 fileName,
                 new[]
                 {
-                    CSharpSyntaxTree.ParseText(razorCSharpDocument.GeneratedCode)
+                    syntaxTree
                 },
-                portableExecutableReferences,
+                options.ReferencedAssemblies
+                    .Select(ass => MetadataReference.CreateFromFile(ass.Location))
+                    .ToList(),
                 new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 
             MemoryStream memoryStream = new MemoryStream();
@@ -98,6 +91,21 @@ namespace RazorEngineCore
 
             memoryStream.Position = 0;
             return memoryStream;
+        }
+
+        private string WriteDirectives(string content, RazorEngineCompilationOptions options)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("@inherits " + options.Inherits);
+
+            foreach (string entry in options.DefaultUsings)
+            {
+                stringBuilder.AppendLine("@using " + entry);
+            }
+
+            stringBuilder.Append(content);
+
+            return stringBuilder.ToString();
         }
     }
 }

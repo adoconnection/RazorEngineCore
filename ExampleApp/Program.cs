@@ -4,6 +4,13 @@ using RazorEngineCore;
 
 namespace ExampleApp
 {
+    public class TestModel : RazorEngineTemplateBase
+    {
+        public string Name { get; set; }
+        public IEnumerable<int> Items { get; set; }
+    }
+
+
     class Program
     {
         static string Content = @"
@@ -32,9 +39,9 @@ Hello @Model.Name
 	}
 }";
 
-		static void Main(string[] args)
+        static void Main(string[] args)
         {
-			RazorEngine razorEngine = new RazorEngine();
+            RazorEngine razorEngine = new RazorEngine();
             RazorEngineCompiledTemplate template = razorEngine.Compile(Content);
 
             string result = template.Run(new
@@ -47,7 +54,7 @@ Hello @Model.Name
                 }
             });
 
-			Console.WriteLine(result);
+            Console.WriteLine(result);
             Console.ReadKey();
         }
     }

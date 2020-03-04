@@ -17,12 +17,12 @@ namespace RazorEngineCore
             this.templateType = assembly.GetType("TemplateNamespace.Template");
         }
 
-        public static RazorEngineCompiledTemplate<T> LoadFromFile<T>(string fileName) where T : RazorEngineTemplateBase
+        public static RazorEngineCompiledTemplate<T> LoadFromFile(string fileName)
         {
             return new RazorEngineCompiledTemplate<T>(new MemoryStream(File.ReadAllBytes(fileName)));
         }
 
-        public static RazorEngineCompiledTemplate<T> LoadFromStream<T>(Stream stream) where T : RazorEngineTemplateBase
+        public static RazorEngineCompiledTemplate<T> LoadFromStream(Stream stream)
         {
             MemoryStream memoryStream = new MemoryStream();
             stream.CopyTo(memoryStream);
