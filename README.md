@@ -29,6 +29,25 @@ string result = template.Run(new
 Console.WriteLine(result);
 ```
 
+#### Strong typed model
+```cs
+string templateText = "Hello @Model.Name";
+
+// yeah, heavy definition
+RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel>> template = razorEngine.Compile<RazorEngineTemplateBase<TestModel>>(templateText);
+
+string result = template.Run(instance =>
+{
+    instance.Model = new TestModel()
+    {
+        Name = "Hello",
+        Items = new[] {3, 1, 2}
+    };
+});
+
+Console.WriteLine(result);
+```
+
 #### Save / Load compiled templates
 Most expensive task is to compile template, you should not compile template every time you need to run it
 ```cs
@@ -46,6 +65,11 @@ template.SaveToStream(memoryStream);
 ```cs
 RazorEngineCompiledTemplate template1 = RazorEngineCompiledTemplate.LoadFromFile("myTemplate.dll");
 RazorEngineCompiledTemplate template2 = RazorEngineCompiledTemplate.LoadFromStream(myStream);
+```
+
+```cs
+RazorEngineCompiledTemplate<MyBase> template1 = RazorEngineCompiledTemplate<MyBase>.LoadFromFile<MyBase>("myTemplate.dll");
+RazorEngineCompiledTemplate<MyBase> template2 = RazorEngineCompiledTemplate<MyBase>.LoadFromStream<MyBase>(myStream);
 ```
 
 #### Simplest thread safe caching pattern
@@ -124,6 +148,18 @@ public class CustomModel : RazorEngineTemplateBase
 }
 ```
 
+### Referencing assemblies
+```cs
+RazorEngine razorEngine = new RazorEngine();
+RazorEngineCompiledTemplate compiledTemplate = razorEngine.Compile(templateText, builder =>
+{
+    builder.AddAssemblyReferenceByName("System.Security"); // by name
+    builder.AddAssemblyReference(typeof(System.IO.File)); // by type
+    builder.AddAssemblyReference(Assembly.Load("source")); // by reference
+});
+
+string result = compiledTemplate.Run(new { name = "Hello" });
+```
 
 
 #### Credits
@@ -131,12 +167,17 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2020.3.3
+	* Model with generic type arguments compiling fix
+* 2020.3.2
+	* External assembly referencing
+	* Linq included by default
 * 2020.3.1
 	* In attribute rendering fix #4
 * 2020.2.4
-	* null values in model correct handling
-	* null model fix
-	* netstandard2 insted of netcore3.1
+	* Null values in model correct handling
+	* Null model fix
+	* Netstandard2 insted of netcore3.1
 * 2020.2.3
 	* Html attribute rendering fix
 	* Html attribute rendering tests
