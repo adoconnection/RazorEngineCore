@@ -75,7 +75,10 @@ RazorEngineCompiledTemplate<MyBase> template1 = RazorEngineCompiledTemplate<MyBa
 RazorEngineCompiledTemplate<MyBase> template2 = RazorEngineCompiledTemplate<MyBase>.LoadFromStream<MyBase>(myStream);
 ```
 
-#### Simplest thread safe caching pattern
+#### Caching
+RazorEngineCore is not responsible for caching. Each team and project has their own caching frameworks and conventions therefore making it is impossible to have builtin solution for all possible needs. 
+
+If you dont have one, use following static ConcurrentDictionary example as a simplest solution.
 
 ```cs
 private static ConcurrentDictionary<string, RazorEngineCompiledTemplate> TemplateCache = new ConcurrentDictionary<string, RazorEngineCompiledTemplate>();
@@ -151,7 +154,10 @@ public class CustomModel : RazorEngineTemplateBase
 }
 ```
 
-### Referencing assemblies
+#### Referencing assemblies
+Keep your templates as simple as possible, if you need to inject "unusual" assemblies most likely you are doing it wrong.
+Writing `@using System.IO` in template will not reference System.IO assembly, use builder to manually reference it.
+
 ```cs
 RazorEngine razorEngine = new RazorEngine();
 RazorEngineCompiledTemplate compiledTemplate = razorEngine.Compile(templateText, builder =>
