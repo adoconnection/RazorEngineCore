@@ -78,7 +78,7 @@ RazorEngineCompiledTemplate<MyBase> template2 = RazorEngineCompiledTemplate<MyBa
 #### Caching
 RazorEngineCore is not responsible for caching. Each team and project has their own caching frameworks and conventions therefore making it impossible to have builtin solution for all possible needs. 
 
-If you dont have one, use following static ConcurrentDictionary example as a simplest solution.
+If you dont have one, use following static ConcurrentDictionary example as a simplest thread safe solution.
 
 ```cs
 private static ConcurrentDictionary<string, RazorEngineCompiledTemplate> TemplateCache = new ConcurrentDictionary<string, RazorEngineCompiledTemplate>();
