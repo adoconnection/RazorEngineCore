@@ -21,6 +21,7 @@ Install-Package RazorEngineCore
 * [Strongly typed model](https://github.com/adoconnection/RazorEngineCore/wiki/Strongly-typed-model)
 * [@Include](https://github.com/adoconnection/RazorEngineCore/wiki/@Include-section)
 * [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw)
+* [@Inject and referencing other assemblies](https://github.com/adoconnection/RazorEngineCore/wiki/@Inject-and-referencing-other-assemblies)
 
 ## Examples
 
