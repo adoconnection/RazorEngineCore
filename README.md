@@ -17,6 +17,11 @@ Install-Package RazorEngineCore
 ## Articles
 * [CodeProject: Building String Razor Template Engine with Bare Hands](https://www.codeproject.com/Articles/5260233/Building-String-Razor-Template-Engine-with-Bare-Ha)
 
+## Wiki
+* [Strongly typed model](https://github.com/adoconnection/RazorEngineCore/wiki/Strongly-typed-model)
+* [@Include](https://github.com/adoconnection/RazorEngineCore/wiki/@Include-section)
+* [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw)
+
 ## Examples
 
 #### Basic usage
@@ -32,7 +37,7 @@ string result = template.Run(new
 Console.WriteLine(result);
 ```
 
-#### Strong typed model
+#### Strongly typed model
 ```cs
 string templateText = "Hello @Model.Name";
 
