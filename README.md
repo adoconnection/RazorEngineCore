@@ -23,6 +23,7 @@ Install-Package RazorEngineCore
 * [@Include](https://github.com/adoconnection/RazorEngineCore/wiki/@Include-section)
 * [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw)
 * [@Inject and referencing other assemblies](https://github.com/adoconnection/RazorEngineCore/wiki/@Inject-and-referencing-other-assemblies)
+* [Switch from RazorEngine cshtml templates](https://github.com/adoconnection/RazorEngineCore/wiki/Switch-from-RazorEngine-cshtml-templates)
 
 ## Examples
 
