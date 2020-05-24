@@ -1,5 +1,4 @@
-﻿using System.Dynamic;
-using System.Text;
+﻿using System.Text;
 using System.Threading.Tasks;
 
 namespace RazorEngineCore
@@ -42,8 +41,9 @@ namespace RazorEngineCore
             this.attributeSuffix = null;
         }
 
-        public async virtual Task ExecuteAsync()
+        public virtual Task ExecuteAsync()
         {
+            return Task.CompletedTask;
         }
 
         public string Result()
