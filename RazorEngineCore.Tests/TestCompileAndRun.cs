@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RazorEngineCore.Tests.Models;
 
@@ -11,6 +12,13 @@ namespace RazorEngineCore.Tests
         {
             RazorEngine razorEngine = new RazorEngine();
             razorEngine.Compile("Hello @Model.Name");
+        }
+        
+        [TestMethod]
+        public Task TestCompileAsync()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            return razorEngine.CompileAsync("Hello @Model.Name");
         }
 
         [TestMethod]
@@ -28,12 +36,40 @@ namespace RazorEngineCore.Tests
         }
 
         [TestMethod]
+        public async Task TestCompileAndRun_HtmlLiteralAsync()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate template = await razorEngine.CompileAsync("<h1>Hello @Model.Name</h1>");
+
+            string actual = await template.RunAsync(new
+            {
+                Name = "Alex"
+            });
+            
+            Assert.AreEqual("<h1>Hello Alex</h1>", actual);
+        }
+
+        [TestMethod]
         public void TestCompileAndRun_InAttributeVariables()
         {
             RazorEngine razorEngine = new RazorEngine();
             RazorEngineCompiledTemplate template = razorEngine.Compile("<div class=\"circle\" style=\"background-color: hsla(@Model.Colour, 70%,   80%,1);\">");
 
             string actual = template.Run(new
+            {
+                Colour = 88
+            });
+
+            Assert.AreEqual("<div class=\"circle\" style=\"background-color: hsla(88, 70%,   80%,1);\">", actual);
+        }
+
+        [TestMethod]
+        public async Task TestCompileAndRun_InAttributeVariablesAsync()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate template = await razorEngine.CompileAsync("<div class=\"circle\" style=\"background-color: hsla(@Model.Colour, 70%,   80%,1);\">");
+
+            string actual = await template.RunAsync(new
             {
                 Colour = 88
             });
@@ -56,12 +92,40 @@ namespace RazorEngineCore.Tests
         }
 
         [TestMethod]
+        public async Task TestCompileAndRun_HtmlAttributeAsync()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate template = await razorEngine.CompileAsync("<div title=\"@Model.Name\">Hello</div>");
+
+            string actual = await template.RunAsync(new
+            {
+                Name = "Alex"
+            });
+
+            Assert.AreEqual("<div title=\"Alex\">Hello</div>", actual);
+        }
+
+        [TestMethod]
         public void TestCompileAndRun_DynamicModel_Plain()
         {
             RazorEngine razorEngine = new RazorEngine();
             RazorEngineCompiledTemplate template = razorEngine.Compile("Hello @Model.Name");
 
             string actual = template.Run(new
+            {
+                Name = "Alex"
+            });
+
+            Assert.AreEqual("Hello Alex", actual);
+        }
+
+        [TestMethod]
+        public async Task TestCompileAndRun_DynamicModel_PlainAsync()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate template = await razorEngine.CompileAsync("Hello @Model.Name");
+
+            string actual = await template.RunAsync(new
             {
                 Name = "Alex"
             });
@@ -91,6 +155,27 @@ namespace RazorEngineCore.Tests
         }
 
         [TestMethod]
+        public async Task TestCompileAndRun_DynamicModel_NestedAsync()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            var model = new
+            {
+                Name = "Alex",
+                Membership = new
+                {
+                    Level = "Gold"
+                }
+            };
+
+            var template = await razorEngine.CompileAsync("Name: @Model.Name, Membership: @Model.Membership.Level");
+
+            string actual = await template.RunAsync(model);
+
+            Assert.AreEqual("Name: Alex, Membership: Gold", actual);
+        }
+
+        [TestMethod]
         public void TestCompileAndRun_NullModel()
         {
             RazorEngine razorEngine = new RazorEngine();
@@ -103,6 +188,18 @@ namespace RazorEngineCore.Tests
         }
 
         [TestMethod]
+        public async Task TestCompileAndRun_NullModelAsync()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            var template = await razorEngine.CompileAsync("Name: @Model");
+
+            string actual = await template.RunAsync(null);
+
+            Assert.AreEqual("Name: ", actual);
+        }
+
+        [TestMethod]
         public void TestCompileAndRun_NullNestedObject()
         {
             RazorEngine razorEngine = new RazorEngine();
@@ -110,6 +207,21 @@ namespace RazorEngineCore.Tests
             var template = razorEngine.Compile("Name: @Model.user");
 
             string actual = template.Run(new
+            {
+                user = (object)null
+            });
+
+            Assert.AreEqual("Name: ", actual);
+        }
+
+        [TestMethod]
+        public async Task TestCompileAndRun_NullNestedObjectAsync()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            var template = await razorEngine.CompileAsync("Name: @Model.user");
+
+            string actual = await template.RunAsync(new
             {
                 user = (object)null
             });
@@ -145,6 +257,41 @@ namespace RazorEngineCore.Tests
 ");
 
             string actual = template.Run(model);
+            string expected = @"
+<div>K1</div>
+<div>K2</div>
+";
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public async Task TestCompileAndRun_DynamicModel_ListsAsync()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            var model = new
+            {
+                Items = new[]
+                {
+                    new
+                    {
+                        Key = "K1"
+                    },
+                    new
+                    {
+                        Key = "K2"
+                    }
+                }
+            };
+
+            var template = await razorEngine.CompileAsync(@"
+@foreach (var item in Model.Items)
+{
+<div>@item.Key</div>
+}
+");
+
+            string actual = await template.RunAsync(model);
             string expected = @"
 <div>K1</div>
 <div>K2</div>
@@ -205,6 +352,22 @@ void RecursionTest(int level)
         }
 
         [TestMethod]
+        public async Task TestCompileAndRun_TypedModel1Async()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate<TestModel1> template = await razorEngine.CompileAsync<TestModel1>("Hello @A @B @(A + B) @C @Decorator(\"777\")");
+
+            string actual = await template.RunAsync(instance =>
+            {
+                instance.A = 1;
+                instance.B = 2;
+                instance.C = "Alex";
+            });
+
+            Assert.AreEqual("Hello 1 2 3 Alex -=777=-", actual);
+        }
+
+        [TestMethod]
         public void TestCompileAndRun_TypedModel2()
         {
             RazorEngine razorEngine = new RazorEngine();
@@ -218,6 +381,23 @@ void RecursionTest(int level)
                 });
             });
 
+            Assert.AreEqual("Hello -=Alex=-", actual);
+        }
+
+        [TestMethod]
+        public async Task TestCompileAndRun_TypedModel2Async()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate<TestModel2> template = await razorEngine.CompileAsync<TestModel2>("Hello @Model.Decorator(Model.C)");
+
+            string actual = await template.RunAsync(instance =>
+            {
+                instance.Initialize(new TestModel1()
+                {
+                    C = "Alex"
+                });
+            });
+            
             Assert.AreEqual("Hello -=Alex=-", actual);
         }
 
@@ -238,6 +418,33 @@ void RecursionTest(int level)
     <p>1</p>
 ";
             string actual = template.Run(instance =>
+            {
+                instance.Initialize(new TestModel1()
+                {
+                    Numbers = new[] {2, 1, 3}
+                });
+            });
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public async Task TestCompileAndRun_LinqAsync()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate<TestModel2> template = await razorEngine.CompileAsync<TestModel2>(
+@"
+@foreach (var item in Model.Numbers.OrderByDescending(x => x))
+{
+    <p>@item</p>
+}
+");
+            string expected = @"
+    <p>3</p>
+    <p>2</p>
+    <p>1</p>
+";
+            string actual = await template.RunAsync(instance =>
             {
                 instance.Initialize(new TestModel1()
                 {

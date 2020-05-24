@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Razor.Language;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -26,6 +27,13 @@ namespace RazorEngineCore
             return new RazorEngineCompiledTemplate<T>(memoryStream);
         }
 
+        public Task<RazorEngineCompiledTemplate<T>> CompileAsync<T>(string content,
+            Action<RazorEngineCompilationOptionsBuilder> builderAction = null) 
+            where T : RazorEngineTemplateBase
+        {
+            return Task.Factory.StartNew(() => Compile<T>(content: content, builderAction: builderAction));
+        }
+
         public RazorEngineCompiledTemplate Compile(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
         {
             RazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
@@ -38,6 +46,11 @@ namespace RazorEngineCore
             return new RazorEngineCompiledTemplate(memoryStream);
         }
 
+        public Task<RazorEngineCompiledTemplate> CompileAsync(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
+        {
+            return Task.Factory.StartNew(() => Compile(content: content, builderAction: builderAction));
+        }
+        
         private MemoryStream CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options)
         {
             templateSource = this.WriteDirectives(templateSource, options);
@@ -53,7 +66,7 @@ namespace RazorEngineCore
             string fileName = Path.GetRandomFileName();
 
             RazorSourceDocument document = RazorSourceDocument.Create(templateSource, fileName);
-
+            
             RazorCodeDocument codeDocument = engine.Process(
                 document,
                 null,
@@ -83,7 +96,7 @@ namespace RazorEngineCore
             {
                 List<Diagnostic> errors = emitResult.Diagnostics.ToList();
 
-                RazorEngineCompilationException exception = new RazorEngineCompilationException("Unable to compile template: " + errors.FirstOrDefault()?.ToString());
+                RazorEngineCompilationException exception = new RazorEngineCompilationException($"Unable to compile template: {errors?.FirstOrDefault()}");
                 exception.Errors = errors;
 
                 throw exception;
@@ -96,11 +109,11 @@ namespace RazorEngineCore
         private string WriteDirectives(string content, RazorEngineCompilationOptions options)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("@inherits " + options.Inherits);
+            stringBuilder.AppendLine($"@inherits {options.Inherits}");
 
             foreach (string entry in options.DefaultUsings)
             {
-                stringBuilder.AppendLine("@using " + entry);
+                stringBuilder.AppendLine($"@using {entry}");
             }
 
             stringBuilder.Append(content);
