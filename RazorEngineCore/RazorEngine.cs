@@ -109,11 +109,11 @@ namespace RazorEngineCore
         private string WriteDirectives(string content, RazorEngineCompilationOptions options)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("@inherits " + options.Inherits);
+            stringBuilder.AppendLine($"@inherits {options.Inherits}");
 
             foreach (string entry in options.DefaultUsings)
             {
-                stringBuilder.AppendLine("@using " + entry);
+                stringBuilder.AppendLine($"@using {entry}");
             }
 
             stringBuilder.Append(content);

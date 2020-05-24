@@ -5,7 +5,7 @@ namespace RazorEngineCore
 {
     public class RazorEngineCompilationOptions
     {
-        public IList<Assembly> ReferencedAssemblies { get; set; } = new List<Assembly>()
+        public HashSet<Assembly> ReferencedAssemblies { get; set; } = new HashSet<Assembly>()
         {
             typeof(object).Assembly,
             Assembly.Load(new AssemblyName("Microsoft.CSharp")),
@@ -19,7 +19,7 @@ namespace RazorEngineCore
         public string TemplateNamespace { get; set; } = "TemplateNamespace";
         public string Inherits { get; set; } = "RazorEngineCore.RazorEngineTemplateBase";
 
-        public IList<string> DefaultUsings { get; set; } = new List<string>()
+        public HashSet<string> DefaultUsings { get; set; } = new HashSet<string>()
         {
             "System.Linq"
         };
