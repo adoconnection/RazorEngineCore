@@ -38,9 +38,8 @@ namespace RazorEngineCore
                 await fileStream.CopyToAsync(memoryStream);
             }
             
-            return new RazorEngineCompiledTemplate<T>(assemblyByteCode: memoryStream);
+            return new RazorEngineCompiledTemplate<T>(memoryStream);
         }
-
 
         public static RazorEngineCompiledTemplate<T> LoadFromStream(Stream stream)
         {
@@ -58,7 +57,7 @@ namespace RazorEngineCore
 
         public void SaveToStream(Stream stream)
         {
-            SaveToStreamAsync(stream).GetAwaiter().GetResult();
+            this.SaveToStreamAsync(stream).GetAwaiter().GetResult();
         }
 
         public Task SaveToStreamAsync(Stream stream)
@@ -68,7 +67,7 @@ namespace RazorEngineCore
         
         public void SaveToFile(string fileName)
         {
-            SaveToFileAsync(fileName).GetAwaiter().GetResult();
+            this.SaveToFileAsync(fileName).GetAwaiter().GetResult();
         }
         
         public Task SaveToFileAsync(string fileName)
@@ -87,16 +86,17 @@ namespace RazorEngineCore
 
         public string Run(Action<T> initializer)
         {
-            return RunAsync(initializer).GetAwaiter().GetResult();
+            return this.RunAsync(initializer).GetAwaiter().GetResult();
         }
         
         public async Task<string> RunAsync(Action<T> initializer)
         {
             T instance = (T) Activator.CreateInstance(this.templateType);
             initializer(instance);
+
             await instance.ExecuteAsync();
+
             return instance.Result();
         }
-        
     }
 }

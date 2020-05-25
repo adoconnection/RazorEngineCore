@@ -38,7 +38,7 @@ namespace RazorEngineCore
                 await fileStream.CopyToAsync(memoryStream);
             }
             
-            return new RazorEngineCompiledTemplate(assemblyByteCode: memoryStream);
+            return new RazorEngineCompiledTemplate(memoryStream);
         }
         
         public static RazorEngineCompiledTemplate LoadFromStream(Stream stream)
@@ -54,22 +54,10 @@ namespace RazorEngineCore
             
             return new RazorEngineCompiledTemplate(memoryStream);
         }
-        
-        /*public static async Task<T> LoadFromStreamAsync<T>(Stream stream)
-            where T: RazorEngineCompiledTemplate, new()
-        {
-            MemoryStream memoryStream = new MemoryStream();
-            await stream.CopyToAsync(memoryStream);
-            memoryStream.Position = 0;
-
-            T instance = (T) Activator.CreateInstance<T>();
-                
-            return new T(memoryStream);
-        }*/
 
         public void SaveToStream(Stream stream)
         {
-            SaveToStreamAsync(stream).GetAwaiter().GetResult();
+            this.SaveToStreamAsync(stream).GetAwaiter().GetResult();
         }
 
         public Task SaveToStreamAsync(Stream stream)
@@ -79,7 +67,7 @@ namespace RazorEngineCore
 
         public void SaveToFile(string fileName)
         {
-            SaveToFileAsync(fileName).GetAwaiter().GetResult();
+            this.SaveToFileAsync(fileName).GetAwaiter().GetResult();
         }
         
         public Task SaveToFileAsync(string fileName)
@@ -98,7 +86,7 @@ namespace RazorEngineCore
         
         public string Run(object model = null)
         {
-            return RunAsync(model).GetAwaiter().GetResult();
+            return this.RunAsync(model).GetAwaiter().GetResult();
         }
         
         public async Task<string> RunAsync(object model = null)
@@ -108,9 +96,11 @@ namespace RazorEngineCore
                 model = new AnonymousTypeWrapper(model);
             }
 
-            RazorEngineTemplateBase instance = (RazorEngineTemplateBase)Activator.CreateInstance(this.templateType);
+            RazorEngineTemplateBase instance = (RazorEngineTemplateBase) Activator.CreateInstance(this.templateType);
             instance.Model = model;
+
             await instance.ExecuteAsync();
+
             return instance.Result();
         }
     }

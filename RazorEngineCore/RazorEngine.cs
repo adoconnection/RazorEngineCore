@@ -27,11 +27,9 @@ namespace RazorEngineCore
             return new RazorEngineCompiledTemplate<T>(memoryStream);
         }
 
-        public Task<RazorEngineCompiledTemplate<T>> CompileAsync<T>(string content,
-            Action<RazorEngineCompilationOptionsBuilder> builderAction = null) 
-            where T : RazorEngineTemplateBase
+        public Task<RazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : RazorEngineTemplateBase
         {
-            return Task.Factory.StartNew(() => Compile<T>(content: content, builderAction: builderAction));
+            return Task.Factory.StartNew(() => this.Compile<T>(content: content, builderAction: builderAction));
         }
 
         public RazorEngineCompiledTemplate Compile(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
@@ -48,7 +46,7 @@ namespace RazorEngineCore
 
         public Task<RazorEngineCompiledTemplate> CompileAsync(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
         {
-            return Task.Factory.StartNew(() => Compile(content: content, builderAction: builderAction));
+            return Task.Factory.StartNew(() => this.Compile(content: content, builderAction: builderAction));
         }
         
         private MemoryStream CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options)
@@ -103,6 +101,7 @@ namespace RazorEngineCore
             }
 
             memoryStream.Position = 0;
+
             return memoryStream;
         }
 
