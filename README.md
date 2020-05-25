@@ -1,5 +1,5 @@
 # RazorEngineCore
-NETCore 3.1.1 Razor Template Engine. No legacy code.
+NETCore 3.1.4 Razor Template Engine. No legacy code.
 * .NET Standard 2.0
 
 [![NuGet](https://img.shields.io/nuget/dt/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
@@ -184,6 +184,10 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2020.5.1
+	* Async methods (thanks [@wdcossey](https://github.com/wdcossey))
+	* Microsoft.AspNetCore.Razor.Language 3.1.1 -> 3.1.4
+	* Microsoft.CodeAnalysis.CSharp 3.4.0 -> 3.6.0
 * 2020.3.3
 	* Model with generic type arguments compiling fix
 * 2020.3.2
