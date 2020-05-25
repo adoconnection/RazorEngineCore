@@ -1,0 +1,8 @@
+﻿@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngineCore.Tests.Models.TestModel1>
+
+Hello @Model.A @Model.B @(Model.A + Model.B) @Model.C @Model.Decorator("777")
+
+@foreach (var item in Model.Numbers)
+{
+    <p>@item</p>
+}

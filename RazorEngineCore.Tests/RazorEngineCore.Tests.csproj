@@ -16,4 +16,21 @@
     <ProjectReference Include="..\RazorEngineCore\RazorEngineCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Test.cshtml" />
+    <None Update="Templates\TestCustomTemplate.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\Test.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Test.cshtml" />
+    <None Update="Templates\TestCustomTemplate.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

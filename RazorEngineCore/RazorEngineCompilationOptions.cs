@@ -9,7 +9,7 @@ namespace RazorEngineCore
         {
             typeof(object).Assembly,
             Assembly.Load(new AssemblyName("Microsoft.CSharp")),
-            typeof(RazorEngineTemplateBase).Assembly,
+            typeof(IRazorEngineTemplateBase).Assembly,
             Assembly.Load(new AssemblyName("netstandard")),
             Assembly.Load(new AssemblyName("System.Runtime")),
             Assembly.Load(new AssemblyName("System.Linq")),

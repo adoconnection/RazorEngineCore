@@ -1,0 +1,10 @@
+﻿@inherits RazorEngineCore.Tests.Models.CustomPageModel
+
+Hello @Model.A @Model.B @(Model.A + Model.B) @Model.C @Model.Decorator("777")
+
+@foreach (var item in Model.Numbers)
+{
+    <p>@item</p>
+}
+
+@AxB()

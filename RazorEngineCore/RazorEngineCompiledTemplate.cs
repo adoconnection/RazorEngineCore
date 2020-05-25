@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -38,7 +39,7 @@ namespace RazorEngineCore
                 await fileStream.CopyToAsync(memoryStream);
             }
             
-            return new RazorEngineCompiledTemplate(memoryStream);
+            return new RazorEngineCompiledTemplate(assemblyByteCode: memoryStream);
         }
         
         public static RazorEngineCompiledTemplate LoadFromStream(Stream stream)
@@ -57,7 +58,7 @@ namespace RazorEngineCore
 
         public void SaveToStream(Stream stream)
         {
-            this.SaveToStreamAsync(stream).GetAwaiter().GetResult();
+            SaveToStreamAsync(stream).GetAwaiter().GetResult();
         }
 
         public Task SaveToStreamAsync(Stream stream)
@@ -67,7 +68,7 @@ namespace RazorEngineCore
 
         public void SaveToFile(string fileName)
         {
-            this.SaveToFileAsync(fileName).GetAwaiter().GetResult();
+            SaveToFileAsync(fileName).GetAwaiter().GetResult();
         }
         
         public Task SaveToFileAsync(string fileName)
@@ -86,21 +87,59 @@ namespace RazorEngineCore
         
         public string Run(object model = null)
         {
-            return this.RunAsync(model).GetAwaiter().GetResult();
+            return RunAsync(model).GetAwaiter().GetResult();
+        }
+        
+        public string Run<T>(T model = null)
+            where T : class
+        {
+            if (model?.IsAnonymous() == true)
+            {
+                return RunAsync((object)model).GetAwaiter().GetResult();
+            }
+            
+            return RunAsync(model).GetAwaiter().GetResult();
         }
         
         public async Task<string> RunAsync(object model = null)
         {
-            if (model != null && model.IsAnonymous())
+            if (model != null)
             {
                 model = new AnonymousTypeWrapper(model);
             }
 
-            RazorEngineTemplateBase instance = (RazorEngineTemplateBase) Activator.CreateInstance(this.templateType);
+            IRazorEngineTemplateBase instance = (IRazorEngineTemplateBase)Activator.CreateInstance(this.templateType);
             instance.Model = model;
+            await instance.ExecuteAsync();
+            return instance.Result();
+        }
+        
+        public async Task<string> RunAsync<T>(T model = null)
+            where T : class
+        {
+            
+            if (model?.IsAnonymous() == true)
+            {
+                return RunAsync((object)model).GetAwaiter().GetResult();
+            }
+            
+            IRazorEngineTemplateBase instance = null;
+            
+            if (typeof(IRazorEngineTemplateBase<>).GenericTypeArguments.Length > 0
+                ? typeof(IRazorEngineTemplateBase<>).IsAssignableFrom(this.templateType.BaseType)
+                : this.templateType?.BaseType?.GetInterfaces()
+                    ?.Any(c => c.Name == typeof(IRazorEngineTemplateBase<>).Name) == true)
+            {
+                instance = (IRazorEngineTemplateBase<T>)Activator.CreateInstance(this.templateType);
+                ((IRazorEngineTemplateBase<T>)instance).Model = model;
+            }
+            else
+            {
+                instance = (IRazorEngineTemplateBase)Activator.CreateInstance(this.templateType);
+                instance.Model = model;
+            }
 
             await instance.ExecuteAsync();
-
             return instance.Result();
         }
     }

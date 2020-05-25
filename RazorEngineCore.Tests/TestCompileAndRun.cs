@@ -339,13 +339,13 @@ void RecursionTest(int level)
         public void TestCompileAndRun_TypedModel1()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate<TestModel1> template = razorEngine.Compile<TestModel1>("Hello @A @B @(A + B) @C @Decorator(\"777\")");
+            RazorEngineCompiledTemplate<TestModel1> template = razorEngine.Compile<TestModel1>("Hello @Model.A @Model.B @(Model.A + Model.B) @Model.C @Model.Decorator(\"777\")");
 
-            string actual = template.Run(instance =>
+            string actual = template.Run(new TestModel1
             {
-                instance.A = 1;
-                instance.B = 2;
-                instance.C = "Alex";
+                A = 1,
+                B = 2,
+                C = "Alex",
             });
 
             Assert.AreEqual("Hello 1 2 3 Alex -=777=-", actual);
@@ -355,13 +355,13 @@ void RecursionTest(int level)
         public async Task TestCompileAndRun_TypedModel1Async()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate<TestModel1> template = await razorEngine.CompileAsync<TestModel1>("Hello @A @B @(A + B) @C @Decorator(\"777\")");
+            RazorEngineCompiledTemplate<TestModel1> template = await razorEngine.CompileAsync<TestModel1>("Hello @Model.A @Model.B @(Model.A + Model.B) @Model.C @Model.Decorator(\"777\")");
 
-            string actual = await template.RunAsync(instance =>
+            string actual = await template.RunAsync(new TestModel1
             {
-                instance.A = 1;
-                instance.B = 2;
-                instance.C = "Alex";
+                A = 1,
+                B = 2,
+                C = "Alex",
             });
 
             Assert.AreEqual("Hello 1 2 3 Alex -=777=-", actual);
@@ -371,14 +371,11 @@ void RecursionTest(int level)
         public void TestCompileAndRun_TypedModel2()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate<TestModel2> template = razorEngine.Compile<TestModel2>("Hello @Model.Decorator(Model.C)");
+            RazorEngineCompiledTemplate<TestModel1> template = razorEngine.Compile<TestModel1>("Hello @Model.Decorator(Model.C)");
 
-            string actual = template.Run(instance =>
+            string actual = template.Run(new TestModel1
             {
-                instance.Initialize(new TestModel1()
-                {
-                    C = "Alex"
-                });
+                C = "Alex"
             });
 
             Assert.AreEqual("Hello -=Alex=-", actual);
@@ -388,16 +385,13 @@ void RecursionTest(int level)
         public async Task TestCompileAndRun_TypedModel2Async()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate<TestModel2> template = await razorEngine.CompileAsync<TestModel2>("Hello @Model.Decorator(Model.C)");
+            RazorEngineCompiledTemplate<TestModel1> template = await razorEngine.CompileAsync<TestModel1>("Hello @Model.Decorator(Model.C)");
 
-            string actual = await template.RunAsync(instance =>
+            string actual = await template.RunAsync(new TestModel1
             {
-                instance.Initialize(new TestModel1()
-                {
-                    C = "Alex"
-                });
+                C = "Alex"
             });
-            
+
             Assert.AreEqual("Hello -=Alex=-", actual);
         }
 
@@ -405,7 +399,7 @@ void RecursionTest(int level)
         public void TestCompileAndRun_Linq()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate<TestModel2> template = razorEngine.Compile<TestModel2>(
+            RazorEngineCompiledTemplate<TestModel1> template = razorEngine.Compile<TestModel1>(
 @"
 @foreach (var item in Model.Numbers.OrderByDescending(x => x))
 {
@@ -417,12 +411,9 @@ void RecursionTest(int level)
     <p>2</p>
     <p>1</p>
 ";
-            string actual = template.Run(instance =>
+            string actual = template.Run(new TestModel1
             {
-                instance.Initialize(new TestModel1()
-                {
-                    Numbers = new[] {2, 1, 3}
-                });
+                Numbers = new[] {2, 1, 3}
             });
 
             Assert.AreEqual(expected, actual);
@@ -432,7 +423,7 @@ void RecursionTest(int level)
         public async Task TestCompileAndRun_LinqAsync()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate<TestModel2> template = await razorEngine.CompileAsync<TestModel2>(
+            RazorEngineCompiledTemplate<TestModel1> template = await razorEngine.CompileAsync<TestModel1>(
 @"
 @foreach (var item in Model.Numbers.OrderByDescending(x => x))
 {
@@ -444,12 +435,9 @@ void RecursionTest(int level)
     <p>2</p>
     <p>1</p>
 ";
-            string actual = await template.RunAsync(instance =>
+            string actual = await template.RunAsync(new TestModel1
             {
-                instance.Initialize(new TestModel1()
-                {
-                    Numbers = new[] {2, 1, 3}
-                });
+                Numbers = new[] {2, 1, 3}
             });
 
             Assert.AreEqual(expected, actual);

@@ -13,12 +13,24 @@ namespace RazorEngineCore
 {
     public class RazorEngine
     {
-        public RazorEngineCompiledTemplate<T> Compile<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : RazorEngineTemplateBase
+        public RazorEngineCompiledTemplate<T> Compile<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : class
         {
             RazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
             
+            compilationOptionsBuilder.AddAssemblyReference(typeof(IRazorEngineTemplateBase<>).Assembly);
             compilationOptionsBuilder.AddAssemblyReference(typeof(T).Assembly);
-            compilationOptionsBuilder.Inherits(typeof(T));
+            
+            if (typeof(IRazorEngineTemplateBase<>).GenericTypeArguments.Length > 0
+                ? typeof(IRazorEngineTemplateBase<>).IsAssignableFrom(typeof(T))
+                : typeof(T).GetInterfaces()
+                    .Any(c => c.Name == typeof(IRazorEngineTemplateBase<>).Name))
+            {
+                compilationOptionsBuilder.Inherits(typeof(T));
+            }
+            else
+            {
+                compilationOptionsBuilder.Inherits(typeof(RazorEngineTemplateBase<T>));
+            }
 
             builderAction?.Invoke(compilationOptionsBuilder);
 
@@ -27,9 +39,11 @@ namespace RazorEngineCore
             return new RazorEngineCompiledTemplate<T>(memoryStream);
         }
 
-        public Task<RazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : RazorEngineTemplateBase
+        public Task<RazorEngineCompiledTemplate<T>> CompileAsync<T>(string content,
+            Action<RazorEngineCompilationOptionsBuilder> builderAction = null) 
+            where T : class
         {
-            return Task.Factory.StartNew(() => this.Compile<T>(content: content, builderAction: builderAction));
+            return Task.Factory.StartNew(() => Compile<T>(content: content, builderAction: builderAction));
         }
 
         public RazorEngineCompiledTemplate Compile(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
@@ -46,7 +60,7 @@ namespace RazorEngineCore
 
         public Task<RazorEngineCompiledTemplate> CompileAsync(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
         {
-            return Task.Factory.StartNew(() => this.Compile(content: content, builderAction: builderAction));
+            return Task.Factory.StartNew(() => Compile(content: content, builderAction: builderAction));
         }
         
         private MemoryStream CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options)
@@ -101,7 +115,6 @@ namespace RazorEngineCore
             }
 
             memoryStream.Position = 0;
-
             return memoryStream;
         }
 
