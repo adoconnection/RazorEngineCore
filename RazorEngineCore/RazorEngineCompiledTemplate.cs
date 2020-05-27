@@ -114,30 +114,30 @@ namespace RazorEngineCore
             return instance.Result();
         }
         
-        public async Task<string> RunAsync<T>(T model = null)
-            where T : class
+        public async Task<string> RunAsync<TModel>(TModel model = null)
+            where TModel : class
         {
             if (model?.IsAnonymous() == true)
             {
                 return RunAsync((object)model).GetAwaiter().GetResult();
             }
             
-            IRazorEngineTemplateBase instance = null;
+            IRazorEngineTemplateBase instance = (IRazorEngineTemplateBase)Activator.CreateInstance(this.templateType);
             
-            if (typeof(IRazorEngineTemplateBase<T>).GenericTypeArguments.Length > 0
-                ? typeof(IRazorEngineTemplateBase<T>).IsAssignableFrom(this.templateType.BaseType)
-                : this.templateType.BaseType?.GetInterfaces()
-                    ?.Any(c => c.Name == typeof(IRazorEngineTemplateBase<T>).Name) == true)
+            // Find the correct property to update via reflection.
+            // As IRazorEngineTemplateBase<T> inherits from IRazorEngineTemplateBase and the both have `Model`
+            var propertyInfo = instance.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty)
+                .FirstOrDefault(fd => fd.Name.Equals(nameof(IRazorEngineTemplateBase.Model)) && fd.PropertyType == typeof(TModel));
+
+            if (propertyInfo != null)
             {
-                instance = (IRazorEngineTemplateBase<T>)Activator.CreateInstance(this.templateType);
-                ((IRazorEngineTemplateBase<T>)instance).Model = model;
+                propertyInfo.SetValue(instance, model);
             }
             else
             {
-                instance = (IRazorEngineTemplateBase)Activator.CreateInstance(this.templateType);
                 instance.Model = model;
             }
-
+            
             await instance.ExecuteAsync();
             return instance.Result();
         }

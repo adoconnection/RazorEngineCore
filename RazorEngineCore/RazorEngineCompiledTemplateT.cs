@@ -4,22 +4,22 @@ using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-    public class RazorEngineCompiledTemplate<T> : RazorEngineCompiledTemplate
-        where T : class, IRazorEngineTemplateBase
+    public class RazorEngineCompiledTemplate<TTemplate> : RazorEngineCompiledTemplate
+        where TTemplate : class, IRazorEngineTemplateBase
     {
         internal RazorEngineCompiledTemplate(MemoryStream assemblyByteCode) 
             : base(assemblyByteCode)
         {
         }
         
-        public string Run(Action<T> initializer)
+        public string Run(Action<TTemplate> initializer)
         {
             return RunAsync(initializer).GetAwaiter().GetResult();
         }
-        
-        public async Task<string> RunAsync(Action<T> initializer)
+
+        public async Task<string> RunAsync(Action<TTemplate> initializer)
         {
-            T instance = (T) Activator.CreateInstance(this.templateType);
+            TTemplate instance = (TTemplate) Activator.CreateInstance(this.templateType);
             initializer(instance);
             await instance.ExecuteAsync();
             return instance.Result();

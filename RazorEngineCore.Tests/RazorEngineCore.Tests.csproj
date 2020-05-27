@@ -18,10 +18,10 @@
 
   <ItemGroup>
     <None Remove="Test.cshtml" />
-    <None Update="Templates\TestCustomTemplate.cshtml">
+    <None Update="Content\TestCustomTemplate.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Test.cshtml">
+    <None Update="Content\Test.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

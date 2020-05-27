@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RazorEngineCore.Tests.Models
 {
-    public class TestModel1
+    public class TestModel1: RazorEngineTemplateBase
     {
         public int A { get; set; }
         

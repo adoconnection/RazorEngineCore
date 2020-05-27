@@ -54,7 +54,7 @@ namespace RazorEngineCore.Tests
             RazorEngine razorEngine = new RazorEngine();
             RazorEngineCompiledTemplate initialTemplate = razorEngine.Compile("Hello @Model.Name");
             
-            initialTemplate.SaveToFile("testTemplate.dll");
+            initialTemplate.SaveToFile($"{nameof(TestSaveToFile)}.dll");
 
             RazorEngineCompiledTemplate loadedTemplate = RazorEngineCompiledTemplate.LoadFromFile("testTemplate.dll");
 
@@ -70,9 +70,9 @@ namespace RazorEngineCore.Tests
             RazorEngine razorEngine = new RazorEngine();
             RazorEngineCompiledTemplate initialTemplate = await razorEngine.CompileAsync("Hello @Model.Name");
             
-            await initialTemplate.SaveToFileAsync("testTemplate.dll");
+            await initialTemplate.SaveToFileAsync($"{nameof(TestSaveToFileAsync)}.dll");
 
-            RazorEngineCompiledTemplate loadedTemplate = await RazorEngineCompiledTemplate.LoadFromFileAsync("testTemplate.dll");
+            RazorEngineCompiledTemplate loadedTemplate = await RazorEngineCompiledTemplate.LoadFromFileAsync($"{nameof(TestSaveToFileAsync)}.dll");
 
             string initialTemplateResult = await initialTemplate.RunAsync(new { Name = "Alex" });
             string loadedTemplateResult = await loadedTemplate.RunAsync(new { Name = "Alex" });
@@ -86,9 +86,9 @@ namespace RazorEngineCore.Tests
             RazorEngine razorEngine = new RazorEngine();
             RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestSaveModel>> initialTemplate = razorEngine.Compile<RazorEngineTemplateBase<TestSaveModel>>("Hello @Model.Name");
             
-            initialTemplate.SaveToFile("testTemplate.dll");
+            initialTemplate.SaveToFile($"{nameof(TestSaveToFileWithModel)}.dll");
 
-            RazorEngineCompiledTemplate loadedTemplate = RazorEngineCompiledTemplate.LoadFromFile("testTemplate.dll");
+            RazorEngineCompiledTemplate loadedTemplate = RazorEngineCompiledTemplate.LoadFromFile($"{nameof(TestSaveToFileWithModel)}.dll");
 
             var model = new TestSaveModel()
             {
@@ -108,13 +108,37 @@ namespace RazorEngineCore.Tests
             RazorEngine razorEngine = new RazorEngine();
             RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestSaveModel>> initialTemplate = await razorEngine.CompileAsync<RazorEngineTemplateBase<TestSaveModel>>("Hello @Model.Name");
             
-            await initialTemplate.SaveToFileAsync("testTemplate.dll");
+            await initialTemplate.SaveToFileAsync($"{nameof(TestSaveToFileWithModelAsync)}.dll");
 
-            RazorEngineCompiledTemplate loadedTemplate = await RazorEngineCompiledTemplate.LoadFromFileAsync("testTemplate.dll");
+            RazorEngineCompiledTemplate loadedTemplate = await RazorEngineCompiledTemplate.LoadFromFileAsync($"{nameof(TestSaveToFileWithModelAsync)}.dll");
 
             var model = new TestSaveModel()
             {
                 Name = "Alex"
+            };
+            
+            string initialTemplateResult = await initialTemplate.RunAsync(model);
+            string loadedTemplateResult = await loadedTemplate.RunAsync(model);
+            
+            Assert.AreEqual(initialTemplateResult, loadedTemplateResult);
+        }
+        
+        
+        [TestMethod]
+        public async Task TestSaveToFileWithTestModel2Async()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate<TestModel2> initialTemplate = await razorEngine.CompileAsync<TestModel2>("Hello @Model.C");
+            
+            await initialTemplate.SaveToFileAsync($"{nameof(TestSaveToFileWithTestModel2Async)}.dll");
+
+            RazorEngineCompiledTemplate loadedTemplate = await RazorEngineCompiledTemplate.LoadFromFileAsync($"{nameof(TestSaveToFileWithTestModel2Async)}.dll");
+
+            TestModel1 model = new TestModel1()
+            {
+                A = 1,
+                B = 2,
+                C = "Alex",
             };
             
             string initialTemplateResult = await initialTemplate.RunAsync(model);
@@ -128,15 +152,14 @@ namespace RazorEngineCore.Tests
         {
             RazorEngine razorEngine = new RazorEngine();
             
-            var assembly = GetType().GetTypeInfo().Assembly;
             var fileName = Path.Combine(Directory.GetCurrentDirectory(), "Templates", "Test.cshtml");
             var content = await File.ReadAllTextAsync(fileName);
             
             RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel1>> initialTemplate = await razorEngine.CompileAsync<RazorEngineTemplateBase<TestModel1>>(content);
             
-            await initialTemplate.SaveToFileAsync("testTemplate.dll");
+            await initialTemplate.SaveToFileAsync($"{nameof(TestCshtmlFileWithModelAsync)}.dll");
 
-            RazorEngineCompiledTemplate loadedTemplate = await RazorEngineCompiledTemplate.LoadFromFileAsync("testTemplate.dll");
+            RazorEngineCompiledTemplate loadedTemplate = await RazorEngineCompiledTemplate.LoadFromFileAsync($"{nameof(TestCshtmlFileWithModelAsync)}.dll");
 
             var model = new TestModel1()
             {
@@ -163,9 +186,9 @@ namespace RazorEngineCore.Tests
             
             RazorEngineCompiledTemplate<CustomPageTemplate> initialTemplate = await razorEngine.CompileAsync<CustomPageTemplate>(content);
             
-            await initialTemplate.SaveToFileAsync("testTemplate.dll");
+            await initialTemplate.SaveToFileAsync($"{nameof(TestCshtmlFileWithCustomTemplateAsync)}.dll");
 
-            RazorEngineCompiledTemplate loadedTemplate = await RazorEngineCompiledTemplate.LoadFromFileAsync("testTemplate.dll");
+            RazorEngineCompiledTemplate loadedTemplate = await RazorEngineCompiledTemplate.LoadFromFileAsync($"{nameof(TestCshtmlFileWithCustomTemplateAsync)}.dll");
 
             var model = new TestModel1()
             {
