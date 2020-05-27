@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RazorEngineCore.Tests.Models;
+using RazorEngineCore.Tests.Templates;
 
 namespace RazorEngineCore.Tests
 {
@@ -83,7 +84,7 @@ namespace RazorEngineCore.Tests
         public void TestSaveToFileWithModel()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate<TestSaveModel> initialTemplate = razorEngine.Compile<TestSaveModel>("Hello @Model.Name");
+            RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestSaveModel>> initialTemplate = razorEngine.Compile<RazorEngineTemplateBase<TestSaveModel>>("Hello @Model.Name");
             
             initialTemplate.SaveToFile("testTemplate.dll");
 
@@ -105,7 +106,7 @@ namespace RazorEngineCore.Tests
         public async Task TestSaveToFileWithModelAsync()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate initialTemplate = await razorEngine.CompileAsync<TestSaveModel>("Hello @Model.Name");
+            RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestSaveModel>> initialTemplate = await razorEngine.CompileAsync<RazorEngineTemplateBase<TestSaveModel>>("Hello @Model.Name");
             
             await initialTemplate.SaveToFileAsync("testTemplate.dll");
 
@@ -131,7 +132,7 @@ namespace RazorEngineCore.Tests
             var fileName = Path.Combine(Directory.GetCurrentDirectory(), "Templates", "Test.cshtml");
             var content = await File.ReadAllTextAsync(fileName);
             
-            RazorEngineCompiledTemplate initialTemplate = await razorEngine.CompileAsync<TestModel1>(content);
+            RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel1>> initialTemplate = await razorEngine.CompileAsync<RazorEngineTemplateBase<TestModel1>>(content);
             
             await initialTemplate.SaveToFileAsync("testTemplate.dll");
 
@@ -156,12 +157,11 @@ namespace RazorEngineCore.Tests
         public async Task TestCshtmlFileWithCustomTemplateAsync()
         {
             RazorEngine razorEngine = new RazorEngine();
-            
-            var assembly = GetType().GetTypeInfo().Assembly;
+
             var fileName = Path.Combine(Directory.GetCurrentDirectory(), "Templates", "TestCustomTemplate.cshtml");
             var content = await File.ReadAllTextAsync(fileName);
             
-            RazorEngineCompiledTemplate initialTemplate = await razorEngine.CompileAsync<CustomPageModel>(content);
+            RazorEngineCompiledTemplate<CustomPageTemplate> initialTemplate = await razorEngine.CompileAsync<CustomPageTemplate>(content);
             
             await initialTemplate.SaveToFileAsync("testTemplate.dll");
 
@@ -177,6 +177,7 @@ namespace RazorEngineCore.Tests
             };
             
             string initialTemplateResult = await initialTemplate.RunAsync(model);
+            
             string loadedTemplateResult = await loadedTemplate.RunAsync(model);
             
             Assert.AreEqual(initialTemplateResult, loadedTemplateResult);

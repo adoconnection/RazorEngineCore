@@ -103,7 +103,7 @@ namespace RazorEngineCore
         
         public async Task<string> RunAsync(object model = null)
         {
-            if (model != null)
+            if (model != null && model.IsAnonymous() == true)
             {
                 model = new AnonymousTypeWrapper(model);
             }
@@ -117,7 +117,6 @@ namespace RazorEngineCore
         public async Task<string> RunAsync<T>(T model = null)
             where T : class
         {
-            
             if (model?.IsAnonymous() == true)
             {
                 return RunAsync((object)model).GetAwaiter().GetResult();
@@ -125,10 +124,10 @@ namespace RazorEngineCore
             
             IRazorEngineTemplateBase instance = null;
             
-            if (typeof(IRazorEngineTemplateBase<>).GenericTypeArguments.Length > 0
-                ? typeof(IRazorEngineTemplateBase<>).IsAssignableFrom(this.templateType.BaseType)
-                : this.templateType?.BaseType?.GetInterfaces()
-                    ?.Any(c => c.Name == typeof(IRazorEngineTemplateBase<>).Name) == true)
+            if (typeof(IRazorEngineTemplateBase<T>).GenericTypeArguments.Length > 0
+                ? typeof(IRazorEngineTemplateBase<T>).IsAssignableFrom(this.templateType.BaseType)
+                : this.templateType.BaseType?.GetInterfaces()
+                    ?.Any(c => c.Name == typeof(IRazorEngineTemplateBase<T>).Name) == true)
             {
                 instance = (IRazorEngineTemplateBase<T>)Activator.CreateInstance(this.templateType);
                 ((IRazorEngineTemplateBase<T>)instance).Model = model;

@@ -13,17 +13,21 @@ namespace RazorEngineCore
 {
     public class RazorEngine
     {
-        public RazorEngineCompiledTemplate<T> Compile<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : class
+
+        public RazorEngineCompiledTemplate<T> Compile<T>(string content,
+            Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
+            where T : class, IRazorEngineTemplateBase
         {
             RazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
-            
-            compilationOptionsBuilder.AddAssemblyReference(typeof(IRazorEngineTemplateBase<>).Assembly);
+
+            compilationOptionsBuilder.AddAssemblyReference(typeof(IRazorEngineTemplateBase).Assembly);
             compilationOptionsBuilder.AddAssemblyReference(typeof(T).Assembly);
-            
-            if (typeof(IRazorEngineTemplateBase<>).GenericTypeArguments.Length > 0
-                ? typeof(IRazorEngineTemplateBase<>).IsAssignableFrom(typeof(T))
+
+            if (typeof(IRazorEngineTemplateBase<T>).GenericTypeArguments.Length > 0
+                ? typeof(IRazorEngineTemplateBase<T>).IsAssignableFrom(typeof(T)) ||
+                  typeof(IRazorEngineTemplateBase).IsAssignableFrom(typeof(T))
                 : typeof(T).GetInterfaces()
-                    .Any(c => c.Name == typeof(IRazorEngineTemplateBase<>).Name))
+                    .Any(c => new [] {typeof(IRazorEngineTemplateBase<T>).Name, nameof(IRazorEngineTemplateBase)}.Contains(c.Name) ))
             {
                 compilationOptionsBuilder.Inherits(typeof(T));
             }
@@ -35,17 +39,17 @@ namespace RazorEngineCore
             builderAction?.Invoke(compilationOptionsBuilder);
 
             MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
-           
+
             return new RazorEngineCompiledTemplate<T>(memoryStream);
         }
 
         public Task<RazorEngineCompiledTemplate<T>> CompileAsync<T>(string content,
             Action<RazorEngineCompilationOptionsBuilder> builderAction = null) 
-            where T : class
+            where T : class, IRazorEngineTemplateBase
         {
             return Task.Factory.StartNew(() => Compile<T>(content: content, builderAction: builderAction));
         }
-
+        
         public RazorEngineCompiledTemplate Compile(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
         {
             RazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();

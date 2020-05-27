@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RazorEngineCore.Tests.Models
+namespace RazorEngineCore.Tests.Templates
 {
-    public class TestModel1
+    public class TestTemplate1 : RazorEngineTemplateBase
     {
         public int A { get; set; }
-        
         public int B { get; set; }
-        
         public string C { get; set; }
         
         public DateTime D { get; set; }

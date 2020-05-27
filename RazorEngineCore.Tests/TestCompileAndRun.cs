@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RazorEngineCore.Tests.Models;
+using RazorEngineCore.Tests.Templates;
 
 namespace RazorEngineCore.Tests
 {
@@ -339,7 +340,7 @@ void RecursionTest(int level)
         public void TestCompileAndRun_TypedModel1()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate<TestModel1> template = razorEngine.Compile<TestModel1>("Hello @Model.A @Model.B @(Model.A + Model.B) @Model.C @Model.Decorator(\"777\")");
+            RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel1>> template = razorEngine.Compile<RazorEngineTemplateBase<TestModel1>>("Hello @Model.A @Model.B @(Model.A + Model.B) @Model.C @Model.Decorator(\"777\")");
 
             string actual = template.Run(new TestModel1
             {
@@ -355,7 +356,7 @@ void RecursionTest(int level)
         public async Task TestCompileAndRun_TypedModel1Async()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate<TestModel1> template = await razorEngine.CompileAsync<TestModel1>("Hello @Model.A @Model.B @(Model.A + Model.B) @Model.C @Model.Decorator(\"777\")");
+            RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel1>> template = await razorEngine.CompileAsync<RazorEngineTemplateBase<TestModel1>>("Hello @Model.A @Model.B @(Model.A + Model.B) @Model.C @Model.Decorator(\"777\")");
 
             string actual = await template.RunAsync(new TestModel1
             {
@@ -368,10 +369,42 @@ void RecursionTest(int level)
         }
 
         [TestMethod]
+        public void TestCompileAndRun_TypedTestTemplate1()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate<TestTemplate1> template = razorEngine.Compile<TestTemplate1>("Hello @A @B @(A + B) @C @Decorator(\"777\")");
+
+            string actual = template.Run(instance =>
+            {
+                instance.A = 1;
+                instance.B = 2;
+                instance.C = "Alex";
+            });
+
+            Assert.AreEqual("Hello 1 2 3 Alex -=777=-", actual);
+        }
+        
+        [TestMethod]
+        public async Task TestCompileAndRun_TypedTestTemplate1Async()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            RazorEngineCompiledTemplate<TestTemplate1> template = await razorEngine.CompileAsync<TestTemplate1>("Hello @A @B @(A + B) @C @Decorator(\"777\")");
+
+            string actual = await template.RunAsync(instance =>
+            {
+                instance.A = 1;
+                instance.B = 2;
+                instance.C = "Alex";
+            });
+
+            Assert.AreEqual("Hello 1 2 3 Alex -=777=-", actual);
+        }
+        
+        [TestMethod]
         public void TestCompileAndRun_TypedModel2()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate<TestModel1> template = razorEngine.Compile<TestModel1>("Hello @Model.Decorator(Model.C)");
+            RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel1>> template = razorEngine.Compile<RazorEngineTemplateBase<TestModel1>>("Hello @Model.Decorator(Model.C)");
 
             string actual = template.Run(new TestModel1
             {
@@ -385,7 +418,7 @@ void RecursionTest(int level)
         public async Task TestCompileAndRun_TypedModel2Async()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate<TestModel1> template = await razorEngine.CompileAsync<TestModel1>("Hello @Model.Decorator(Model.C)");
+            RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel1>> template = await razorEngine.CompileAsync<RazorEngineTemplateBase<TestModel1>>("Hello @Model.Decorator(Model.C)");
 
             string actual = await template.RunAsync(new TestModel1
             {
@@ -399,7 +432,7 @@ void RecursionTest(int level)
         public void TestCompileAndRun_Linq()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate<TestModel1> template = razorEngine.Compile<TestModel1>(
+            RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel1>> template = razorEngine.Compile<RazorEngineTemplateBase<TestModel1>>(
 @"
 @foreach (var item in Model.Numbers.OrderByDescending(x => x))
 {
@@ -423,7 +456,7 @@ void RecursionTest(int level)
         public async Task TestCompileAndRun_LinqAsync()
         {
             RazorEngine razorEngine = new RazorEngine();
-            RazorEngineCompiledTemplate<TestModel1> template = await razorEngine.CompileAsync<TestModel1>(
+            RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel1>> template = await razorEngine.CompileAsync<RazorEngineTemplateBase<TestModel1>>(
 @"
 @foreach (var item in Model.Numbers.OrderByDescending(x => x))
 {
