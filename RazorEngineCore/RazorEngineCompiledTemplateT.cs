@@ -19,7 +19,7 @@ namespace RazorEngineCore
 
         public async Task<string> RunAsync(Action<TTemplate> initializer)
         {
-            TTemplate instance = (TTemplate) Activator.CreateInstance(this.templateType);
+            TTemplate instance = (TTemplate) Activator.CreateInstance(this.TemplateType);
             initializer(instance);
             await instance.ExecuteAsync();
             return instance.Result();

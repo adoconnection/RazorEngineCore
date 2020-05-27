@@ -9,15 +9,16 @@ namespace RazorEngineCore
     public class RazorEngineCompiledTemplate
     {
         private readonly MemoryStream assemblyByteCode;
-        private readonly Type templateType;
+        protected Type TemplateType { get; }
 
         internal RazorEngineCompiledTemplate(MemoryStream assemblyByteCode)
         {
             this.assemblyByteCode = assemblyByteCode;
 
             Assembly assembly = Assembly.Load(assemblyByteCode.ToArray());
-            this.templateType = assembly.GetType("TemplateNamespace.Template");
+            this.TemplateType = assembly.GetType("TemplateNamespace.Template");
         }
+
 
         public static RazorEngineCompiledTemplate LoadFromFile(string fileName)
         {
@@ -108,7 +109,7 @@ namespace RazorEngineCore
                 model = new AnonymousTypeWrapper(model);
             }
 
-            IRazorEngineTemplateBase instance = (IRazorEngineTemplateBase)Activator.CreateInstance(this.templateType);
+            IRazorEngineTemplateBase instance = (IRazorEngineTemplateBase)Activator.CreateInstance(this.TemplateType);
             instance.Model = model;
             await instance.ExecuteAsync();
             return instance.Result();
@@ -122,7 +123,7 @@ namespace RazorEngineCore
                 return RunAsync((object)model).GetAwaiter().GetResult();
             }
             
-            IRazorEngineTemplateBase instance = (IRazorEngineTemplateBase)Activator.CreateInstance(this.templateType);
+            IRazorEngineTemplateBase instance = (IRazorEngineTemplateBase)Activator.CreateInstance(this.TemplateType);
             
             // Find the correct property to update via reflection.
             // As IRazorEngineTemplateBase<T> inherits from IRazorEngineTemplateBase and the both have `Model`

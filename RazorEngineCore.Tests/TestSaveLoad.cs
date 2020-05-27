@@ -152,7 +152,7 @@ namespace RazorEngineCore.Tests
         {
             RazorEngine razorEngine = new RazorEngine();
             
-            var fileName = Path.Combine(Directory.GetCurrentDirectory(), "Templates", "Test.cshtml");
+            var fileName = Path.Combine(Directory.GetCurrentDirectory(), "Content", "Test.cshtml");
             var content = await File.ReadAllTextAsync(fileName);
             
             RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel1>> initialTemplate = await razorEngine.CompileAsync<RazorEngineTemplateBase<TestModel1>>(content);
@@ -181,7 +181,7 @@ namespace RazorEngineCore.Tests
         {
             RazorEngine razorEngine = new RazorEngine();
 
-            var fileName = Path.Combine(Directory.GetCurrentDirectory(), "Templates", "TestCustomTemplate.cshtml");
+            var fileName = Path.Combine(Directory.GetCurrentDirectory(), "Content", "TestCustomTemplate.cshtml");
             var content = await File.ReadAllTextAsync(fileName);
             
             RazorEngineCompiledTemplate<CustomPageTemplate> initialTemplate = await razorEngine.CompileAsync<CustomPageTemplate>(content);
