@@ -9,7 +9,7 @@ namespace RazorEngineCore
     public class RazorEngineCompiledTemplate
     {
         private readonly MemoryStream assemblyByteCode;
-        protected readonly Type templateType;
+        private readonly Type templateType;
 
         internal RazorEngineCompiledTemplate(MemoryStream assemblyByteCode)
         {
