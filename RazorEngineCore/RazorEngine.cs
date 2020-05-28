@@ -13,7 +13,7 @@ namespace RazorEngineCore
 {
     public class RazorEngine
     {
-        public RazorEngineCompiledTemplate<T> Compile<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : RazorEngineTemplateBase
+        public RazorEngineCompiledTemplate<T> Compile<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
         {
             RazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
             
@@ -27,7 +27,7 @@ namespace RazorEngineCore
             return new RazorEngineCompiledTemplate<T>(memoryStream);
         }
 
-        public Task<RazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : RazorEngineTemplateBase
+        public Task<RazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
         {
             return Task.Factory.StartNew(() => this.Compile<T>(content: content, builderAction: builderAction));
         }

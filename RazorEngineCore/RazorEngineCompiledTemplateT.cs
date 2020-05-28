@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-    public class RazorEngineCompiledTemplate<T> where T : RazorEngineTemplateBase
+    public class RazorEngineCompiledTemplate<T> where T : IRazorEngineTemplate
     {
         private readonly MemoryStream assemblyByteCode;
         private readonly Type templateType;
