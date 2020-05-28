@@ -1,6 +1,6 @@
 ﻿namespace RazorEngineCore
 {
-    public interface IRazorEngineTemplateBase<T> : IRazorEngineTemplate
+    public interface IRazorEngineTemplate<T> : IRazorEngineTemplate
     {
         new T Model { get; set; }
     }
