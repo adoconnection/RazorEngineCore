@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-    public abstract class RazorEngineTemplateBase
+    public abstract class RazorEngineTemplateBase : IRazorEngineTemplate
     {
         private readonly StringBuilder stringBuilder = new StringBuilder();
 
