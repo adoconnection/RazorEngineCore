@@ -20,7 +20,7 @@ Install-Package RazorEngineCore
 
 ## Wiki
 * [Strongly typed model](https://github.com/adoconnection/RazorEngineCore/wiki/Strongly-typed-model)
-* [@Include](https://github.com/adoconnection/RazorEngineCore/wiki/@Include-section)
+* [@Include and @Layout](https://github.com/adoconnection/RazorEngineCore/wiki/@Include-and-@Layout)
 * [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw)
 * [@Inject and referencing other assemblies](https://github.com/adoconnection/RazorEngineCore/wiki/@Inject-and-referencing-other-assemblies)
 * [Switch from RazorEngine cshtml templates](https://github.com/adoconnection/RazorEngineCore/wiki/Switch-from-RazorEngine-cshtml-templates)
@@ -184,6 +184,9 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2020.5.2
+	* IRazorEngineTemplate interface 
+	* RazorEngineTemplateBase methods go virtual
 * 2020.5.1
 	* Async methods (thanks [@wdcossey](https://github.com/wdcossey))
 	* Microsoft.AspNetCore.Razor.Language 3.1.1 -> 3.1.4

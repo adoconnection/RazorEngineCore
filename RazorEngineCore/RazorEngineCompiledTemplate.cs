@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -18,7 +17,6 @@ namespace RazorEngineCore
             Assembly assembly = Assembly.Load(assemblyByteCode.ToArray());
             this.TemplateType = assembly.GetType("TemplateNamespace.Template");
         }
-
 
         public static RazorEngineCompiledTemplate LoadFromFile(string fileName)
         {
@@ -40,7 +38,7 @@ namespace RazorEngineCore
                 await fileStream.CopyToAsync(memoryStream);
             }
             
-            return new RazorEngineCompiledTemplate(assemblyByteCode: memoryStream);
+            return new RazorEngineCompiledTemplate(memoryStream);
         }
         
         public static RazorEngineCompiledTemplate LoadFromStream(Stream stream)
@@ -59,7 +57,7 @@ namespace RazorEngineCore
 
         public void SaveToStream(Stream stream)
         {
-            SaveToStreamAsync(stream).GetAwaiter().GetResult();
+            this.SaveToStreamAsync(stream).GetAwaiter().GetResult();
         }
 
         public Task SaveToStreamAsync(Stream stream)
@@ -69,7 +67,7 @@ namespace RazorEngineCore
 
         public void SaveToFile(string fileName)
         {
-            SaveToFileAsync(fileName).GetAwaiter().GetResult();
+            this.SaveToFileAsync(fileName).GetAwaiter().GetResult();
         }
         
         public Task SaveToFileAsync(string fileName)
@@ -109,7 +107,7 @@ namespace RazorEngineCore
                 model = new AnonymousTypeWrapper(model);
             }
 
-            IRazorEngineTemplateBase instance = (IRazorEngineTemplateBase)Activator.CreateInstance(this.TemplateType);
+            IRazorEngineTemplate instance = (IRazorEngineTemplate)Activator.CreateInstance(this.TemplateType);
             instance.Model = model;
             await instance.ExecuteAsync();
             return instance.Result();
@@ -123,12 +121,12 @@ namespace RazorEngineCore
                 return RunAsync((object)model).GetAwaiter().GetResult();
             }
             
-            IRazorEngineTemplateBase instance = (IRazorEngineTemplateBase)Activator.CreateInstance(this.TemplateType);
+            IRazorEngineTemplate instance = (IRazorEngineTemplate)Activator.CreateInstance(this.TemplateType);
             
             // Find the correct property to update via reflection.
             // As IRazorEngineTemplateBase<T> inherits from IRazorEngineTemplateBase and the both have `Model`
             var propertyInfo = instance.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty)
-                .FirstOrDefault(fd => fd.Name.Equals(nameof(IRazorEngineTemplateBase.Model)) && fd.PropertyType == typeof(TModel));
+                .FirstOrDefault(fd => fd.Name.Equals(nameof(IRazorEngineTemplate.Model)) && fd.PropertyType == typeof(TModel));
 
             if (propertyInfo != null)
             {
@@ -140,6 +138,7 @@ namespace RazorEngineCore
             }
             
             await instance.ExecuteAsync();
+
             return instance.Result();
         }
     }
