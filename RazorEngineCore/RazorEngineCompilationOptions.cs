@@ -7,9 +7,9 @@ namespace RazorEngineCore
     {
         public HashSet<Assembly> ReferencedAssemblies { get; set; } = new HashSet<Assembly>()
         {
+            typeof(IRazorEngineTemplate).Assembly,
             typeof(object).Assembly,
             Assembly.Load(new AssemblyName("Microsoft.CSharp")),
-            typeof(IRazorEngineTemplateBase).Assembly,
             Assembly.Load(new AssemblyName("netstandard")),
             Assembly.Load(new AssemblyName("System.Runtime")),
             Assembly.Load(new AssemblyName("System.Linq")),

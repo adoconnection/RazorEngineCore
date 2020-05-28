@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -102,7 +103,7 @@ namespace RazorEngineCore
         
         public async Task<string> RunAsync(object model = null)
         {
-            if (model != null && model.IsAnonymous() == true)
+            if (model?.IsAnonymous() == true)
             {
                 model = new AnonymousTypeWrapper(model);
             }

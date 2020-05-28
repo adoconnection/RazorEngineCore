@@ -20,7 +20,7 @@ namespace RazorEngineCore
         {
             RazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
             
-            compilationOptionsBuilder.AddAssemblyReference(typeof(IRazorEngineTemplateBase).Assembly);
+            compilationOptionsBuilder.AddAssemblyReference(typeof(IRazorEngineTemplate).Assembly);
             compilationOptionsBuilder.AddAssemblyReference(typeof(T).Assembly); 
             compilationOptionsBuilder.Inherits(typeof(T));
 
