@@ -19,22 +19,11 @@ namespace RazorEngineCore
             where T : class, IRazorEngineTemplateBase
         {
             RazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
-
+            
             compilationOptionsBuilder.AddAssemblyReference(typeof(IRazorEngineTemplateBase).Assembly);
-            compilationOptionsBuilder.AddAssemblyReference(typeof(T).Assembly);
+            compilationOptionsBuilder.AddAssemblyReference(typeof(T).Assembly); 
+            compilationOptionsBuilder.Inherits(typeof(T));
 
-            if (typeof(IRazorEngineTemplateBase<T>).GenericTypeArguments.Length > 0
-                ? typeof(IRazorEngineTemplateBase<T>).IsAssignableFrom(typeof(T)) ||
-                  typeof(IRazorEngineTemplateBase).IsAssignableFrom(typeof(T))
-                : typeof(T).GetInterfaces()
-                    .Any(c => new [] {typeof(IRazorEngineTemplateBase<T>).Name, nameof(IRazorEngineTemplateBase)}.Contains(c.Name) ))
-            {
-                compilationOptionsBuilder.Inherits(typeof(T));
-            }
-            else
-            {
-                compilationOptionsBuilder.Inherits(typeof(RazorEngineTemplateBase<T>));
-            }
 
             builderAction?.Invoke(compilationOptionsBuilder);
 
