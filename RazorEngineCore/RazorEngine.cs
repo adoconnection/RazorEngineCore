@@ -37,6 +37,20 @@ namespace RazorEngineCore
         {
             return Task.Factory.StartNew(() => this.Compile<T>(content: content, builderAction: builderAction));
         }
+        
+        public RazorEngineCompiledTemplate<T> CompileFromFile<T>(string fileName,
+            Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
+            where T : class, IRazorEngineTemplate
+        {
+            return this.CompileFromFileAsync<T>(fileName: fileName, builderAction: builderAction).GetAwaiter().GetResult();
+        }
+
+        public async Task<RazorEngineCompiledTemplate<T>> CompileFromFileAsync<T>(string fileName,
+            Action<RazorEngineCompilationOptionsBuilder> builderAction = null) 
+            where T : class, IRazorEngineTemplate
+        {
+            return await this.CompileAsync<T>(content: await GetFileContentAsync(fileName), builderAction: builderAction);
+        }
 
         public RazorEngineCompiledTemplate Compile(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
         {
@@ -53,6 +67,16 @@ namespace RazorEngineCore
         public Task<RazorEngineCompiledTemplate> CompileAsync(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
         {
             return Task.Factory.StartNew(() => this.Compile(content: content, builderAction: builderAction));
+        }
+
+        public RazorEngineCompiledTemplate CompileFromFile(string fileName, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
+        {
+            return this.CompileFromFileAsync(fileName: fileName, builderAction: builderAction).GetAwaiter().GetResult();
+        }
+
+        public async Task<RazorEngineCompiledTemplate> CompileFromFileAsync(string fileName, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
+        {
+           return await this.CompileAsync(content: await GetFileContentAsync(fileName), builderAction: builderAction);
         }
         
         private MemoryStream CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options)
@@ -124,6 +148,22 @@ namespace RazorEngineCore
             stringBuilder.Append(content);
 
             return stringBuilder.ToString();
+        }
+
+        private Task<string> GetFileContentAsync(string fileName)
+        {
+            if (string.IsNullOrWhiteSpace(fileName))
+            {
+                throw new ArgumentNullException(nameof(fileName));
+            }
+            
+            if (!File.Exists(fileName))
+            {
+                throw new FileNotFoundException(fileName);
+            }
+            
+            StreamReader streamReader = new StreamReader(fileName);
+            return streamReader.ReadToEndAsync();
         }
     }
 }

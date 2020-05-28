@@ -151,11 +151,9 @@ namespace RazorEngineCore.Tests
         public async Task TestCshtmlFileWithModelAsync()
         {
             RazorEngine razorEngine = new RazorEngine();
-            
             var fileName = Path.Combine(Directory.GetCurrentDirectory(), "Content", "Test.cshtml");
-            var content = await File.ReadAllTextAsync(fileName);
             
-            RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel1>> initialTemplate = await razorEngine.CompileAsync<RazorEngineTemplateBase<TestModel1>>(content);
+            RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel1>> initialTemplate = await razorEngine.CompileFromFileAsync<RazorEngineTemplateBase<TestModel1>>(fileName);
             
             await initialTemplate.SaveToFileAsync($"{nameof(TestCshtmlFileWithModelAsync)}.dll");
 
@@ -177,14 +175,42 @@ namespace RazorEngineCore.Tests
         }
         
         [TestMethod]
+        public void TestCshtmlFileWithCustomTemplate()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            var fileName = Path.Combine(Directory.GetCurrentDirectory(), "Content", "TestCustomTemplate.cshtml");
+            
+            RazorEngineCompiledTemplate<CustomPageTemplate> initialTemplate = razorEngine.CompileFromFile<CustomPageTemplate>(fileName);
+            
+            initialTemplate.SaveToFile($"{nameof(TestCshtmlFileWithCustomTemplate)}.dll");
+
+            RazorEngineCompiledTemplate loadedTemplate = RazorEngineCompiledTemplate.LoadFromFile($"{nameof(TestCshtmlFileWithCustomTemplate)}.dll");
+
+            var model = new TestModel1()
+            {
+                A = 10, 
+                B = 20,
+                C = $"{nameof(RazorEngineCore)}",
+                D = DateTime.UtcNow,
+                Numbers = new List<int>() { 2, 3, 5, 7, 11, 13}
+            };
+            
+            string initialTemplateResult = initialTemplate.Run(model);
+            
+            string loadedTemplateResult = loadedTemplate.Run(model);
+            
+            Assert.AreEqual(initialTemplateResult, loadedTemplateResult);
+        }
+        
+        [TestMethod]
         public async Task TestCshtmlFileWithCustomTemplateAsync()
         {
             RazorEngine razorEngine = new RazorEngine();
 
             var fileName = Path.Combine(Directory.GetCurrentDirectory(), "Content", "TestCustomTemplate.cshtml");
-            var content = await File.ReadAllTextAsync(fileName);
             
-            RazorEngineCompiledTemplate<CustomPageTemplate> initialTemplate = await razorEngine.CompileAsync<CustomPageTemplate>(content);
+            RazorEngineCompiledTemplate<CustomPageTemplate> initialTemplate = await razorEngine.CompileFromFileAsync<CustomPageTemplate>(fileName);
             
             await initialTemplate.SaveToFileAsync($"{nameof(TestCshtmlFileWithCustomTemplateAsync)}.dll");
 
@@ -204,6 +230,23 @@ namespace RazorEngineCore.Tests
             string loadedTemplateResult = await loadedTemplate.RunAsync(model);
             
             Assert.AreEqual(initialTemplateResult, loadedTemplateResult);
+        }
+        
+        [TestMethod]
+        public async Task Test_CompileFromFile_FileNotFoundExceptionAsync()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            var fileName = Path.GetRandomFileName();
+            
+            await Assert.ThrowsExceptionAsync<FileNotFoundException>(() => razorEngine.CompileFromFileAsync<CustomPageTemplate>(fileName));
+        }
+        
+        [TestMethod]
+        public async Task Test_CompileFromFile_ArgumentNullExceptionAsync()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            await Assert.ThrowsExceptionAsync<ArgumentNullException>(() => razorEngine.CompileFromFileAsync<CustomPageTemplate>(string.Empty));
         }
     }
 }
