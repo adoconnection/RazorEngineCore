@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace RazorEngineCore
 {
-    public class RazorEngineCompilationOptionsBuilder
+    public class RazorEngineCompilationOptionsBuilder : IRazorEngineCompilationOptionsBuilder
     {
         public RazorEngineCompilationOptions Options { get; set; }
 

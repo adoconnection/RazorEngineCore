@@ -11,9 +11,9 @@ using Microsoft.CodeAnalysis.Emit;
 
 namespace RazorEngineCore
 {
-    public class RazorEngine
+    public class RazorEngine : IRazorEngine
     {
-        public RazorEngineCompiledTemplate<T> Compile<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
+        public IRazorEngineCompiledTemplate<T> Compile<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
         {
             RazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
             
@@ -27,12 +27,12 @@ namespace RazorEngineCore
             return new RazorEngineCompiledTemplate<T>(memoryStream);
         }
 
-        public Task<RazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
+        public Task<IRazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
         {
             return Task.Factory.StartNew(() => this.Compile<T>(content: content, builderAction: builderAction));
         }
 
-        public RazorEngineCompiledTemplate Compile(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
+        public IRazorEngineCompiledTemplate Compile(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
         {
             RazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
             compilationOptionsBuilder.Inherits(typeof(RazorEngineTemplateBase));
@@ -44,7 +44,7 @@ namespace RazorEngineCore
             return new RazorEngineCompiledTemplate(memoryStream);
         }
 
-        public Task<RazorEngineCompiledTemplate> CompileAsync(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
+        public Task<IRazorEngineCompiledTemplate> CompileAsync(string content, Action<RazorEngineCompilationOptionsBuilder> builderAction = null)
         {
             return Task.Factory.StartNew(() => this.Compile(content: content, builderAction: builderAction));
         }
