@@ -25,6 +25,9 @@ Install-Package RazorEngineCore
 * [@Inject and referencing other assemblies](https://github.com/adoconnection/RazorEngineCore/wiki/@Inject-and-referencing-other-assemblies)
 * [Switch from RazorEngine cshtml templates](https://github.com/adoconnection/RazorEngineCore/wiki/Switch-from-RazorEngine-cshtml-templates)
 
+## Extensions
+* [wdcossey/RazorEngineCore.Extensions](https://github.com/wdcossey/RazorEngineCore.Extensions)
+
 ## Examples
 
 #### Basic usage
