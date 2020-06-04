@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-    public class RazorEngineCompiledTemplate<T> where T : IRazorEngineTemplate
+    public class RazorEngineCompiledTemplate<T> : IRazorEngineCompiledTemplate<T> where T : IRazorEngineTemplate
     {
         private readonly MemoryStream assemblyByteCode;
         private readonly Type templateType;
@@ -18,12 +18,12 @@ namespace RazorEngineCore
             this.templateType = assembly.GetType("TemplateNamespace.Template");
         }
 
-        public static RazorEngineCompiledTemplate<T> LoadFromFile(string fileName)
+        public static IRazorEngineCompiledTemplate<T> LoadFromFile(string fileName)
         {
             return LoadFromFileAsync(fileName: fileName).GetAwaiter().GetResult();
         }
         
-        public static async Task<RazorEngineCompiledTemplate<T>> LoadFromFileAsync(string fileName)
+        public static async Task<IRazorEngineCompiledTemplate<T>> LoadFromFileAsync(string fileName)
         {
             MemoryStream memoryStream = new MemoryStream();
             
@@ -41,12 +41,12 @@ namespace RazorEngineCore
             return new RazorEngineCompiledTemplate<T>(memoryStream);
         }
 
-        public static RazorEngineCompiledTemplate<T> LoadFromStream(Stream stream)
+        public static IRazorEngineCompiledTemplate<T> LoadFromStream(Stream stream)
         {
             return LoadFromStreamAsync(stream).GetAwaiter().GetResult();
         }
         
-        public static async Task<RazorEngineCompiledTemplate<T>> LoadFromStreamAsync(Stream stream)
+        public static async Task<IRazorEngineCompiledTemplate<T>> LoadFromStreamAsync(Stream stream)
         {
             MemoryStream memoryStream = new MemoryStream();
             await stream.CopyToAsync(memoryStream);
