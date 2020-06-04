@@ -7,7 +7,6 @@ namespace RazorEngineCore
     {
         private readonly StringBuilder stringBuilder = new StringBuilder();
 
-        private string attributePrefix = null;
         private string attributeSuffix = null;
 
         public dynamic Model { get; set; }
@@ -26,7 +25,6 @@ namespace RazorEngineCore
         {
             this.attributeSuffix = suffix;
             this.stringBuilder.Append(prefix);
-            this.stringBuilder.Append(this.attributePrefix);
         }
 
         public virtual void WriteAttributeValue(string prefix, int prefixOffset, object value, int valueOffset, int valueLength, bool isLiteral)
