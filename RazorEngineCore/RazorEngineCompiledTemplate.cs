@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-    public class RazorEngineCompiledTemplate
+    public class RazorEngineCompiledTemplate : IRazorEngineCompiledTemplate
     {
         private readonly MemoryStream assemblyByteCode;
         private readonly Type templateType;
@@ -18,12 +18,12 @@ namespace RazorEngineCore
             this.templateType = assembly.GetType("TemplateNamespace.Template");
         }
 
-        public static RazorEngineCompiledTemplate LoadFromFile(string fileName)
+        public static IRazorEngineCompiledTemplate LoadFromFile(string fileName)
         {
             return LoadFromFileAsync(fileName: fileName).GetAwaiter().GetResult();
         }
 
-        public static async Task<RazorEngineCompiledTemplate> LoadFromFileAsync(string fileName)
+        public static async Task<IRazorEngineCompiledTemplate> LoadFromFileAsync(string fileName)
         {
             MemoryStream memoryStream = new MemoryStream();
             
@@ -41,12 +41,12 @@ namespace RazorEngineCore
             return new RazorEngineCompiledTemplate(memoryStream);
         }
         
-        public static RazorEngineCompiledTemplate LoadFromStream(Stream stream)
+        public static IRazorEngineCompiledTemplate LoadFromStream(Stream stream)
         {
             return LoadFromStreamAsync(stream).GetAwaiter().GetResult();
         }
         
-        public static async Task<RazorEngineCompiledTemplate> LoadFromStreamAsync(Stream stream)
+        public static async Task<IRazorEngineCompiledTemplate> LoadFromStreamAsync(Stream stream)
         {
             MemoryStream memoryStream = new MemoryStream();
             await stream.CopyToAsync(memoryStream);

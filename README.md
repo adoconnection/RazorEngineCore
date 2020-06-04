@@ -184,6 +184,9 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2020.5.2
+	* IRazorEngineTemplate interface 
+	* RazorEngineTemplateBase methods go virtual
 * 2020.5.1
 	* Async methods (thanks [@wdcossey](https://github.com/wdcossey))
 	* Microsoft.AspNetCore.Razor.Language 3.1.1 -> 3.1.4
