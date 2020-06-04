@@ -41,7 +41,7 @@ Hello @Model.Name
 
         static void Main(string[] args)
         {
-            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngine razorEngine = new RazorEngine();
             IRazorEngineCompiledTemplate template = razorEngine.Compile(Content);
 
             string result = template.Run(new
