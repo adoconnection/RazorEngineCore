@@ -339,7 +339,7 @@ void RecursionTest(int level)
         public void TestCompileAndRun_TypedModel1()
         {
             RazorEngine razorEngine = new RazorEngine();
-            IRazorEngineCompiledTemplate<TestModel1> template = razorEngine.Compile<TestModel1>("Hello @A @B @(A + B) @C @Decorator(\"777\")");
+            IRazorEngineCompiledTemplate<TestTemplate1> template = razorEngine.Compile<TestTemplate1>("Hello @A @B @(A + B) @C @Decorator(\"777\")");
 
             string actual = template.Run(instance =>
             {
@@ -355,7 +355,7 @@ void RecursionTest(int level)
         public async Task TestCompileAndRun_TypedModel1Async()
         {
             RazorEngine razorEngine = new RazorEngine();
-            IRazorEngineCompiledTemplate<TestModel1> template = await razorEngine.CompileAsync<TestModel1>("Hello @A @B @(A + B) @C @Decorator(\"777\")");
+            IRazorEngineCompiledTemplate<TestTemplate1> template = await razorEngine.CompileAsync<TestTemplate1>("Hello @A @B @(A + B) @C @Decorator(\"777\")");
 
             string actual = await template.RunAsync(instance =>
             {
@@ -371,11 +371,11 @@ void RecursionTest(int level)
         public void TestCompileAndRun_TypedModel2()
         {
             RazorEngine razorEngine = new RazorEngine();
-            IRazorEngineCompiledTemplate<TestModel2> template = razorEngine.Compile<TestModel2>("Hello @Model.Decorator(Model.C)");
+            IRazorEngineCompiledTemplate<TestTemplate2> template = razorEngine.Compile<TestTemplate2>("Hello @Model.Decorator(Model.C)");
 
             string actual = template.Run(instance =>
             {
-                instance.Initialize(new TestModel1()
+                instance.Initialize(new TestModel
                 {
                     C = "Alex"
                 });
@@ -388,11 +388,11 @@ void RecursionTest(int level)
         public async Task TestCompileAndRun_TypedModel2Async()
         {
             RazorEngine razorEngine = new RazorEngine();
-            IRazorEngineCompiledTemplate<TestModel2> template = await razorEngine.CompileAsync<TestModel2>("Hello @Model.Decorator(Model.C)");
+            IRazorEngineCompiledTemplate<TestTemplate2> template = await razorEngine.CompileAsync<TestTemplate2>("Hello @Model.Decorator(Model.C)");
 
             string actual = await template.RunAsync(instance =>
             {
-                instance.Initialize(new TestModel1()
+                instance.Initialize(new TestModel
                 {
                     C = "Alex"
                 });
@@ -405,7 +405,7 @@ void RecursionTest(int level)
         public void TestCompileAndRun_Linq()
         {
             RazorEngine razorEngine = new RazorEngine();
-            IRazorEngineCompiledTemplate<TestModel2> template = razorEngine.Compile<TestModel2>(
+            IRazorEngineCompiledTemplate<TestTemplate2> template = razorEngine.Compile<TestTemplate2>(
 @"
 @foreach (var item in Model.Numbers.OrderByDescending(x => x))
 {
@@ -419,7 +419,7 @@ void RecursionTest(int level)
 ";
             string actual = template.Run(instance =>
             {
-                instance.Initialize(new TestModel1()
+                instance.Initialize(new TestModel
                 {
                     Numbers = new[] {2, 1, 3}
                 });
@@ -432,7 +432,7 @@ void RecursionTest(int level)
         public async Task TestCompileAndRun_LinqAsync()
         {
             RazorEngine razorEngine = new RazorEngine();
-            IRazorEngineCompiledTemplate<TestModel2> template = await razorEngine.CompileAsync<TestModel2>(
+            IRazorEngineCompiledTemplate<TestTemplate2> template = await razorEngine.CompileAsync<TestTemplate2>(
 @"
 @foreach (var item in Model.Numbers.OrderByDescending(x => x))
 {
@@ -446,7 +446,7 @@ void RecursionTest(int level)
 ";
             string actual = await template.RunAsync(instance =>
             {
-                instance.Initialize(new TestModel1()
+                instance.Initialize(new TestModel
                 {
                     Numbers = new[] {2, 1, 3}
                 });
