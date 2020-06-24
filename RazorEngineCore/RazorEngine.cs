@@ -95,9 +95,11 @@ namespace RazorEngineCore
             {
                 List<Diagnostic> errors = emitResult.Diagnostics.ToList();
 
-                RazorEngineCompilationException exception = new RazorEngineCompilationException($"Unable to compile template: {errors?.FirstOrDefault()}");
-                exception.Errors = errors;
-                exception.GeneratedCode = razorCSharpDocument.GeneratedCode;
+                RazorEngineCompilationException exception = new RazorEngineCompilationException($"Unable to compile template: {errors.FirstOrDefault()}")
+                {
+                    Errors = errors,
+                    GeneratedCode = razorCSharpDocument.GeneratedCode
+                };
 
                 throw exception;
             }
