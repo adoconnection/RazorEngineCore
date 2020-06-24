@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using Microsoft.CodeAnalysis;
 
 namespace RazorEngineCore
 {
@@ -16,6 +17,8 @@ namespace RazorEngineCore
             Assembly.Load(new AssemblyName("System.Linq.Expressions"))
         };
 
+        public HashSet<MetadataReference> MetadataReferences { get; set; } = new HashSet<MetadataReference>();
+        
         public string TemplateNamespace { get; set; } = "TemplateNamespace";
         public string Inherits { get; set; } = "RazorEngineCore.RazorEngineTemplateBase";
 
