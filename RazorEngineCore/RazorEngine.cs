@@ -83,7 +83,8 @@ namespace RazorEngineCore
                 },
                 options.ReferencedAssemblies
                     .Select(ass => MetadataReference.CreateFromFile(ass.Location))
-                    .Concat(options.MetadataReferences).ToList(),
+                    .Concat(options.MetadataReferences)
+                    .ToList(),
                 new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 
             MemoryStream memoryStream = new MemoryStream();
@@ -96,6 +97,7 @@ namespace RazorEngineCore
 
                 RazorEngineCompilationException exception = new RazorEngineCompilationException($"Unable to compile template: {errors?.FirstOrDefault()}");
                 exception.Errors = errors;
+                exception.GeneratedCode = razorCSharpDocument.GeneratedCode;
 
                 throw exception;
             }

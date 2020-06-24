@@ -24,5 +24,6 @@ namespace RazorEngineCore
         }
 
         public List<Diagnostic> Errors { get; set; }
+        public string GeneratedCode { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -477,37 +478,48 @@ namespace TestAssembly
     }
 }
 ";
-            
+            // This needs to be done in the builder to have access to all of the assemblies added through
+            // the various AddAssemblyReference options
+            CSharpCompilation compilation = CSharpCompilation.Create(
+                    "TestAssembly",
+                    new[]
+                    {
+                            CSharpSyntaxTree.ParseText(greetingClass)
+                    },
+                    new List<MetadataReference>()
+                    {
+                            MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
+                            MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("Microsoft.CSharp")).Location),
+                            MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("netstandard")).Location),
+                            MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("System.Runtime")).Location)
+                    },
+                    new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
+            );
+
+            MemoryStream memoryStream = new MemoryStream();
+            EmitResult emitResult = compilation.Emit(memoryStream);
+
+            if (!emitResult.Success)
+            {
+                Assert.Fail("Unable to compile test assembly");
+            }
+
+            memoryStream.Position = 0;
+
+            // Add an assembly resolver so the assembly can be found
+            AppDomain.CurrentDomain.AssemblyResolve += (sender, eventArgs) =>
+                    new AssemblyName(eventArgs.Name ?? string.Empty).Name == "TestAssembly"
+                            ? Assembly.Load(memoryStream.ToArray())
+                            : null;
+
             RazorEngine razorEngine = new RazorEngine();
             IRazorEngineCompiledTemplate template = await razorEngine.CompileAsync(@"
 @using TestAssembly
 <p>@Greeting.GetGreeting(""Name"")</p>
 ", builder =>
             {
-                // This needs to be done in the builder to have access to all of the assemblies added through
-                // the various AddAssemblyReference options
-                CSharpCompilation compilation = CSharpCompilation.Create(
-                    "TestAssembly",
-                    new []
-                    {
-                        CSharpSyntaxTree.ParseText(greetingClass)
-                    },
-                    builder.Options.ReferencedAssemblies
-                        .Select(ass => MetadataReference.CreateFromFile(ass.Location)).ToList(),
-                    new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
-                );
-                MemoryStream memoryStream = new MemoryStream();
-                EmitResult emitResult = compilation.Emit(memoryStream);
-                if (!emitResult.Success) return;
-                
-                memoryStream.Position = 0;
                 builder.AddMetadataReference(MetadataReference.CreateFromStream(memoryStream));
-                    
-                // Add an assembly resolver so the assembly can be found
-                AppDomain.CurrentDomain.AssemblyResolve += (sender, eventArgs) =>
-                    new AssemblyName(eventArgs.Name ?? string.Empty).Name == "TestAssembly"
-                        ? Assembly.Load(memoryStream.ToArray())
-                        : null;
+
             });
 
             string expected = @"
