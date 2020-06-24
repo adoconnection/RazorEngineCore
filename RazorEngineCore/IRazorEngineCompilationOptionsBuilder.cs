@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using Microsoft.CodeAnalysis;
 
 namespace RazorEngineCore
 {
@@ -12,6 +13,8 @@ namespace RazorEngineCore
         void AddAssemblyReference(Assembly assembly);
         
         void AddAssemblyReference(Type type);
+
+        void AddMetadataReference(MetadataReference reference);
         
         void AddUsing(string namespaceName);
         

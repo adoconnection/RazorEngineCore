@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using Microsoft.CodeAnalysis;
 
 namespace RazorEngineCore
 {
@@ -32,6 +33,11 @@ namespace RazorEngineCore
             {
                 this.AddAssemblyReference(argumentType);
             }
+        }
+
+        public void AddMetadataReference(MetadataReference reference)
+        {
+            this.Options.MetadataReferences.Add(reference);
         }
 
         public void AddUsing(string namespaceName)

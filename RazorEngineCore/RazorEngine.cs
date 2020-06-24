@@ -83,7 +83,7 @@ namespace RazorEngineCore
                 },
                 options.ReferencedAssemblies
                     .Select(ass => MetadataReference.CreateFromFile(ass.Location))
-                    .ToList(),
+                    .Concat(options.MetadataReferences).ToList(),
                 new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 
             MemoryStream memoryStream = new MemoryStream();
