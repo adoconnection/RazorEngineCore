@@ -187,6 +187,10 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2020.6.1
+	* Reference assemblies by Metadata (thanks [@Merlin04](https://github.com/Merlin04))
+	* Expose GeneratedCode in RazorEngineCompilationException
+	* Microsoft.AspNetCore.Razor.Language 3.1.4 -> 3.1.5
 * 2020.5.2
 	* IRazorEngineTemplate interface 
 	* RazorEngineTemplateBase methods go virtual
