@@ -1,5 +1,5 @@
 # RazorEngineCore
-NETCore 3.1.4 Razor Template Engine. No legacy code.
+NETCore 3.1.5 Razor Template Engine. No legacy code.
 * .NET Standard 2.0
 
 [![NuGet](https://img.shields.io/nuget/dt/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
