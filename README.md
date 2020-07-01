@@ -93,7 +93,7 @@ RazorEngineCore is not responsible for caching. Each team and project has their 
 If you dont have one, use following static ConcurrentDictionary example as a simplest thread safe solution.
 
 ```cs
-private static ConcurrentDictionary<string, IRazorEngineCompiledTemplate> TemplateCache = new ConcurrentDictionary<string, IRazorEngineCompiledTemplate>();
+private static ConcurrentDictionary<int, IRazorEngineCompiledTemplate> TemplateCache = new ConcurrentDictionary<int, IRazorEngineCompiledTemplate>();
 ```
 
 ```cs
