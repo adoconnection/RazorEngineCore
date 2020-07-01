@@ -32,7 +32,7 @@ Install-Package RazorEngineCore
 
 #### Basic usage
 ```cs
-RazorEngine razorEngine = new RazorEngine();
+IRazorEngine razorEngine = new RazorEngine();
 IRazorEngineCompiledTemplate template = razorEngine.Compile("Hello @Model.Name");
 
 string result = template.Run(new
@@ -45,6 +45,7 @@ Console.WriteLine(result);
 
 #### Strongly typed model
 ```cs
+IRazorEngine razorEngine = new RazorEngine();
 string templateText = "Hello @Model.Name";
 
 // yeah, heavy definition
@@ -65,8 +66,8 @@ Console.WriteLine(result);
 #### Save / Load compiled templates
 Most expensive task is to compile template, you should not compile template every time you need to run it
 ```cs
-RazorEngine razorEngine = new RazorEngine();
-RazorEngineCompiledTemplate template = razorEngine.Compile("Hello @Model.Name");
+IRazorEngine razorEngine = new RazorEngine();
+IRazorEngineCompiledTemplate template = razorEngine.Compile("Hello @Model.Name");
 
 // save to file
 template.SaveToFile("myTemplate.dll");
@@ -92,7 +93,7 @@ RazorEngineCore is not responsible for caching. Each team and project has their 
 If you dont have one, use following static ConcurrentDictionary example as a simplest thread safe solution.
 
 ```cs
-private static ConcurrentDictionary<string, RazorEngineCompiledTemplate> TemplateCache = new ConcurrentDictionary<string, RazorEngineCompiledTemplate>();
+private static ConcurrentDictionary<string, IRazorEngineCompiledTemplate> TemplateCache = new ConcurrentDictionary<string, IRazorEngineCompiledTemplate>();
 ```
 
 ```cs
@@ -141,7 +142,7 @@ output:
 ```cs
 string content = @"Hello @A, @B, @Decorator(123)";
 
-RazorEngine razorEngine = new RazorEngine();
+IRazorEngine razorEngine = new RazorEngine();
 IRazorEngineCompiledTemplate<CustomModel> template = razorEngine.Compile<CustomModel>(content);
 
 string result = template.Run(instance =>
@@ -170,7 +171,7 @@ Keep your templates as simple as possible, if you need to inject "unusual" assem
 Writing `@using System.IO` in template will not reference System.IO assembly, use builder to manually reference it.
 
 ```cs
-RazorEngine razorEngine = new RazorEngine();
+IRazorEngine razorEngine = new RazorEngine();
 IRazorEngineCompiledTemplate compiledTemplate = razorEngine.Compile(templateText, builder =>
 {
     builder.AddAssemblyReferenceByName("System.Security"); // by name
