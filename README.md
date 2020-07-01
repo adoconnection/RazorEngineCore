@@ -33,7 +33,7 @@ Install-Package RazorEngineCore
 #### Basic usage
 ```cs
 RazorEngine razorEngine = new RazorEngine();
-RazorEngineCompiledTemplate template = razorEngine.Compile("Hello @Model.Name");
+IRazorEngineCompiledTemplate template = razorEngine.Compile("Hello @Model.Name");
 
 string result = template.Run(new
 {
@@ -48,7 +48,7 @@ Console.WriteLine(result);
 string templateText = "Hello @Model.Name";
 
 // yeah, heavy definition
-RazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel>> template = razorEngine.Compile<RazorEngineTemplateBase<TestModel>>(templateText);
+IRazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel>> template = razorEngine.Compile<RazorEngineTemplateBase<TestModel>>(templateText);
 
 string result = template.Run(instance =>
 {
@@ -77,13 +77,13 @@ template.SaveToStream(memoryStream);
 ```
 
 ```cs
-RazorEngineCompiledTemplate template1 = RazorEngineCompiledTemplate.LoadFromFile("myTemplate.dll");
-RazorEngineCompiledTemplate template2 = RazorEngineCompiledTemplate.LoadFromStream(myStream);
+IRazorEngineCompiledTemplate template1 = RazorEngineCompiledTemplate.LoadFromFile("myTemplate.dll");
+IRazorEngineCompiledTemplate template2 = RazorEngineCompiledTemplate.LoadFromStream(myStream);
 ```
 
 ```cs
-RazorEngineCompiledTemplate<MyBase> template1 = RazorEngineCompiledTemplate<MyBase>.LoadFromFile<MyBase>("myTemplate.dll");
-RazorEngineCompiledTemplate<MyBase> template2 = RazorEngineCompiledTemplate<MyBase>.LoadFromStream<MyBase>(myStream);
+IRazorEngineCompiledTemplate<MyBase> template1 = RazorEngineCompiledTemplate<MyBase>.LoadFromFile<MyBase>("myTemplate.dll");
+IRazorEngineCompiledTemplate<MyBase> template2 = RazorEngineCompiledTemplate<MyBase>.LoadFromStream<MyBase>(myStream);
 ```
 
 #### Caching
@@ -100,7 +100,7 @@ private string RenderTemplate(string template, object model)
 {
     int hashCode = template.GetHashCode();
 
-    RazorEngineCompiledTemplate compiledTemplate = TemplateCache.GetOrAdd(hashCode, i =>
+    IRazorEngineCompiledTemplate compiledTemplate = TemplateCache.GetOrAdd(hashCode, i =>
     {
         RazorEngine razorEngine = new RazorEngine();
         return razorEngine.Compile(Content);
@@ -142,7 +142,7 @@ output:
 string content = @"Hello @A, @B, @Decorator(123)";
 
 RazorEngine razorEngine = new RazorEngine();
-RazorEngineCompiledTemplate<CustomModel> template = razorEngine.Compile<CustomModel>(content);
+IRazorEngineCompiledTemplate<CustomModel> template = razorEngine.Compile<CustomModel>(content);
 
 string result = template.Run(instance =>
 {
@@ -171,7 +171,7 @@ Writing `@using System.IO` in template will not reference System.IO assembly, us
 
 ```cs
 RazorEngine razorEngine = new RazorEngine();
-RazorEngineCompiledTemplate compiledTemplate = razorEngine.Compile(templateText, builder =>
+IRazorEngineCompiledTemplate compiledTemplate = razorEngine.Compile(templateText, builder =>
 {
     builder.AddAssemblyReferenceByName("System.Security"); // by name
     builder.AddAssemblyReference(typeof(System.IO.File)); // by type
