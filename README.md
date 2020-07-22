@@ -24,6 +24,7 @@ Install-Package RazorEngineCore
 * [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw)
 * [@Inject and referencing other assemblies](https://github.com/adoconnection/RazorEngineCore/wiki/@Inject-and-referencing-other-assemblies)
 * [Switch from RazorEngine cshtml templates](https://github.com/adoconnection/RazorEngineCore/wiki/Switch-from-RazorEngine-cshtml-templates)
+* [Azure Functions FileNotFoundException workaround](https://github.com/adoconnection/RazorEngineCore/wiki/Azure-Functions-FileNotFoundException-workaround)
 
 ## Extensions
 * [wdcossey/RazorEngineCore.Extensions](https://github.com/wdcossey/RazorEngineCore.Extensions)
