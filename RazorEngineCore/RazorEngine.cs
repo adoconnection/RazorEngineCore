@@ -115,7 +115,7 @@ namespace RazorEngineCore
                 RazorEngineCompilationException exception = new RazorEngineCompilationException($"Unable to compile template: {errors.FirstOrDefault()}")
                 {
                     Errors = errors,
-                    GeneratedCode = razorCSharpDocument.GeneratedCode
+                    GeneratedCode = generatedCode
                 };
 
                 throw exception;
