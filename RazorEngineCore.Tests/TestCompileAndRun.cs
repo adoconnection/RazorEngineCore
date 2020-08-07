@@ -30,6 +30,70 @@ namespace RazorEngineCore.Tests
         }
 
         [TestMethod]
+        public void TestCompileAndRun_Set()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplateSet templateSet = razorEngine.CompileSet(new Dictionary<string, string>
+            {
+                { "Template1", "@Template2.GetGreeting(Model.Name)\n@Greeting.GetGreeting(Model.Name)" },
+                { "Template2", @"
+Hello!
+@functions {
+    public static string GetGreeting(string name)
+    {
+        return ""Hello, "" + name + ""!"";
+    }
+}
+" }
+            }, builder => { builder.Options.TemplateNamespace = "Testing"; }, new List<string>
+            {
+                @"
+namespace Testing
+{
+    public static class Greeting
+    {
+        public static string GetGreeting(string name)
+        {
+            return ""Hello, "" + name + ""!"";
+        }
+    }
+}
+"
+            });
+
+            string actual = templateSet.Run("Template1", new {Name = "Alex"});
+            Assert.AreEqual("Hello, Alex!\nHello, Alex!", actual);
+        }
+        
+        [TestMethod]
+        public void TestCompileAndRun_SetTypedModel1()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplateSet<TestTemplate1> templateSet = razorEngine.CompileSet<TestTemplate1>(new Dictionary<string, string>
+            {
+                { "Template1", "@Template2.GetGreeting(C)\nHello @A @B @(A + B) @C @Decorator(\"777\")" },
+                { "Template2", @"
+Hello!
+Hello @A @B @(A + B) @C @Decorator(""777"")
+@functions {
+    public static string GetGreeting(string name)
+    {
+        return ""Hello, "" + name + ""!"";
+    }
+}
+" }
+            });
+
+            string actual = templateSet.Run( "Template1", instance =>
+            {
+                instance.A = 1;
+                instance.B = 2;
+                instance.C = "Alex";
+            });
+            Assert.AreEqual("Hello, Alex!\nHello 1 2 3 Alex -=777=-", actual);
+        }
+        
+        [TestMethod]
         public void TestCompileAndRun_HtmlLiteral()
         {
             RazorEngine razorEngine = new RazorEngine();

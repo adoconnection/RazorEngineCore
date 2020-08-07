@@ -48,18 +48,87 @@ namespace RazorEngineCore
         {
             return Task.Factory.StartNew(() => this.Compile(content: content, builderAction: builderAction));
         }
+
+        public IRazorEngineCompiledTemplateSet<T> CompileSet<T>(Dictionary<string, string> contents,
+            Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, List<string> csharpFiles = null)
+            where T : IRazorEngineTemplate
+        {
+            IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
+            
+            compilationOptionsBuilder.AddAssemblyReference(typeof(T).Assembly);
+            compilationOptionsBuilder.Inherits(typeof(T));
+
+            builderAction?.Invoke(compilationOptionsBuilder);
+
+            MemoryStream memoryStream = this.CreateSetAndCompileToStream(contents, compilationOptionsBuilder.Options, csharpFiles);
+           
+            return new RazorEngineCompiledTemplateSet<T>(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
+        }
+
+        public Task<IRazorEngineCompiledTemplateSet<T>> CompileSetAsync<T>(Dictionary<string, string> contents,
+            Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, List<string> csharpFiles = null)
+            where T : IRazorEngineTemplate
+        {
+            return Task.Factory.StartNew(() => this.CompileSet<T>(contents, builderAction, csharpFiles));
+        }
+
+        public IRazorEngineCompiledTemplateSet CompileSet(Dictionary<string, string> contents,
+            Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, List<string> csharpFiles = null)
+        {
+            IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
+            compilationOptionsBuilder.Inherits(typeof(RazorEngineTemplateBase));
+             
+            builderAction?.Invoke(compilationOptionsBuilder);
+
+            MemoryStream memoryStream = this.CreateSetAndCompileToStream(contents, compilationOptionsBuilder.Options, csharpFiles);
+
+            return new RazorEngineCompiledTemplateSet(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
+        }
+
+        public Task<IRazorEngineCompiledTemplateSet> CompileSetAsync(Dictionary<string, string> contents,
+            Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, List<string> csharpFiles = null)
+        {
+            return Task.Factory.StartNew(() => this.CompileSet(contents, builderAction, csharpFiles));
+        }
+
+        private static RazorProjectEngine GetRazorProjectEngine(string templateNamespace)
+        {
+            return RazorProjectEngine.Create(
+                RazorConfiguration.Default,
+                RazorProjectFileSystem.Create(@"."),
+                (builder) =>
+                {
+                    builder.SetNamespace(templateNamespace);
+                });
+        }
+
+        private static MemoryStream CSharpCompilationToMemoryStream(CSharpCompilation compilation, string generatedCode)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+
+            EmitResult emitResult = compilation.Emit(memoryStream);
+
+            if (!emitResult.Success)
+            {
+                List<Diagnostic> errors = emitResult.Diagnostics.ToList();
+
+                RazorEngineCompilationException exception = new RazorEngineCompilationException($"Unable to compile template: {errors?.FirstOrDefault()}");
+                exception.Errors = errors;
+                exception.GeneratedCode = generatedCode;
+
+                throw exception;
+            }
+
+            memoryStream.Position = 0;
+
+            return memoryStream;
+        }
         
         private MemoryStream CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options)
         {
             templateSource = this.WriteDirectives(templateSource, options);
 
-            RazorProjectEngine engine = RazorProjectEngine.Create(
-                RazorConfiguration.Default,
-                RazorProjectFileSystem.Create(@"."),
-                (builder) =>
-                {
-                    builder.SetNamespace(options.TemplateNamespace);
-                });
+            RazorProjectEngine engine = GetRazorProjectEngine(options.TemplateNamespace);
 
             string fileName = Path.GetRandomFileName();
 
@@ -87,24 +156,61 @@ namespace RazorEngineCore
                     .ToList(),
                 new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 
-            MemoryStream memoryStream = new MemoryStream();
+            return CSharpCompilationToMemoryStream(compilation, razorCSharpDocument.GeneratedCode);
+        }
 
-            EmitResult emitResult = compilation.Emit(memoryStream);
+        private MemoryStream CreateSetAndCompileToStream(Dictionary<string, string> templateSources, RazorEngineCompilationOptions options, List<string> csharpFiles)
+        {
+            templateSources = templateSources
+                .Select(templateSource =>
+                    new KeyValuePair<string, string>(templateSource.Key,
+                        WriteDirectives(templateSource.Value, options)))
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+            
+            Dictionary<string, string> fileNames = templateSources
+                .Select((templateSource, index) =>
+                    new KeyValuePair<string, string>(templateSource.Key + index + ".cs", templateSource.Key))
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
-            if (!emitResult.Success)
+            RazorProjectEngine engine = RazorProjectEngine.Create(
+                RazorConfiguration.Default,
+                RazorProjectFileSystem.Create(@"."),
+                builder =>
+                {
+                    builder.SetNamespace(options.TemplateNamespace);
+                    builder.ConfigureClass((document, node) =>
+                    {
+                        node.ClassName = fileNames[document.Source.FilePath];
+                    });
+                });
+            
+            List<SyntaxTree> syntaxTrees = templateSources.Select(templateSource =>
             {
-                List<Diagnostic> errors = emitResult.Diagnostics.ToList();
+                RazorSourceDocument document = RazorSourceDocument.Create(templateSource.Value,
+                    fileNames.First(pair => pair.Value == templateSource.Key).Key);
+                
+                RazorCodeDocument codeDocument = engine.Process(
+                    document,
+                    null,
+                    new List<RazorSourceDocument>(),
+                    new List<TagHelperDescriptor>());
 
-                RazorEngineCompilationException exception = new RazorEngineCompilationException($"Unable to compile template: {errors?.FirstOrDefault()}");
-                exception.Errors = errors;
-                exception.GeneratedCode = razorCSharpDocument.GeneratedCode;
+                RazorCSharpDocument razorCSharpDocument = codeDocument.GetCSharpDocument();
 
-                throw exception;
-            }
+                return CSharpSyntaxTree.ParseText(razorCSharpDocument.GeneratedCode);
+            }).ToList();
+            
+            CSharpCompilation compilation = CSharpCompilation.Create(
+                Path.GetRandomFileName(),
+                csharpFiles is null ? syntaxTrees : syntaxTrees.Concat(csharpFiles.Select(file => CSharpSyntaxTree.ParseText(file))),
+                options.ReferencedAssemblies
+                    .Select(ass => MetadataReference.CreateFromFile(ass.Location))
+                    .Concat(options.MetadataReferences)
+                    .ToList(),
+                new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
+                );
 
-            memoryStream.Position = 0;
-
-            return memoryStream;
+            return CSharpCompilationToMemoryStream(compilation, string.Empty);
         }
 
         private string WriteDirectives(string content, RazorEngineCompilationOptions options)
