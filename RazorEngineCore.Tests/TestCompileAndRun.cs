@@ -12,6 +12,8 @@ using RazorEngineCore.Tests.Models;
 
 namespace RazorEngineCore.Tests
 {
+    using System.Runtime.InteropServices;
+
     [TestClass]
     public class TestCompileAndRun
     {
@@ -21,7 +23,7 @@ namespace RazorEngineCore.Tests
             RazorEngine razorEngine = new RazorEngine();
             razorEngine.Compile("Hello @Model.Name");
         }
-        
+
         [TestMethod]
         public Task TestCompileAsync()
         {
@@ -53,7 +55,7 @@ namespace RazorEngineCore.Tests
             {
                 Name = "Alex"
             });
-            
+
             Assert.AreEqual("<h1>Hello Alex</h1>", actual);
         }
 
@@ -405,7 +407,7 @@ void RecursionTest(int level)
                     C = "Alex"
                 });
             });
-            
+
             Assert.AreEqual("Hello -=Alex=-", actual);
         }
 
@@ -486,13 +488,7 @@ namespace TestAssembly
                     {
                             CSharpSyntaxTree.ParseText(greetingClass)
                     },
-                    new List<MetadataReference>()
-                    {
-                            MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
-                            MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("Microsoft.CSharp")).Location),
-                            MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("netstandard")).Location),
-                            MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("System.Runtime")).Location)
-                    },
+                    GetMetadataReferences(),
                     new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
             );
 
@@ -526,8 +522,34 @@ namespace TestAssembly
 <p>Hello, Name!</p>
 ";
             string actual = await template.RunAsync();
-            
+
             Assert.AreEqual(expected, actual);
+        }
+
+        private static List<MetadataReference> GetMetadataReferences()
+        {
+            if (RuntimeInformation.FrameworkDescription.StartsWith(
+                ".NET Framework",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                return new List<MetadataReference>()
+                           {
+                               MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
+                               MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("Microsoft.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")).Location),
+                               MetadataReference.CreateFromFile(Assembly.Load(
+                                   new AssemblyName(
+                                       "netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51")).Location),
+                               MetadataReference.CreateFromFile(typeof(System.Runtime.GCSettings).Assembly.Location)
+                           };
+            }
+
+            return new List<MetadataReference>()
+                       {
+                           MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
+                           MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("Microsoft.CSharp")).Location),
+                           MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("netstandard")).Location),
+                           MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("System.Runtime")).Location)
+                       };
         }
     }
 }
