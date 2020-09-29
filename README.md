@@ -1,6 +1,7 @@
 # RazorEngineCore
 NETCore 3.1.5 Razor Template Engine. No legacy code.
 * .NET Standard 2.0
+* .NET Framework 4.7.2
 
 [![NuGet](https://img.shields.io/nuget/dt/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
 [![NuGet](https://img.shields.io/nuget/v/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
@@ -189,6 +190,8 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2020.9.1
+	* .NET 4.7.2 support (thanks [@krmr](https://github.com/krmr))
 * 2020.6.1
 	* Reference assemblies by Metadata (thanks [@Merlin04](https://github.com/Merlin04))
 	* Expose GeneratedCode in RazorEngineCompilationException
