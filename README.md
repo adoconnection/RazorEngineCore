@@ -189,6 +189,8 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2020.9.1
+	* .NET 4.7.2 support (thanks [@krmr](https://github.com/krmr))
 * 2020.6.1
 	* Reference assemblies by Metadata (thanks [@Merlin04](https://github.com/Merlin04))
 	* Expose GeneratedCode in RazorEngineCompilationException
