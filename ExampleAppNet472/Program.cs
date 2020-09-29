@@ -14,7 +14,6 @@ namespace ExampleFrameworkApp
         public IEnumerable<int> Items { get; set; }
     }
 
-
     class Program
     {
         static string Content = @"
@@ -48,15 +47,16 @@ Hello @Model.Name
             IRazorEngine razorEngine = new RazorEngine();
             IRazorEngineCompiledTemplate template = razorEngine.Compile(Content);
 
-            string result = template.Run(new
-                                             {
-                                                 Name = "Alexander",
-                                                 Items = new List<string>()
-                                                             {
-                                                                 "item 1",
-                                                                 "item 2"
-                                                             }
-                                             });
+            string result = template.Run(
+                new
+                {
+                    Name = "Alexander",
+                    Items = new List<string>()
+                    {
+                            "item 1",
+                            "item 2"
+                    }
+                });
 
             Console.WriteLine(result);
             Console.ReadKey();

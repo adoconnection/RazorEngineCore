@@ -2,16 +2,15 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Microsoft.CodeAnalysis;
+using System;
 
 namespace RazorEngineCore
 {
-    using System;
 
-    using Microsoft.CodeAnalysis.CSharp.Syntax;
 
     public class RazorEngineCompilationOptions
     {
-        public HashSet<Assembly> ReferencedAssemblies { get; set; } = DefaultReferencedAssemblies();
+        public HashSet<Assembly> ReferencedAssemblies { get; set; }
 
         public HashSet<MetadataReference> MetadataReferences { get; set; } = new HashSet<MetadataReference>();
         public string TemplateNamespace { get; set; } = "TemplateNamespace";
@@ -24,47 +23,49 @@ namespace RazorEngineCore
 
         public RazorEngineCompilationOptions()
         {
-            // Loading netstandard explicitly causes runtime error on Linux/OSX
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                if (RuntimeInformation.FrameworkDescription.StartsWith(".NET Framework", StringComparison.OrdinalIgnoreCase))
-                {
-                    this.ReferencedAssemblies.Add(
-                        Assembly.Load(
-                            new AssemblyName(
-                                "netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51")));
-                }
-                else
-                {
-                    this.ReferencedAssemblies.Add(Assembly.Load(new AssemblyName("netstandard")));
-                }
-            }
-        }
+            bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+            bool isFullFramework = RuntimeInformation.FrameworkDescription.StartsWith(".NET Framework", StringComparison.OrdinalIgnoreCase);
 
-        private static HashSet<Assembly> DefaultReferencedAssemblies()
-        {
-            if (RuntimeInformation.FrameworkDescription.StartsWith(".NET Framework", StringComparison.OrdinalIgnoreCase))
+            if (isWindows && isFullFramework)
             {
-                return new HashSet<Assembly>()
-                           {
-                               typeof(object).Assembly,
-                               Assembly.Load(new AssemblyName("Microsoft.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
-                               typeof(RazorEngineTemplateBase).Assembly,
-                               typeof(System.Runtime.GCSettings).Assembly,
-                               typeof(System.Linq.Enumerable).Assembly,
-                               typeof(System.Linq.Expressions.Expression).Assembly
-                           };
+                this.ReferencedAssemblies = new HashSet<Assembly>()
+                {
+                    typeof(object).Assembly,
+                    Assembly.Load(new AssemblyName("Microsoft.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")),
+                    typeof(RazorEngineTemplateBase).Assembly,
+                    typeof(System.Runtime.GCSettings).Assembly,
+                    typeof(System.Linq.Enumerable).Assembly,
+                    typeof(System.Linq.Expressions.Expression).Assembly,
+                    Assembly.Load(new AssemblyName("netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51"))
+                };
             }
 
-            return new HashSet<Assembly>()
-                       {
-                           typeof(object).Assembly,
-                           Assembly.Load(new AssemblyName("Microsoft.CSharp")),
-                           typeof(RazorEngineTemplateBase).Assembly,
-                           Assembly.Load(new AssemblyName("System.Runtime")),
-                           Assembly.Load(new AssemblyName("System.Linq")),
-                           Assembly.Load(new AssemblyName("System.Linq.Expressions"))
-                       };
+            if (isWindows && !isFullFramework) // i.e. NETCore
+            {
+                this.ReferencedAssemblies = new HashSet<Assembly>()
+                {
+                    typeof(object).Assembly,
+                    Assembly.Load(new AssemblyName("Microsoft.CSharp")),
+                    typeof(RazorEngineTemplateBase).Assembly,
+                    Assembly.Load(new AssemblyName("System.Runtime")),
+                    Assembly.Load(new AssemblyName("System.Linq")),
+                    Assembly.Load(new AssemblyName("System.Linq.Expressions")),
+                    Assembly.Load(new AssemblyName("netstandard"))
+                };
+            }
+
+            if (!isWindows)
+            {
+                this.ReferencedAssemblies = new HashSet<Assembly>()
+                {
+                    typeof(object).Assembly,
+                    Assembly.Load(new AssemblyName("Microsoft.CSharp")),
+                    typeof(RazorEngineTemplateBase).Assembly,
+                    Assembly.Load(new AssemblyName("System.Runtime")),
+                    Assembly.Load(new AssemblyName("System.Linq")),
+                    Assembly.Load(new AssemblyName("System.Linq.Expressions"))
+                };
+            }
         }
     }
 }

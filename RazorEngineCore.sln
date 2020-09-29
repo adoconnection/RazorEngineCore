@@ -7,14 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorEngineCore", "RazorEng
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorEngineCore.Tests", "RazorEngineCore.Tests\RazorEngineCore.Tests.csproj", "{86FE2C2C-868C-43B5-A134-0DC96F9F510A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleApp", "ExampleApp\ExampleApp.csproj", "{287FC29C-2C28-4168-8332-E1FF5BBB2721}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleAppCore", "ExampleApp\ExampleAppCore.csproj", "{287FC29C-2C28-4168-8332-E1FF5BBB2721}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DF4FC1D4-CE2B-4653-A54B-827EC9533666}"
 	ProjectSection(SolutionItems) = preProject
 		Pack.ps1 = Pack.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleFrameworkApp", "ExampleFrameworkApp\ExampleFrameworkApp.csproj", "{D27C1578-BFF9-4469-9099-DAF64450BBBE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleAppNET472", "ExampleFrameworkApp\ExampleAppNET472.csproj", "{D27C1578-BFF9-4469-9099-DAF64450BBBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

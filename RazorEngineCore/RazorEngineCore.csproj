@@ -3,14 +3,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>2020.6.1</Version>
-    <Authors>Alexander Selishchev, Simon Mourier, William David Cossey, Benjamin Smith, Dag H. Baardsen</Authors>
+    <Authors>Alexander Selishchev, Simon Mourier, William David Cossey, Benjamin Smith, Dag H. Baardsen, krmr</Authors>
     <PackageProjectUrl>https://github.com/adoconnection/RazorEngineCore</PackageProjectUrl>
     <Description>ASP.NET Core 3.1 Razor Template Engine</Description>
-    <AssemblyVersion>2020.6.1.0</AssemblyVersion>
-    <FileVersion>2020.6.1.0</FileVersion>
-    <PackageReleaseNotes>– Add support for loading assemblies through MetadataReference
-– Microsoft.AspNetCore.Razor.Language update to 3.1.5
-– expose generated code in RazorEngineCompilationException</PackageReleaseNotes>
+    <AssemblyVersion>2020.9.1.0</AssemblyVersion>
+    <FileVersion>2020.9.1.0</FileVersion>
+    <PackageReleaseNotes>– .NET 4.7.2 support</PackageReleaseNotes>
+    <Company>Alexander Selishchev, Simon Mourier, William David Cossey, Benjamin Smith, Dag H. Baardsen, krmr</Company>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="3.1.5" />
