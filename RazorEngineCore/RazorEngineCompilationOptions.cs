@@ -6,8 +6,6 @@ using System;
 
 namespace RazorEngineCore
 {
-
-
     public class RazorEngineCompilationOptions
     {
         public HashSet<Assembly> ReferencedAssemblies { get; set; }
