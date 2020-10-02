@@ -198,6 +198,40 @@ namespace RazorEngineCore.Tests
         }
 
         [TestMethod]
+        public void TestCompileAndRun_NullablePropertyWithValue()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            DateTime? dateTime = DateTime.Now;
+
+            IRazorEngineCompiledTemplate<TestTemplate2> template = razorEngine.Compile<TestTemplate2>("DateTime: @Model.DateTime.Value.ToString()");
+
+            string actual = template.Run(instance => instance.Model = new TestModel()
+            {
+                    DateTime = dateTime
+            });
+
+            Assert.AreEqual("DateTime: " + dateTime, actual);
+        }
+
+        [TestMethod]
+        public void TestCompileAndRun_NullablePropertyWithoutValue()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            DateTime? dateTime = null;
+
+            IRazorEngineCompiledTemplate<TestTemplate2> template = razorEngine.Compile<TestTemplate2>("DateTime: @Model.DateTime");
+
+            string actual = template.Run(instance => instance.Model = new TestModel()
+            {
+                    DateTime = dateTime
+            });
+
+            Assert.AreEqual("DateTime: " + dateTime, actual);
+        }
+
+        [TestMethod]
         public async Task TestCompileAndRun_NullModelAsync()
         {
             RazorEngine razorEngine = new RazorEngine();
@@ -431,7 +465,7 @@ void RecursionTest(int level)
             {
                 instance.Initialize(new TestModel
                 {
-                    Numbers = new[] {2, 1, 3}
+                    Numbers = new[] { 2, 1, 3 }
                 });
             });
 
@@ -458,7 +492,7 @@ void RecursionTest(int level)
             {
                 instance.Initialize(new TestModel
                 {
-                    Numbers = new[] {2, 1, 3}
+                    Numbers = new[] { 2, 1, 3 }
                 });
             });
 

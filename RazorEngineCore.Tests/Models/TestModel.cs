@@ -10,6 +10,7 @@ namespace RazorEngineCore.Tests.Models
         public string C { get; set; }
         public DateTime D { get; set; }
         public IList<int> Numbers { get; set; }
+        public DateTime? DateTime { get; set; }
 
         public string Decorator(string text)
         {
