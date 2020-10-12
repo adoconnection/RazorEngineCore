@@ -190,6 +190,10 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2020.10.1
+	* Linux fix for #34
+	* Microsoft.AspNetCore.Razor.Language 3.1.5 -> 3.1.8
+	* Microsoft.CodeAnalysis.CSharp 3.6.0 -> 3.7.0
 * 2020.9.1
 	* .NET 4.7.2 support (thanks [@krmr](https://github.com/krmr))
 * 2020.6.1
