@@ -1,5 +1,5 @@
 # RazorEngineCore
-NETCore 3.1.5 Razor Template Engine. No legacy code.
+NETCore 3.1.8 Razor Template Engine. No legacy code.
 * .NET Standard 2.0
 * .NET Framework 4.7.2
 
