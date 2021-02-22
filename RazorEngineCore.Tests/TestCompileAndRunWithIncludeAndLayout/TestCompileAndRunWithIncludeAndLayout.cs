@@ -177,7 +177,7 @@ namespace RazorEngineCore.Tests
                 {"layout.cshtml", layout},
                 {"include", include}
             });
-            var actual = compiled.Run(new TestMethodModel{A = 1});
+            var actual = compiled.Run(new TestMethodModel{A =  1});
             Assert.AreEqual(expected, actual);
         }
     }

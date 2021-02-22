@@ -1,0 +1,17 @@
+name: ci
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout src
+      uses: actions/checkout@v2
+    
+    - name: Build
+      run: dotnet build RazorEngineCore
+
+    - name: Unit Tests
+      run: dotnet test RazorEngineCore.Tests
