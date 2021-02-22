@@ -72,7 +72,7 @@ namespace RazorEngineCore
                 new List<TagHelperDescriptor>());
 
             RazorCSharpDocument razorCSharpDocument = codeDocument.GetCSharpDocument();
-
+            // Console.WriteLine(razorCSharpDocument.GeneratedCode);
             SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(razorCSharpDocument.GeneratedCode);
 
             CSharpCompilation compilation = CSharpCompilation.Create(
