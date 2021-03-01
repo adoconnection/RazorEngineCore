@@ -1,7 +1,9 @@
 # RazorEngineCore
-NETCore 3.1.5 Razor Template Engine. No legacy code.
+.NET5 Razor Template Engine. No legacy code.
 * .NET Standard 2.0
+* .NET 5.0
 * .NET Framework 4.7.2
+* Windows / Linux
 
 [![NuGet](https://img.shields.io/nuget/dt/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
 [![NuGet](https://img.shields.io/nuget/v/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
@@ -26,6 +28,7 @@ Install-Package RazorEngineCore
 * [@Inject and referencing other assemblies](https://github.com/adoconnection/RazorEngineCore/wiki/@Inject-and-referencing-other-assemblies)
 * [Switch from RazorEngine cshtml templates](https://github.com/adoconnection/RazorEngineCore/wiki/Switch-from-RazorEngine-cshtml-templates)
 * [Azure Functions FileNotFoundException workaround](https://github.com/adoconnection/RazorEngineCore/wiki/Azure-Functions-FileNotFoundException-workaround)
+* [@Html implementation example](https://github.com/adoconnection/RazorEngineCore/wiki/@Html-implementation-example)
 
 ## Extensions
 * [wdcossey/RazorEngineCore.Extensions](https://github.com/wdcossey/RazorEngineCore.Extensions)
@@ -114,7 +117,7 @@ private string RenderTemplate(string template, object model)
 ```
 
 #### Template functions
-ASP.NET Core 3 way of defining template functions:
+ASP.NET Core way of defining template functions:
 ```
 <area>
     @{ RecursionTest(3); }
@@ -190,6 +193,16 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2021.3.1
+	* fixed NET5 publish as single file (thanks [@jddj007-hydra](https://github.com/jddj007-hydra))
+	* AnonymousTypeWrapper array handling fix
+	* System.Collections referenced by default
+	* Microsoft.AspNetCore.Razor.Language 3.1.8 -> 5.0.3
+	* Microsoft.CodeAnalysis.CSharp 3.7.0 -> 3.8.0
+* 2020.10.1
+	* Linux fix for #34
+	* Microsoft.AspNetCore.Razor.Language 3.1.5 -> 3.1.8
+	* Microsoft.CodeAnalysis.CSharp 3.6.0 -> 3.7.0
 * 2020.9.1
 	* .NET 4.7.2 support (thanks [@krmr](https://github.com/krmr))
 * 2020.6.1
