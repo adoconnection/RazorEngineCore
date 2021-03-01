@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Razor.Language;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Emit;
+using System.Reflection.Metadata;
 
 namespace RazorEngineCore
 {
@@ -82,7 +83,21 @@ namespace RazorEngineCore
                     syntaxTree
                 },
                 options.ReferencedAssemblies
-                    .Select(ass => MetadataReference.CreateFromFile(ass.Location))
+                   .Select(ass =>
+                   {
+#if NETSTANDARD2_0
+                            return  MetadataReference.CreateFromFile(ass.Location); 
+#else
+                       unsafe
+                       {
+                           ass.TryGetRawMetadata(out byte* blob, out int length);
+                           var moduleMetadata = ModuleMetadata.CreateFromMetadata((IntPtr)blob, length);
+                           var assemblyMetadata = AssemblyMetadata.Create(moduleMetadata);
+                           var metadataReference = assemblyMetadata.GetReference();
+                           return metadataReference;
+                       }
+#endif
+                   })
                     .Concat(options.MetadataReferences)
                     .ToList(),
                 new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));

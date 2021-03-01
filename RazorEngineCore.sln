@@ -16,6 +16,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleAppCore", "ExampleAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleAppNET472", "ExampleAppNet472\ExampleAppNET472.csproj", "{D27C1578-BFF9-4469-9099-DAF64450BBBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleAppNET5", "ExampleAppNET5\ExampleAppNET5.csproj", "{B19C090A-4EC1-441D-B702-ADD2ECA79198}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{D27C1578-BFF9-4469-9099-DAF64450BBBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D27C1578-BFF9-4469-9099-DAF64450BBBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D27C1578-BFF9-4469-9099-DAF64450BBBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B19C090A-4EC1-441D-B702-ADD2ECA79198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B19C090A-4EC1-441D-B702-ADD2ECA79198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B19C090A-4EC1-441D-B702-ADD2ECA79198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B19C090A-4EC1-441D-B702-ADD2ECA79198}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

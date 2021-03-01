@@ -1,18 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2020.10.1</Version>
+    <Version>2021.03.1</Version>
     <Authors>Alexander Selishchev, Simon Mourier, William David Cossey, Benjamin Smith, Dag H. Baardsen, krmr</Authors>
     <PackageProjectUrl>https://github.com/adoconnection/RazorEngineCore</PackageProjectUrl>
-    <Description>ASP.NET Core 3.1 Razor Template Engine</Description>
-    <AssemblyVersion>2020.10.1.0</AssemblyVersion>
-    <FileVersion>2020.10.1.0</FileVersion>
+    <Description>NET5 Razor Template Engine</Description>
+    <AssemblyVersion>2021.03.1</AssemblyVersion>
+    <FileVersion>2021.03.1</FileVersion>
     <PackageReleaseNotes>– Linux fix: The type 'Object' is defined in an assembly that is not referenced</PackageReleaseNotes>
     <Company>Alexander Selishchev, Simon Mourier, William David Cossey, Benjamin Smith, Dag H. Baardsen, krmr</Company>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="3.1.8" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.7.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="5.0.3" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.8.0" />
   </ItemGroup>
 </Project>
