@@ -446,7 +446,7 @@ void RecursionTest(int level)
         }
 
         [TestMethod]
-        public void TestCompileAndRun_Linq()
+        public void TestCompileAndRun_AnonymousModelWithArrayOfObjects()
         {
             RazorEngine razorEngine = new RazorEngine();
             IRazorEngineCompiledTemplate<TestTemplate2> template = razorEngine.Compile<TestTemplate2>(
@@ -467,6 +467,58 @@ void RecursionTest(int level)
                 {
                     Numbers = new[] { 2, 1, 3 }
                 });
+            });
+
+            Assert.AreEqual(expected, actual);
+        }
+
+
+        [TestMethod]
+        public void TestCompileAndRun_StronglyTypedModelLinq()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate<TestTemplate2> template = razorEngine.Compile<TestTemplate2>(
+@"
+@foreach (var item in Model.Numbers.OrderByDescending(x => x))
+{
+    <p>@item</p>
+}
+");
+            string expected = @"
+    <p>3</p>
+    <p>2</p>
+    <p>1</p>
+";
+            string actual = template.Run(instance =>
+            {
+                instance.Initialize(new TestModel
+                {
+                    Numbers = new[] { 2, 1, 3 }
+                });
+            });
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestCompileAndRun_DynamicModelLinq()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate template = razorEngine.Compile(
+@"
+@foreach (var item in ((IEnumerable<object>)Model.Numbers).OrderByDescending(x => x))
+{
+    <p>@item</p>
+}
+");
+            string expected = @"
+    <p>3</p>
+    <p>2</p>
+    <p>1</p>
+";
+            string actual = template.Run(new
+            {
+                    Numbers = new List<object>() {2, 1, 3}
             });
 
             Assert.AreEqual(expected, actual);
