@@ -117,7 +117,7 @@ private string RenderTemplate(string template, object model)
 ```
 
 #### Template functions
-ASP.NET Core 3 way of defining template functions:
+ASP.NET Core way of defining template functions:
 ```
 <area>
     @{ RecursionTest(3); }
