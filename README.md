@@ -1,6 +1,7 @@
 # RazorEngineCore
-NETCore 3.1.8 Razor Template Engine. No legacy code.
+.NET5 Razor Template Engine. No legacy code.
 * .NET Standard 2.0
+* .NET 5.0
 * .NET Framework 4.7.2
 * Windows / Linux
 
@@ -192,6 +193,12 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2021.3.1
+	* fixed NET5 publish as single file (thanks [@jddj007-hydra](https://github.com/jddj007-hydra))
+	* AnonymousTypeWrapper array handling fix
+	* System.Collections referenced by default
+	* Microsoft.AspNetCore.Razor.Language 3.1.8 -> 5.0.3
+	* Microsoft.CodeAnalysis.CSharp 3.7.0 -> 3.8.0
 * 2020.10.1
 	* Linux fix for #34
 	* Microsoft.AspNetCore.Razor.Language 3.1.5 -> 3.1.8
