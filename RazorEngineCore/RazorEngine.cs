@@ -91,9 +91,10 @@ namespace RazorEngineCore
                        unsafe
                        {
                            ass.TryGetRawMetadata(out byte* blob, out int length);
-                           var moduleMetadata = ModuleMetadata.CreateFromMetadata((IntPtr)blob, length);
-                           var assemblyMetadata = AssemblyMetadata.Create(moduleMetadata);
-                           var metadataReference = assemblyMetadata.GetReference();
+                           ModuleMetadata moduleMetadata = ModuleMetadata.CreateFromMetadata((IntPtr)blob, length);
+                           AssemblyMetadata assemblyMetadata = AssemblyMetadata.Create(moduleMetadata);
+                           PortableExecutableReference metadataReference = assemblyMetadata.GetReference();
+
                            return metadataReference;
                        }
 #endif

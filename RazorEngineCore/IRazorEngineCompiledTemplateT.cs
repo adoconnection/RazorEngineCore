@@ -4,8 +4,7 @@ using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-    public interface IRazorEngineCompiledTemplate<out T> 
-        where T : IRazorEngineTemplate
+    public interface IRazorEngineCompiledTemplate<out T> where T : IRazorEngineTemplate
     {
         void SaveToStream(Stream stream);
         

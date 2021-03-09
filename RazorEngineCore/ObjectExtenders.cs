@@ -13,7 +13,7 @@ namespace RazorEngineCore
             ExpandoObject expando = new ExpandoObject();
             IDictionary<string, object> dictionary = expando;
 
-            foreach (var property in obj.GetType().GetProperties())
+            foreach (PropertyInfo property in obj.GetType().GetProperties())
             {
                 dictionary.Add(property.Name, property.GetValue(obj));
             }
