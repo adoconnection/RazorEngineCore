@@ -15,7 +15,7 @@ namespace RazorEngineCore
         void AddAssemblyReference(Type type);
 
         void AddMetadataReference(MetadataReference reference);
-        
+
         void AddUsing(string namespaceName);
         
         void Inherits(Type type);
