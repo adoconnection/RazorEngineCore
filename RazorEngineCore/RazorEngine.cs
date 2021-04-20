@@ -108,11 +108,9 @@ namespace RazorEngineCore
 
             if (!emitResult.Success)
             {
-                List<Diagnostic> errors = emitResult.Diagnostics.ToList();
-
-                RazorEngineCompilationException exception = new RazorEngineCompilationException($"Unable to compile template: \n{string.Join("\n", errors)}")
+                RazorEngineCompilationException exception = new RazorEngineCompilationException()
                 {
-                    Errors = errors,
+                    Errors = emitResult.Diagnostics.ToList(),
                     GeneratedCode = razorCSharpDocument.GeneratedCode
                 };
 
