@@ -74,6 +74,20 @@ namespace RazorEngineCore.Tests
         }
 
         [TestMethod]
+        public void TestCompileAndRun_InAttributeVariables2()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate template = razorEngine.Compile("<img src='@(\"test\")'>");
+
+            string actual = template.Run(new
+            {
+                Colour = 88
+            });
+
+            Assert.AreEqual("<img src='test'>", actual);
+        }
+
+        [TestMethod]
         public async Task TestCompileAndRun_InAttributeVariablesAsync()
         {
             RazorEngine razorEngine = new RazorEngine();
