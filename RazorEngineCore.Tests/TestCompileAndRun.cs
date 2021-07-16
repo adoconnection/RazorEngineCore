@@ -443,6 +443,28 @@ void RecursionTest(int level)
         }
 
         [TestMethod]
+        public void TestCompileAndRun_TypedModel3()
+        {
+            string templateText = @"
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngineCore.Tests.Models.TestModel>
+Hello @Model.Decorator(Model.C)
+";
+
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel>> template = razorEngine.Compile<RazorEngineTemplateBase<TestModel>>(templateText);
+
+            string actual = template.Run(instance =>
+            {
+                instance.Model = new TestModel
+                {
+                        C = "Alex"
+                };
+            });
+
+            Assert.AreEqual("Hello -=Alex=-", actual.Trim());
+        }
+
+        [TestMethod]
         public async Task TestCompileAndRun_TypedModel2Async()
         {
             RazorEngine razorEngine = new RazorEngine();
