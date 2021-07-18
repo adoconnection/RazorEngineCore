@@ -74,7 +74,7 @@ namespace RazorEngineCore
         {
             using (FileStream fileStream = new FileStream(
                 path: fileName, 
-                mode: FileMode.CreateNew, 
+                mode: FileMode.OpenOrCreate, 
                 access: FileAccess.Write,
                 share: FileShare.None,
                 bufferSize: 4096, 
