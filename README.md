@@ -194,6 +194,10 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2021.7.1
+	* Better error messages #PR54 (thanks [@wdcossey](https://github.com/wdcossey))	
+	* More asyncs #PR53 (thanks [@wdcossey](https://github.com/wdcossey))
+	* Strong name for assembly #59 (thanks [@garryxiao](https://github.com/garryxiao))
 * 2021.3.1
 	* fixed NET5 publish as single file (thanks [@jddj007-hydra](https://github.com/jddj007-hydra))
 	* AnonymousTypeWrapper array handling fix
