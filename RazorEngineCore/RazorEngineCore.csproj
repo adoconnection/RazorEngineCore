@@ -2,13 +2,13 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>2021.3.1</Version>
+    <Version>2021.7.1</Version>
     <Authors>Alexander Selishchev, Simon Mourier, William David Cossey, Benjamin Smith, Dag H. Baardsen, krmr, jddj007-hydra</Authors>
     <PackageProjectUrl>https://github.com/adoconnection/RazorEngineCore</PackageProjectUrl>
     <Description>NET5 Razor Template Engine</Description>
-    <AssemblyVersion>2021.3.1</AssemblyVersion>
-    <FileVersion>2021.3.1</FileVersion>
-    <PackageReleaseNotes>– Linux fix: The type 'Object' is defined in an assembly that is not referenced</PackageReleaseNotes>
+    <AssemblyVersion>2021.7.1</AssemblyVersion>
+    <FileVersion>2021.7.1</FileVersion>
+    <PackageReleaseNotes>PR53, PR54, strong key</PackageReleaseNotes>
     <Company>Alexander Selishchev, Simon Mourier, William David Cossey, Benjamin Smith, Dag H. Baardsen, krmr, jddj007-hydra</Company>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
