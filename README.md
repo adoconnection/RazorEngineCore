@@ -33,6 +33,15 @@ Install-Package RazorEngineCore
 
 ## Extensions
 * [wdcossey/RazorEngineCore.Extensions](https://github.com/wdcossey/RazorEngineCore.Extensions)
+	- HTML values encoded by default (See [issue #65](https://github.com/adoconnection/RazorEngineCore/issues/65) and [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw))
+	- Template precompiling
+	- Direct model usage without RazorEngineTemplateBase
+	```cs
+	template.Run(object model = null)
+	template.RunAsync(object model = null)
+	template.Run<TModel>(TModel model = null)
+	template.RunAsync<TModel>(TModel model = null)
+	```
 
 ## Examples
 
