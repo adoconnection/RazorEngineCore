@@ -1,0 +1,42 @@
+name: .NET build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: windows-latest 
+    
+    env:
+      Solution_Name:  RazorEngineCore.sln
+      Test_Project_Path: RazorEngineCore.Tests
+      Pack_Project_Path: RazorEngineCore
+      Configuration: Release
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Build
+      run: dotnet build $env:Solution_Name --configuration=$env:Configuration
+
+    - name: Execute unit tests
+      run: dotnet test $env:Test_Project_Path --configuration=$env:Configuration --no-build
+
+    - name: Pack
+      run: dotnet pack $env:Pack_Project_Path --configuration=$env:Configuration --no-build -o artifacts -p:symbolPackageFormat=snupkg --include-symbols
+      
+    - name: Store nupkg
+      uses: actions/upload-artifact@v2
+      with:
+        name: Nuget packages
+        path: |
+          artifacts
+  
