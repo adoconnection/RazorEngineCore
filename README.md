@@ -42,6 +42,9 @@ Install-Package RazorEngineCore
 	template.Run<TModel>(TModel model = null)
 	template.RunAsync<TModel>(TModel model = null)
 	```
+## :boom: HTML Safety
+RazorEngineCore is not HTML safe by default. \
+It can be easily turned on: see [#65](https://github.com/adoconnection/RazorEngineCore/issues/65) and [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw)
 
 ## Examples
 
