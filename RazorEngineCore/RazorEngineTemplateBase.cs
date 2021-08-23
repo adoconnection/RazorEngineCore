@@ -5,7 +5,18 @@ namespace RazorEngineCore
 {
     public abstract class RazorEngineTemplateBase : IRazorEngineTemplate
     {
-        private readonly StringBuilder stringBuilder = new StringBuilder();
+        private readonly StringBuilder _stringBuilder = new StringBuilder();
+        private StringBuilder _captureStringBuilder;
+        private StringBuilder stringBuilder => _captureStringBuilder ?? _stringBuilder;
+
+        protected void BeginCapture(StringBuilder sb)
+        {
+            _captureStringBuilder = sb;
+        }
+        protected void EndCapture()
+        {
+            _captureStringBuilder = null;
+        }
 
         private string attributeSuffix = null;
 
