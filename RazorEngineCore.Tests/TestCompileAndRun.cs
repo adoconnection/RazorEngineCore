@@ -74,6 +74,20 @@ namespace RazorEngineCore.Tests
         }
 
         [TestMethod]
+        public void TestCompileAndRun_InAttributeVariables2()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate template = razorEngine.Compile("<img src='@(\"test\")'>");
+
+            string actual = template.Run(new
+            {
+                Colour = 88
+            });
+
+            Assert.AreEqual("<img src='test'>", actual);
+        }
+
+        [TestMethod]
         public async Task TestCompileAndRun_InAttributeVariablesAsync()
         {
             RazorEngine razorEngine = new RazorEngine();
@@ -426,6 +440,28 @@ void RecursionTest(int level)
             });
 
             Assert.AreEqual("Hello -=Alex=-", actual);
+        }
+
+        [TestMethod]
+        public void TestCompileAndRun_TypedModel3()
+        {
+            string templateText = @"
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngineCore.Tests.Models.TestModel>
+Hello @Model.Decorator(Model.C)
+";
+
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel>> template = razorEngine.Compile<RazorEngineTemplateBase<TestModel>>(templateText);
+
+            string actual = template.Run(instance =>
+            {
+                instance.Model = new TestModel
+                {
+                        C = "Alex"
+                };
+            });
+
+            Assert.AreEqual("Hello -=Alex=-", actual.Trim());
         }
 
         [TestMethod]

@@ -5,7 +5,6 @@ namespace RazorEngineCore
     public interface IRazorEngineTemplate
     {
         dynamic Model { get; set; }
-        
         void WriteLiteral(string literal = null);
         
         Task WriteLiteralAsync(string literal = null);

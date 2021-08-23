@@ -33,6 +33,18 @@ Install-Package RazorEngineCore
 
 ## Extensions
 * [wdcossey/RazorEngineCore.Extensions](https://github.com/wdcossey/RazorEngineCore.Extensions)
+	- HTML values encoded by default (See [issue #65](https://github.com/adoconnection/RazorEngineCore/issues/65) and [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw))
+	- Template precompiling
+	- Direct model usage without RazorEngineTemplateBase
+	```cs
+	template.Run(object model = null)
+	template.RunAsync(object model = null)
+	template.Run<TModel>(TModel model = null)
+	template.RunAsync<TModel>(TModel model = null)
+	```
+## :boom: HTML Safety
+RazorEngineCore is not HTML safe by default. \
+It can be easily turned on: see [#65](https://github.com/adoconnection/RazorEngineCore/issues/65) and [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw)
 
 ## Examples
 
@@ -194,6 +206,10 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2021.7.1
+	* Better error messages #PR54 (thanks [@wdcossey](https://github.com/wdcossey))	
+	* More asyncs #PR53 (thanks [@wdcossey](https://github.com/wdcossey))
+	* Strong name for assembly #59 (thanks [@garryxiao](https://github.com/garryxiao))
 * 2021.3.1
 	* fixed NET5 publish as single file (thanks [@jddj007-hydra](https://github.com/jddj007-hydra))
 	* AnonymousTypeWrapper array handling fix

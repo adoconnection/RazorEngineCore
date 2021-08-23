@@ -24,6 +24,13 @@ namespace RazorEngineCore
         
         public string GeneratedCode { get; set; }
 
-        public override string Message => $"Unable to compile template: {string.Join("\n", Errors.Where(w => w.IsWarningAsError || w.Severity == DiagnosticSeverity.Error))}";
+        public override string Message
+        {
+            get
+            {
+                string errors = string.Join("\n", this.Errors.Where(w => w.IsWarningAsError || w.Severity == DiagnosticSeverity.Error));
+                return "Unable to compile template: " + errors;
+            }
+        }
     }
 }

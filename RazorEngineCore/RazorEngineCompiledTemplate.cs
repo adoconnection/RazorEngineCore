@@ -73,11 +73,11 @@ namespace RazorEngineCore
         public Task SaveToFileAsync(string fileName)
         {
             using (FileStream fileStream = new FileStream(
-                path: fileName, 
-                mode: FileMode.OpenOrCreate, 
+                path: fileName,
+                mode: FileMode.OpenOrCreate,
                 access: FileAccess.Write,
                 share: FileShare.None,
-                bufferSize: 4096, 
+                bufferSize: 4096,
                 useAsync: true))
             {
                 return assemblyByteCode.CopyToAsync(fileStream);
