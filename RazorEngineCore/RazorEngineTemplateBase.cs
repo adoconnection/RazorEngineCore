@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace RazorEngineCore
@@ -9,13 +10,19 @@ namespace RazorEngineCore
         private StringBuilder _captureStringBuilder;
         private StringBuilder stringBuilder => _captureStringBuilder ?? _stringBuilder;
 
-        protected void BeginCapture(StringBuilder sb)
+        protected void BeginCapture()
         {
-            _captureStringBuilder = sb;
+            if (_captureStringBuilder != null)
+                throw new InvalidOperationException("Already capturing");
+            _captureStringBuilder = new StringBuilder();
         }
-        protected void EndCapture()
+        protected string EndCapture()
         {
+            if (_captureStringBuilder == null)
+                throw new InvalidOperationException("Not capturing");
+            string result = _captureStringBuilder.ToString();
             _captureStringBuilder = null;
+            return result;
         }
 
         private string attributeSuffix = null;

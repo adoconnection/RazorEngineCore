@@ -32,6 +32,7 @@ namespace ExampleApp
                 {
                     This is in a section
                 }
+
             ";
 
             IDictionary<string, string> parts = new Dictionary<string, string>()
@@ -39,7 +40,9 @@ namespace ExampleApp
                     {"MyLayout", @"
                         LAYOUT HEADER
                             @RenderBody()
+                            Before section
                             @RenderSection(""mysection"")
+                            After section
                         LAYOUT FOOTER
                     "},
                     {"outer", "This is Outer include, <@Model.Title>, @Include(\"inner\")"},
@@ -82,11 +85,9 @@ namespace ExampleApp
         public void DefineSection(string name, Action a)
         {
             Debug.WriteLine("DefineSection " + name);
-            var sb = new StringBuilder();
-            BeginCapture(sb);
+            BeginCapture();
             a();
-            EndCapture();
-            string content = sb.ToString();
+            string content = EndCapture();
             Sections.Add(name, content);
             Debug.WriteLine("Section content:");
             Debug.WriteLine(content);
