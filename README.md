@@ -247,3 +247,6 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 * 2020.2.3
 	* Html attribute rendering fix
 	* Html attribute rendering tests
+
+## Supported by
+<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_square.svg" />
