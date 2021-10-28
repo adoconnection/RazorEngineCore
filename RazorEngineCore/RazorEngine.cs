@@ -14,33 +14,37 @@ namespace RazorEngineCore
 {
     public class RazorEngine : IRazorEngine
     {
-        public IRazorEngineCompiledTemplate<T> Compile<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
+        public IRazorEngineCompiledTemplate<T> Compile<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, bool addPdb = false) where T : IRazorEngineTemplate
         {
             IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
             compilationOptionsBuilder.AddAssemblyReference(typeof(T).Assembly);
             compilationOptionsBuilder.Inherits(typeof(T));
 
             builderAction?.Invoke(compilationOptionsBuilder);
-
-            CompiledStreams streams = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
-            return new RazorEngineCompiledTemplate<T>(streams.assembly, compilationOptionsBuilder.Options.TemplateNamespace);
+            if (compilationOptionsBuilder.Options.GeneratePdbStream)
+            {
+                CompiledStreams streams = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
+                return new RazorEngineCompiledTemplate<T>(streams.assembly, compilationOptionsBuilder.Options.TemplateNamespace, streams.pdb);
+            }
+            else
+            {
+                CompiledStreams streams = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
+                return new RazorEngineCompiledTemplate<T>(streams.assembly, compilationOptionsBuilder.Options.TemplateNamespace);
+            }
         }
 
         public Task<IRazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
         {
             return Task.Factory.StartNew(() => this.Compile<T>(content: content, builderAction: builderAction));
         }
-        public IRazorEngineCompiledTemplate Compile(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null)
-        {
-            return Compile(content, builderAction, false);
-        }
+
         public IRazorEngineCompiledTemplate Compile(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, bool addPdb = false)
         {
             IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
             compilationOptionsBuilder.Inherits(typeof(RazorEngineTemplateBase));
 
             builderAction?.Invoke(compilationOptionsBuilder);
-            if (compilationOptionsBuilder.Options.GeneratePdbSteram)
+            if (compilationOptionsBuilder.Options.GeneratePdbStream)
             {
                 CompiledStreams streams = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
                 return new RazorEngineCompiledTemplate(streams.assembly, compilationOptionsBuilder.Options.TemplateNamespace, streams.pdb);
@@ -62,12 +66,12 @@ namespace RazorEngineCore
         {
             templateSource = this.WriteDirectives(templateSource, options);
             string projectPath = @".";
-            string fileName = Path.GetRandomFileName()+".cshtml";
-            if (options.GeneratePdbSteram)
+            string pdbfileName = Path.GetRandomFileName() + ".cshtml";
+            if (options.GeneratePdbStream)
             {
                 projectPath = Path.GetTempPath();
                 Directory.CreateDirectory(projectPath);
-                File.WriteAllText(Path.Combine(projectPath, fileName), templateSource);
+                File.WriteAllText(Path.Combine(projectPath, pdbfileName), templateSource);
             }
 
             RazorProjectEngine engine = RazorProjectEngine.Create(
@@ -119,7 +123,7 @@ namespace RazorEngineCore
                 new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
             CompiledStreams streams = new CompiledStreams();
             EmitResult emitResult;
-            if (options.GeneratePdbSteram)
+            if (options.GeneratePdbStream)
                 emitResult = compilation.Emit(streams.assembly, streams.pdb);
             else
                 emitResult = compilation.Emit(streams.assembly);
@@ -136,7 +140,7 @@ namespace RazorEngineCore
             }
 
             streams.assembly.Position = 0;
-            if(options.GeneratePdbSteram)
+            if(options.GeneratePdbStream)
                 streams.pdb.Position = 0;
             return streams;
         }
@@ -156,7 +160,7 @@ namespace RazorEngineCore
             return stringBuilder.ToString();
         }
 
-        private class CompiledStreams
+        protected class CompiledStreams
         {
             public CompiledStreams()
             {

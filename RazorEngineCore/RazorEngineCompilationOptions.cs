@@ -15,7 +15,7 @@ namespace RazorEngineCore
         public string TemplateFilename { get; set; } = "";
         public string Inherits { get; set; } = "RazorEngineCore.RazorEngineTemplateBase";
         ///Set to true to generate PDB symbols information along with the assembly for debugging support
-        public bool GeneratePdbSteram {get;set;} = false;
+        public bool GeneratePdbStream {get;set;} = false;
         public HashSet<string> DefaultUsings { get; set; } = new HashSet<string>()
         {
             "System.Linq",

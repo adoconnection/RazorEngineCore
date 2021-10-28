@@ -17,6 +17,13 @@ namespace RazorEngineCore
             Assembly assembly = Assembly.Load(assemblyByteCode.ToArray());
             this.templateType = assembly.GetType($"{templateNamespace}.Template");
         }
+        internal RazorEngineCompiledTemplate(MemoryStream assemblyByteCode, string templateNamespace, MemoryStream pdbByteCode)
+        {
+            this.assemblyByteCode = assemblyByteCode;
+
+            Assembly assembly = Assembly.Load(assemblyByteCode.ToArray(), pdbByteCode.ToArray());
+            this.templateType = assembly.GetType(templateNamespace + ".Template");
+        }
 
         public static IRazorEngineCompiledTemplate<T> LoadFromFile(string fileName, string templateNamespace = "TemplateNamespace")
         {
