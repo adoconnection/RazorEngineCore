@@ -23,10 +23,9 @@ namespace RazorEngineCore
 
             builderAction?.Invoke(compilationOptionsBuilder);
 
-            MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
-
-            return new RazorEngineCompiledTemplate<T>(memoryStream);
-        }
+            CompiledStreams streams = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
+            return new RazorEngineCompiledTemplate<T>(streams.assembly);
+            }
 
         public Task<IRazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
         {
@@ -40,14 +39,13 @@ namespace RazorEngineCore
             builderAction?.Invoke(compilationOptionsBuilder);
             if (compilationOptionsBuilder.Options.GeneratePdbSteram)
             {
-                MemoryStream pdbStream = new MemoryStream();
-                MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options, pdbStream);
-                return new RazorEngineCompiledTemplate(memoryStream,pdbStream);
+                CompiledStreams streams = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
+                return new RazorEngineCompiledTemplate(streams.assembly,streams.pdb);
             }
             else
             {
-                MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
-                return new RazorEngineCompiledTemplate(memoryStream);
+                CompiledStreams streams = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
+                return new RazorEngineCompiledTemplate(streams.assembly);
             }
 
         }
@@ -57,12 +55,12 @@ namespace RazorEngineCore
             return Task.Factory.StartNew(() => this.Compile(content: content, builderAction: builderAction));
         }
 
-        private MemoryStream CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options, MemoryStream pdbStream = null)
+        private CompiledStreams CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options)
         {
             templateSource = this.WriteDirectives(templateSource, options);
             string projectPath = @".";
             string fileName = Path.GetRandomFileName()+".cshtml";
-            if (pdbStream != null)
+            if (options.GeneratePdbSteram)
             {
                 projectPath = Path.GetTempPath();
                 Directory.CreateDirectory(projectPath);
@@ -114,13 +112,12 @@ namespace RazorEngineCore
                     .Concat(options.MetadataReferences)
                     .ToList(),
                 new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
-
-            MemoryStream memoryStream = new MemoryStream();
+            CompiledStreams streams = new CompiledStreams();
             EmitResult emitResult;
-            if (pdbStream != null)
-                emitResult = compilation.Emit(memoryStream, pdbStream);
+            if (options.GeneratePdbSteram)
+                emitResult = compilation.Emit(streams.assembly, streams.pdb);
             else
-                emitResult = compilation.Emit(memoryStream);
+                emitResult = compilation.Emit(streams.assembly);
 
             if (!emitResult.Success)
             {
@@ -133,10 +130,10 @@ namespace RazorEngineCore
                 throw exception;
             }
 
-            memoryStream.Position = 0;
-            if (pdbStream != null) 
-                pdbStream.Position = 0;
-            return memoryStream;
+            streams.assembly.Position = 0;
+            if(options.GeneratePdbSteram)
+                streams.pdb.Position = 0;
+            return streams;
         }
 
         private string WriteDirectives(string content, RazorEngineCompilationOptions options)
@@ -152,6 +149,17 @@ namespace RazorEngineCore
             stringBuilder.Append(content);
 
             return stringBuilder.ToString();
+        }
+
+        private class CompiledStreams
+        {
+            public CompiledStreams()
+            {
+                assembly = new MemoryStream();
+                pdb = new MemoryStream();
+            }
+            public MemoryStream assembly {get;set;}
+            public MemoryStream pdb {get;set;}
         }
     }
 }
