@@ -41,7 +41,7 @@ namespace RazorEngineCore
             compilationOptionsBuilder.Inherits(typeof(RazorEngineTemplateBase));
 
             builderAction?.Invoke(compilationOptionsBuilder);
-            if (addPdb)
+            if (compilationOptionsBuilder.Options.GeneratePdbSteram)
             {
                 MemoryStream pdbStream = new MemoryStream();
                 MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options, pdbStream);
