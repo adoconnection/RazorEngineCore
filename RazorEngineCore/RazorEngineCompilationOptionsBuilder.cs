@@ -67,5 +67,10 @@ namespace RazorEngineCore
 
             return result + "<" + string.Join(",", type.GenericTypeArguments.Select(this.RenderTypeName)) + ">";
         }
+
+        public void GeneratePdbSteram(bool flag)
+        {
+            this.Options.GeneratePdbSteram = flag;
+        }
     }
 }
