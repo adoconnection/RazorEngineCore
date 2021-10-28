@@ -208,6 +208,23 @@ IRazorEngineCompiledTemplate compiledTemplate = razorEngine.Compile(templateText
 string result = compiledTemplate.Run(new { name = "Hello" });
 ```
 
+#### Debugging templates
+Add the following line in your template source and your debugger(vs code/vs studio) break on it.
+```cs
+System.Diagnostics.Debugger.Break();
+```
+Use this overload for the Compile function and pass true for the addPdb argument
+```cs
+razorEngine.Compile(templateSource, builder =>
+{
+    builder.AddAssemblyReferenceByName("System.Security"); // by name
+    builder.AddAssemblyReference(typeof(System.IO.File)); // by type
+    builder.AddAssemblyReference(Assembly.Load("source")); // by reference
+},
+true); //This 'true' will enable debugging.
+```
+Your debbuger will ask you to provide the path to the source file, by defult it is set to be generated in %temp% (point your there when asked for the file). 
+
 
 #### Credits
 This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/47756437/267736)
@@ -216,6 +233,8 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 #### Changelog
 * 2022.8.1
 	* Proper namespace handling for nested types and types without namespace #113 (thanks [@Kirmiir](https://github.com/Kirmiir))	
+* 2022.7.6
+	* Added the option to genereate pdb alongside the assembly which allows debugging the templates.
 * 2022.1.2
 	* #94 publish as single file fix 	
 * 2022.1.1
