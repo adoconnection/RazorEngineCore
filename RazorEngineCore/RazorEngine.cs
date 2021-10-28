@@ -34,15 +34,11 @@ namespace RazorEngineCore
         }
         public IRazorEngineCompiledTemplate Compile(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null)
         {
-            return Compile(content,builderAction,false);
-        }
-        public IRazorEngineCompiledTemplate Compile(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, bool addPdb = false)
-        {
             IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
             compilationOptionsBuilder.Inherits(typeof(RazorEngineTemplateBase));
 
             builderAction?.Invoke(compilationOptionsBuilder);
-            if (addPdb)
+            if (compilationOptionsBuilder.Options.GeneratePdbSteram)
             {
                 MemoryStream pdbStream = new MemoryStream();
                 MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options, pdbStream);
