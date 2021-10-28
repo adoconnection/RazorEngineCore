@@ -17,7 +17,6 @@ namespace RazorEngineCore
         public IRazorEngineCompiledTemplate<T> Compile<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
         {
             IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
-
             compilationOptionsBuilder.AddAssemblyReference(typeof(T).Assembly);
             compilationOptionsBuilder.Inherits(typeof(T));
 
@@ -32,17 +31,28 @@ namespace RazorEngineCore
         {
             return Task.Factory.StartNew(() => this.Compile<T>(content: content, builderAction: builderAction));
         }
-
         public IRazorEngineCompiledTemplate Compile(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null)
+        {
+            return Compile(content, builderAction, false);
+        }
+        public IRazorEngineCompiledTemplate Compile(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, bool addPdb = false)
         {
             IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
             compilationOptionsBuilder.Inherits(typeof(RazorEngineTemplateBase));
 
             builderAction?.Invoke(compilationOptionsBuilder);
+            if (addPdb)
+            {
+                MemoryStream pdbStream = new MemoryStream();
+                MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options, pdbStream);
+                return new RazorEngineCompiledTemplate(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace, pdbStream);
+            }
+            else
+            {
+                MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
+                return new RazorEngineCompiledTemplate(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
+            }
 
-            MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
-
-            return new RazorEngineCompiledTemplate(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
         }
 
         public Task<IRazorEngineCompiledTemplate> CompileAsync(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null)
@@ -50,13 +60,21 @@ namespace RazorEngineCore
             return Task.Factory.StartNew(() => this.Compile(content: content, builderAction: builderAction));
         }
 
-        protected virtual MemoryStream CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options)
+        protected virtual MemoryStream CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options, MemoryStream pdbStream = null)
         {
             templateSource = this.WriteDirectives(templateSource, options);
+            string projectPath = @".";
+            string fileName = Path.GetRandomFileName()+".cshtml";
+            if (pdbStream != null)
+            {
+                projectPath = Path.GetTempPath();
+                Directory.CreateDirectory(projectPath);
+                File.WriteAllText(Path.Combine(projectPath, fileName), templateSource);
+            }
 
             RazorProjectEngine engine = RazorProjectEngine.Create(
                 RazorConfiguration.Default,
-                RazorProjectFileSystem.Create(@"."),
+                RazorProjectFileSystem.Create(projectPath),
                 (builder) =>
                 {
                     builder.SetNamespace(options.TemplateNamespace);
@@ -73,7 +91,6 @@ namespace RazorEngineCore
                 new List<TagHelperDescriptor>());
 
             RazorCSharpDocument razorCSharpDocument = codeDocument.GetCSharpDocument();
-
             SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(razorCSharpDocument.GeneratedCode);
 
             CSharpCompilation compilation = CSharpCompilation.Create(
@@ -104,8 +121,11 @@ namespace RazorEngineCore
                 new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 
             MemoryStream memoryStream = new MemoryStream();
-
-            EmitResult emitResult = compilation.Emit(memoryStream);
+            EmitResult emitResult;
+            if (pdbStream != null)
+                emitResult = compilation.Emit(memoryStream, pdbStream);
+            else
+                emitResult = compilation.Emit(memoryStream);
 
             if (!emitResult.Success)
             {
@@ -119,7 +139,8 @@ namespace RazorEngineCore
             }
 
             memoryStream.Position = 0;
-
+            if (pdbStream != null) 
+                pdbStream.Position = 0;
             return memoryStream;
         }
 
