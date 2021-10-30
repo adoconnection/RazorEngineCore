@@ -62,7 +62,7 @@ namespace RazorEngineCore
                     builder.SetNamespace(options.TemplateNamespace);
                 });
 
-            string fileName = Path.GetRandomFileName();
+            string fileName = string.IsNullOrWhiteSpace(options.TemplateFilename) ? Path.GetRandomFileName() : options.TemplateFilename;
 
             RazorSourceDocument document = RazorSourceDocument.Create(templateSource, fileName);
             
