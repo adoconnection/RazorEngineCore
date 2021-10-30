@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 namespace RazorEngineCore
 {
     public class RazorEngineCompiledTemplate : IRazorEngineCompiledTemplate
-    {
+    {        
         private readonly MemoryStream assemblyByteCode;
         private readonly Type templateType;
 
-        internal RazorEngineCompiledTemplate(MemoryStream assemblyByteCode)
+        internal RazorEngineCompiledTemplate(MemoryStream assemblyByteCode, string templateNamespace)
         {
             this.assemblyByteCode = assemblyByteCode;
 
             Assembly assembly = Assembly.Load(assemblyByteCode.ToArray());
-            this.templateType = assembly.GetType("TemplateNamespace.Template");
+            this.templateType = assembly.GetType($"{templateNamespace}.Template");
         }
 
-        public static IRazorEngineCompiledTemplate LoadFromFile(string fileName)
+        public static IRazorEngineCompiledTemplate LoadFromFile(string fileName, string templateNamespace = "TemplateNamespace")
         {
-            return LoadFromFileAsync(fileName: fileName).GetAwaiter().GetResult();
+            return LoadFromFileAsync(fileName: fileName, templateNamespace: templateNamespace).GetAwaiter().GetResult();
         }
 
-        public static async Task<IRazorEngineCompiledTemplate> LoadFromFileAsync(string fileName)
+        public static async Task<IRazorEngineCompiledTemplate> LoadFromFileAsync(string fileName, string templateNamespace = "TemplateNamespace")
         {
             MemoryStream memoryStream = new MemoryStream();
             
@@ -38,7 +38,7 @@ namespace RazorEngineCore
                 await fileStream.CopyToAsync(memoryStream);
             }
             
-            return new RazorEngineCompiledTemplate(memoryStream);
+            return new RazorEngineCompiledTemplate(memoryStream, templateNamespace);
         }
         
         public static IRazorEngineCompiledTemplate LoadFromStream(Stream stream)
@@ -46,13 +46,13 @@ namespace RazorEngineCore
             return LoadFromStreamAsync(stream).GetAwaiter().GetResult();
         }
         
-        public static async Task<IRazorEngineCompiledTemplate> LoadFromStreamAsync(Stream stream)
+        public static async Task<IRazorEngineCompiledTemplate> LoadFromStreamAsync(Stream stream, string templateNamespace = "TemplateNamespace")
         {
             MemoryStream memoryStream = new MemoryStream();
             await stream.CopyToAsync(memoryStream);
             memoryStream.Position = 0;
             
-            return new RazorEngineCompiledTemplate(memoryStream);
+            return new RazorEngineCompiledTemplate(memoryStream, templateNamespace);
         }
 
         public void SaveToStream(Stream stream)
