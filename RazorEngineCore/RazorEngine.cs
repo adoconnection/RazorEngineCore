@@ -25,7 +25,7 @@ namespace RazorEngineCore
 
             MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
            
-            return new RazorEngineCompiledTemplate<T>(memoryStream);
+            return new RazorEngineCompiledTemplate<T>(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
         }
 
         public Task<IRazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
@@ -42,7 +42,7 @@ namespace RazorEngineCore
 
             MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
 
-            return new RazorEngineCompiledTemplate(memoryStream);
+            return new RazorEngineCompiledTemplate(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
         }
 
         public Task<IRazorEngineCompiledTemplate> CompileAsync(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null)
