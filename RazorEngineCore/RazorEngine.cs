@@ -85,7 +85,7 @@ namespace RazorEngineCore
                 options.ReferencedAssemblies
                    .Select(ass =>
                    {
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER
                             return  MetadataReference.CreateFromFile(ass.Location); 
 #else
                        unsafe
