@@ -1,5 +1,6 @@
 # RazorEngineCore
-.NET5 Razor Template Engine. No legacy code.
+.NET6 Razor Template Engine. No legacy code.
+* .NET 6.0
 * .NET 5.0
 * .NET Standard 2.0
 * .NET Framework 4.7.2
@@ -207,6 +208,14 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2022.1.1
+	* Make private methods in RazorEngine protected and virtual #PR88 (thanks [@wdcossey](https://github.com/wdcossey))	
+	* Dictionary bug in anonymous model #91 (thanks [@jddj007-hydra](https://github.com/jddj007-hydra))	
+	* Template name fix #PR84 (thanks [@Yazwh0](https://github.com/Yazwh0))	
+	* CI for GitHub Actions #PR69 (thanks [@304NotModified](https://github.com/304NotModified))	
+	* Added Source Link #PR67 (thanks [@304NotModified](https://github.com/304NotModified))	
+	* Microsoft.AspNetCore.Razor.Language 3.1.8 -> 6.0.1
+	* Microsoft.CodeAnalysis.CSharp 3.7.0 -> 4.0.1
 * 2021.7.1
 	* Better error messages #PR54 (thanks [@wdcossey](https://github.com/wdcossey))	
 	* More asyncs #PR53 (thanks [@wdcossey](https://github.com/wdcossey))
