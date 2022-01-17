@@ -15,12 +15,12 @@ namespace RazorEngineCore
             this.assemblyByteCode = assemblyByteCode;
 
             Assembly assembly = Assembly.Load(assemblyByteCode.ToArray());
-            this.templateType = assembly.GetType($"{templateNamespace}.Template");
+            this.templateType = assembly.GetType(templateNamespace + ".Template");
         }
 
         public static IRazorEngineCompiledTemplate LoadFromFile(string fileName, string templateNamespace = "TemplateNamespace")
         {
-            return LoadFromFileAsync(fileName: fileName, templateNamespace: templateNamespace).GetAwaiter().GetResult();
+            return LoadFromFileAsync(fileName, templateNamespace).GetAwaiter().GetResult();
         }
 
         public static async Task<IRazorEngineCompiledTemplate> LoadFromFileAsync(string fileName, string templateNamespace = "TemplateNamespace")
