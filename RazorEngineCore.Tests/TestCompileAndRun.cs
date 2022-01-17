@@ -357,6 +357,68 @@ namespace RazorEngineCore.Tests
             Assert.AreEqual(expected, actual);
         }
 
+
+        [TestMethod]
+        public void TestCompileAndRun_DynamicModel_Dictionary1()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            var model = new
+            {
+                Dictionary = new Dictionary<string, object>()
+                {
+                    { "K1", "V1"},
+                    { "K2", "V2"},
+                }
+            };
+
+            var template = razorEngine.Compile(@"
+@foreach (var key in Model.Dictionary.Keys)
+{
+<div>@key</div>
+}
+<div>@Model.Dictionary[""K1""]</div>
+<div>@Model.Dictionary[""K2""]</div>
+");
+
+            string actual = template.Run(model);
+            string expected = @"
+<div>K1</div>
+<div>K2</div>
+<div>V1</div>
+<div>V2</div>
+";
+            Assert.AreEqual(expected, actual);
+        }
+
+
+        [TestMethod]
+        public void TestCompileAndRun_DynamicModel_Dictionary2()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+
+            var model = new
+            {
+                Dictionary = new Dictionary<string, object>()
+                {
+                    { "K1", new { x = 1 } },
+                    { "K2", new { x = 2 } },
+                }
+            };
+
+            var template = razorEngine.Compile(@"
+<div>@Model.Dictionary[""K1""].x</div>
+<div>@Model.Dictionary[""K2""].x</div>
+");
+
+            string actual = template.Run(model);
+            string expected = @"
+<div>1</div>
+<div>2</div>
+";
+            Assert.AreEqual(expected, actual);
+        }
+
         [TestMethod]
         public void TestCompileAndRun_TestFunction()
         {
