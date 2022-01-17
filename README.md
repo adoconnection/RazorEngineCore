@@ -23,6 +23,7 @@ Install-Package RazorEngineCore
 * [CodeProject: Building String Razor Template Engine with Bare Hands](https://www.codeproject.com/Articles/5260233/Building-String-Razor-Template-Engine-with-Bare-Ha)
 
 ## Wiki
+* [Package comparison: RazorEngineCore / RazorLight / RazorEngine.NetCore](https://github.com/adoconnection/RazorEngineCore/wiki/Package-comparison)
 * [Strongly typed model](https://github.com/adoconnection/RazorEngineCore/wiki/Strongly-typed-model)
 * [@Include and @Layout](https://github.com/adoconnection/RazorEngineCore/wiki/@Include-and-@Layout)
 * [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw)
@@ -33,6 +34,18 @@ Install-Package RazorEngineCore
 
 ## Extensions
 * [wdcossey/RazorEngineCore.Extensions](https://github.com/wdcossey/RazorEngineCore.Extensions)
+	- HTML values encoded by default (See [issue #65](https://github.com/adoconnection/RazorEngineCore/issues/65) and [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw))
+	- Template precompiling
+	- Direct model usage without RazorEngineTemplateBase
+	```cs
+	template.Run(object model = null)
+	template.RunAsync(object model = null)
+	template.Run<TModel>(TModel model = null)
+	template.RunAsync<TModel>(TModel model = null)
+	```
+## :boom: HTML Safety
+RazorEngineCore is not HTML safe by default. \
+It can be easily turned on: see [#65](https://github.com/adoconnection/RazorEngineCore/issues/65) and [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw)
 
 ## Examples
 
@@ -235,3 +248,6 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 * 2020.2.3
 	* Html attribute rendering fix
 	* Html attribute rendering tests
+
+## Supported by
+<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_square.svg" />
