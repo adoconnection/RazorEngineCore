@@ -25,7 +25,7 @@ namespace RazorEngineCore
 
             MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
 
-            return new RazorEngineCompiledTemplate<T>(memoryStream);
+            return new RazorEngineCompiledTemplate<T>(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
         }
 
         public Task<IRazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
@@ -42,7 +42,7 @@ namespace RazorEngineCore
 
             MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
 
-            return new RazorEngineCompiledTemplate(memoryStream);
+            return new RazorEngineCompiledTemplate(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
         }
 
         public Task<IRazorEngineCompiledTemplate> CompileAsync(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null)
@@ -62,7 +62,7 @@ namespace RazorEngineCore
                     builder.SetNamespace(options.TemplateNamespace);
                 });
 
-            string fileName = Path.GetRandomFileName();
+            string fileName = string.IsNullOrWhiteSpace(options.TemplateFilename) ? Path.GetRandomFileName() : options.TemplateFilename;
 
             RazorSourceDocument document = RazorSourceDocument.Create(templateSource, fileName);
 
@@ -85,7 +85,7 @@ namespace RazorEngineCore
                 options.ReferencedAssemblies
                    .Select(ass =>
                    {
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER
                             return  MetadataReference.CreateFromFile(ass.Location); 
 #else
                        unsafe
