@@ -12,6 +12,7 @@ namespace RazorEngineCore
 
         public HashSet<MetadataReference> MetadataReferences { get; set; } = new HashSet<MetadataReference>();
         public string TemplateNamespace { get; set; } = "TemplateNamespace";
+        public string TemplateFilename { get; set; } = "";
         public string Inherits { get; set; } = "RazorEngineCore.RazorEngineTemplateBase";
 
         public HashSet<string> DefaultUsings { get; set; } = new HashSet<string>()

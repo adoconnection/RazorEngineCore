@@ -24,7 +24,7 @@ namespace RazorEngineCore
             builderAction?.Invoke(compilationOptionsBuilder);
 
             MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
-           
+
             return new RazorEngineCompiledTemplate<T>(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
         }
 
@@ -62,7 +62,7 @@ namespace RazorEngineCore
                     builder.SetNamespace(options.TemplateNamespace);
                 });
 
-            string fileName = Path.GetRandomFileName();
+            string fileName = string.IsNullOrWhiteSpace(options.TemplateFilename) ? Path.GetRandomFileName() : options.TemplateFilename;
 
             RazorSourceDocument document = RazorSourceDocument.Create(templateSource, fileName);
 
@@ -85,7 +85,7 @@ namespace RazorEngineCore
                 options.ReferencedAssemblies
                    .Select(ass =>
                    {
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER
                             return  MetadataReference.CreateFromFile(ass.Location); 
 #else
                        unsafe
