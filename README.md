@@ -208,6 +208,8 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2022.1.2
+	* #94 publish as single file fix 	
 * 2022.1.1
 	* Make private methods in RazorEngine protected and virtual #PR88 (thanks [@wdcossey](https://github.com/wdcossey))	
 	* Dictionary bug in anonymous model #91 (thanks [@jddj007-hydra](https://github.com/jddj007-hydra))	
