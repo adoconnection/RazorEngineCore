@@ -20,6 +20,9 @@ Every single star makes maintainer happy! ⭐
 Install-Package RazorEngineCore
 ```
 
+## Feature requrests
+Feel free to create new issues and vote for existing ones!
+
 ## Articles
 * [CodeProject: Building String Razor Template Engine with Bare Hands](https://www.codeproject.com/Articles/5260233/Building-String-Razor-Template-Engine-with-Bare-Ha)
 
