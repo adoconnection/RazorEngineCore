@@ -20,7 +20,7 @@ Every single star makes maintainer happy! ⭐
 Install-Package RazorEngineCore
 ```
 
-## Feature requrests
+## Feature requests
 ✅ Feel free to create new issues and vote for existing ones!
 
 
