@@ -14,7 +14,7 @@ namespace RazorEngineCore
 {
     public class RazorEngine : IRazorEngine
     {
-        public IRazorEngineCompiledTemplate<T> Compile<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate<R>
+        public IRazorEngineCompiledTemplate<T, R> Compile<T, R>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate<R>
         {
             IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
 
@@ -25,10 +25,24 @@ namespace RazorEngineCore
 
             MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
 
-            return new RazorEngineCompiledTemplate<T>(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
+            return new RazorEngineCompiledTemplate<T, R>(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
         }
 
-        public Task<IRazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate<string>
+        public IRazorEngineCompiledTemplate<T, string> Compile<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate<string>
+        {
+            IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
+
+            compilationOptionsBuilder.AddAssemblyReference(typeof(T).Assembly);
+            compilationOptionsBuilder.Inherits(typeof(T));
+
+            builderAction?.Invoke(compilationOptionsBuilder);
+
+            MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
+
+            return new RazorEngineCompiledTemplate<T, string>(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
+        }
+
+        public Task<IRazorEngineCompiledTemplate<T, string>> CompileAsync<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate<string>
         {
             return Task.Factory.StartNew(() => this.Compile<T>(content: content, builderAction: builderAction));
         }
@@ -137,5 +151,7 @@ namespace RazorEngineCore
 
             return stringBuilder.ToString();
         }
+
+        
     }
 }

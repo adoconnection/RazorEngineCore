@@ -14,7 +14,7 @@ namespace RazorEngineCore.Tests
         {
             RazorEngine razorEngine = new RazorEngine();
 
-            IRazorEngineCompiledTemplate initialTemplate = razorEngine.Compile("@{ var message = \"OK\"; }@message",
+            IRazorEngineCompiledTemplate<string> initialTemplate = razorEngine.Compile("@{ var message = \"OK\"; }@message",
                 builder => { builder.Options.TemplateNamespace = "Test.Namespace"; });
 
             var result = initialTemplate.Run();
