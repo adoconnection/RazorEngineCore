@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using RazorEngineCore;
 
 namespace ExampleApp
@@ -10,16 +11,29 @@ namespace ExampleApp
         public IEnumerable<int> Items { get; set; }
     }
 
-
     class Program
     {
-        static string Content = @"
+        static readonly string Content = @"
 Hello @Model.Name
+
+@{
+    string testheader = "" ---------------- mytest: will show the modified items ----------- "";
+    List<string> myitems = new ();
+    foreach (var item in Model.Items) {
+        myitems.Add("" ---->>>> "" + item);
+    }
+}
 
 @foreach(var item in @Model.Items)
 {
     <div>- @item</div>
 }
+@testheader
+@foreach(var myitem in @myitems)
+{
+    @myitem
+}
+
 
 <div data-name=""@Model.Name""></div>
 
@@ -42,7 +56,15 @@ Hello @Model.Name
         static void Main(string[] args)
         {
             IRazorEngine razorEngine = new RazorEngine();
-            IRazorEngineCompiledTemplate template = razorEngine.Compile(Content);
+            IRazorEngineCompiledTemplate<string> template = razorEngine.Compile(Content);
+
+            /*
+            StringBuilder stringBuilder = new StringBuilder();
+            byte[] somebytes = { 0x02, 0x04, 0x50 };
+            stringBuilder.Append(somebytes);
+
+            var s = stringBuilder.ToString();
+            */
 
             string result = template.Run(new
             {

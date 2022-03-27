@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-    public class RazorEngineCompiledTemplate : IRazorEngineCompiledTemplate
+    public class RazorEngineCompiledTemplate<R> : IRazorEngineCompiledTemplate<R>
     {        
         private readonly MemoryStream assemblyByteCode;
         private readonly Type templateType;
@@ -18,16 +18,16 @@ namespace RazorEngineCore
             this.templateType = assembly.GetType(templateNamespace + ".Template");
         }
 
-        public static IRazorEngineCompiledTemplate LoadFromFile(string fileName, string templateNamespace = "TemplateNamespace")
+        public static IRazorEngineCompiledTemplate<R> LoadFromFile(string fileName, string templateNamespace = "TemplateNamespace")
         {
             return LoadFromFileAsync(fileName, templateNamespace).GetAwaiter().GetResult();
         }
 
-        public static async Task<IRazorEngineCompiledTemplate> LoadFromFileAsync(string fileName, string templateNamespace = "TemplateNamespace")
+        public static async Task<IRazorEngineCompiledTemplate<R>> LoadFromFileAsync(string fileName, string templateNamespace = "TemplateNamespace")
         {
-            MemoryStream memoryStream = new MemoryStream();
+            MemoryStream memoryStream = new();
             
-            using (FileStream fileStream = new FileStream(
+            using (FileStream fileStream = new(
                 path: fileName, 
                 mode: FileMode.Open, 
                 access: FileAccess.Read,
@@ -38,21 +38,21 @@ namespace RazorEngineCore
                 await fileStream.CopyToAsync(memoryStream);
             }
             
-            return new RazorEngineCompiledTemplate(memoryStream, templateNamespace);
+            return new RazorEngineCompiledTemplate<R>(memoryStream, templateNamespace);
         }
         
-        public static IRazorEngineCompiledTemplate LoadFromStream(Stream stream)
+        public static IRazorEngineCompiledTemplate<R> LoadFromStream(Stream stream)
         {
             return LoadFromStreamAsync(stream).GetAwaiter().GetResult();
         }
         
-        public static async Task<IRazorEngineCompiledTemplate> LoadFromStreamAsync(Stream stream, string templateNamespace = "TemplateNamespace")
+        public static async Task<IRazorEngineCompiledTemplate<R>> LoadFromStreamAsync(Stream stream, string templateNamespace = "TemplateNamespace")
         {
-            MemoryStream memoryStream = new MemoryStream();
+            MemoryStream memoryStream = new();
             await stream.CopyToAsync(memoryStream);
             memoryStream.Position = 0;
             
-            return new RazorEngineCompiledTemplate(memoryStream, templateNamespace);
+            return new RazorEngineCompiledTemplate<R>(memoryStream, templateNamespace);
         }
 
         public void SaveToStream(Stream stream)
@@ -72,31 +72,29 @@ namespace RazorEngineCore
         
         public Task SaveToFileAsync(string fileName)
         {
-            using (FileStream fileStream = new FileStream(
+            using FileStream fileStream = new(
                 path: fileName,
                 mode: FileMode.OpenOrCreate,
                 access: FileAccess.Write,
                 share: FileShare.None,
                 bufferSize: 4096,
-                useAsync: true))
-            {
-                return assemblyByteCode.CopyToAsync(fileStream);
-            }
+                useAsync: true);
+            return assemblyByteCode.CopyToAsync(fileStream);
         }
         
-        public string Run(object model = null)
+        public R Run(object model = null)
         {
             return this.RunAsync(model).GetAwaiter().GetResult();
         }
         
-        public async Task<string> RunAsync(object model = null)
+        public async Task<R> RunAsync(object model = null)
         {
             if (model != null && model.IsAnonymous())
             {
                 model = new AnonymousTypeWrapper(model);
             }
 
-            IRazorEngineTemplate instance = (IRazorEngineTemplate) Activator.CreateInstance(this.templateType);
+            IRazorEngineTemplate<R> instance = (IRazorEngineTemplate<R>) Activator.CreateInstance(this.templateType);
             instance.Model = model;
 
             await instance.ExecuteAsync();
