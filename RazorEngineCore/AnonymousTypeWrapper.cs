@@ -39,8 +39,6 @@ namespace RazorEngineCore
                 result = new AnonymousTypeWrapper(result);
             }
 
-            bool isEnumerable = typeof(IEnumerable).IsAssignableFrom(type);
-
             if (result is IDictionary dictionary)
             {
                 List<object> keys = new List<object>();
@@ -58,9 +56,9 @@ namespace RazorEngineCore
                     }
                 }
             }
-            else if (isEnumerable && !(result is string))
+            else if (result is IEnumerable enumer && !(result is string))
             {
-                result = ((IEnumerable<object>)result)
+                result = enumer.Cast<object>()
                         .Select(e =>
                         {
                             if (e.IsAnonymous())
