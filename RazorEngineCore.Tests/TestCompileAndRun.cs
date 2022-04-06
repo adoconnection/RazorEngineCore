@@ -157,6 +157,24 @@ namespace RazorEngineCore.Tests
             Assert.AreEqual("Hello Alex", actual);
         }
 
+        public struct Item
+        {
+            public string Name { get; set; }
+        }
+
+        [TestMethod]
+        public void TestCompileAndRun_StructList()
+        {
+            var eng = new RazorEngine();
+            var model = new
+            {
+                Items = new[] { new Item { Name = "Bob" }, new Item { Name = "Alice" } }
+            };
+            var temp = eng.Compile("@foreach(var item in Model.Items) { @item.Name }");
+            var result = temp.Run(model);
+            Assert.AreEqual("BobAlice", result);
+        }
+
         [TestMethod]
         public void TestCompileAndRun_DynamicModel_Nested()
         {
