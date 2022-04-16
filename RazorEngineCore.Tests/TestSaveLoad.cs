@@ -11,13 +11,13 @@ namespace RazorEngineCore.Tests
         public void TestSaveToStream()
         {
             RazorEngine razorEngine = new RazorEngine();
-            IRazorEngineCompiledTemplate initialTemplate = razorEngine.Compile("Hello @Model.Name");
+            IRazorEngineCompiledTemplate<string> initialTemplate = razorEngine.Compile("Hello @Model.Name");
             
             MemoryStream memoryStream = new MemoryStream();
             initialTemplate.SaveToStream(memoryStream);
             memoryStream.Position = 0;
 
-            IRazorEngineCompiledTemplate loadedTemplate = RazorEngineCompiledTemplate.LoadFromStream(memoryStream);
+            IRazorEngineCompiledTemplate<string> loadedTemplate = RazorEngineCompiledTemplate<string>.LoadFromStream(memoryStream);
 
             string initialTemplateResult = initialTemplate.Run(new { Name = "Alex" });
             string loadedTemplateResult = loadedTemplate.Run(new { Name = "Alex" });
@@ -29,13 +29,13 @@ namespace RazorEngineCore.Tests
         public async Task TestSaveToStreamAsync()
         {
             RazorEngine razorEngine = new RazorEngine();
-            IRazorEngineCompiledTemplate initialTemplate = await razorEngine.CompileAsync("Hello @Model.Name");
+            IRazorEngineCompiledTemplate<string> initialTemplate = await razorEngine.CompileAsync("Hello @Model.Name");
             
             MemoryStream memoryStream = new MemoryStream();
             await initialTemplate.SaveToStreamAsync(memoryStream);
             memoryStream.Position = 0;
 
-            IRazorEngineCompiledTemplate loadedTemplate = await RazorEngineCompiledTemplate.LoadFromStreamAsync(memoryStream);
+            IRazorEngineCompiledTemplate<string> loadedTemplate = await RazorEngineCompiledTemplate<string>.LoadFromStreamAsync(memoryStream);
 
             string initialTemplateResult = await initialTemplate.RunAsync(new { Name = "Alex" });
             string loadedTemplateResult = await loadedTemplate.RunAsync(new { Name = "Alex" });
@@ -47,11 +47,11 @@ namespace RazorEngineCore.Tests
         public void TestSaveToFile()
         {
             RazorEngine razorEngine = new RazorEngine();
-            IRazorEngineCompiledTemplate initialTemplate = razorEngine.Compile("Hello @Model.Name");
+            IRazorEngineCompiledTemplate<string> initialTemplate = razorEngine.Compile("Hello @Model.Name");
             
             initialTemplate.SaveToFile("testTemplate.dll");
 
-            IRazorEngineCompiledTemplate loadedTemplate = RazorEngineCompiledTemplate.LoadFromFile("testTemplate.dll");
+            IRazorEngineCompiledTemplate<string> loadedTemplate = RazorEngineCompiledTemplate<string>.LoadFromFile("testTemplate.dll");
 
             string initialTemplateResult = initialTemplate.Run(new { Name = "Alex" });
             string loadedTemplateResult = loadedTemplate.Run(new { Name = "Alex" });
@@ -63,11 +63,11 @@ namespace RazorEngineCore.Tests
         public async Task TestSaveToFileAsync()
         {
             RazorEngine razorEngine = new RazorEngine();
-            IRazorEngineCompiledTemplate initialTemplate = await razorEngine.CompileAsync("Hello @Model.Name");
+            IRazorEngineCompiledTemplate<string> initialTemplate = await razorEngine.CompileAsync("Hello @Model.Name");
             
             await initialTemplate.SaveToFileAsync("testTemplate.dll");
 
-            IRazorEngineCompiledTemplate loadedTemplate = await RazorEngineCompiledTemplate.LoadFromFileAsync("testTemplate.dll");
+            IRazorEngineCompiledTemplate<string> loadedTemplate = await RazorEngineCompiledTemplate<string>.LoadFromFileAsync("testTemplate.dll");
 
             string initialTemplateResult = await initialTemplate.RunAsync(new { Name = "Alex" });
             string loadedTemplateResult = await loadedTemplate.RunAsync(new { Name = "Alex" });

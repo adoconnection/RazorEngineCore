@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-    public class RazorEngineCompiledTemplate<T> : IRazorEngineCompiledTemplate<T> where T : IRazorEngineTemplate
+    public class RazorEngineCompiledTemplate<T, R> : IRazorEngineCompiledTemplate<T, R> where T : IRazorEngineTemplate<R>
     {
         private readonly MemoryStream assemblyByteCode;
         private readonly Type templateType;
@@ -25,9 +25,9 @@ namespace RazorEngineCore
         
         public static async Task<IRazorEngineCompiledTemplate<T>> LoadFromFileAsync(string fileName, string templateNamespace = "TemplateNamespace")
         {
-            MemoryStream memoryStream = new MemoryStream();
+            MemoryStream memoryStream = new();
             
-            using (FileStream fileStream = new FileStream(
+            using (FileStream fileStream = new(
                 path: fileName, 
                 mode: FileMode.Open, 
                 access: FileAccess.Read,
@@ -48,7 +48,7 @@ namespace RazorEngineCore
         
         public static async Task<IRazorEngineCompiledTemplate<T>> LoadFromStreamAsync(Stream stream, string templateNamespace = "TemplateNamespace")
         {
-            MemoryStream memoryStream = new MemoryStream();
+            MemoryStream memoryStream = new();
             await stream.CopyToAsync(memoryStream);
             memoryStream.Position = 0;
             
@@ -72,24 +72,22 @@ namespace RazorEngineCore
         
         public Task SaveToFileAsync(string fileName)
         {
-            using (FileStream fileStream = new FileStream(
-                path: fileName, 
-                mode: FileMode.OpenOrCreate, 
+            using FileStream fileStream = new(
+                path: fileName,
+                mode: FileMode.OpenOrCreate,
                 access: FileAccess.Write,
                 share: FileShare.None,
-                bufferSize: 4096, 
-                useAsync: true))
-            {
-                return assemblyByteCode.CopyToAsync(fileStream);
-            }
+                bufferSize: 4096,
+                useAsync: true);
+            return assemblyByteCode.CopyToAsync(fileStream);
         }
 
-        public string Run(Action<T> initializer)
+        public R Run(Action<T> initializer)
         {
             return this.RunAsync(initializer).GetAwaiter().GetResult();
         }
         
-        public async Task<string> RunAsync(Action<T> initializer)
+        public async Task<R> RunAsync(Action<T> initializer)
         {
             T instance = (T) Activator.CreateInstance(this.templateType);
             initializer(instance);

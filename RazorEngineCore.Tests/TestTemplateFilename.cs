@@ -15,7 +15,7 @@ namespace RazorEngineCore.Tests
             var errorThrown = false;
             try
             {
-                IRazorEngineCompiledTemplate initialTemplate = razorEngine.Compile("@{ this is a syntaxerror }", 
+                IRazorEngineCompiledTemplate<string> initialTemplate = razorEngine.Compile("@{ this is a syntaxerror }", 
                     builder => { builder.Options.TemplateFilename = "templatefilenameset.txt"; });
             }
             catch (Exception e)

@@ -3,13 +3,13 @@ using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-    public interface IRazorEngineCompiledTemplate
+    public interface IRazorEngineCompiledTemplate<R>
     {
         void SaveToStream(Stream stream);
         Task SaveToStreamAsync(Stream stream);
         void SaveToFile(string fileName);
         Task SaveToFileAsync(string fileName);
-        string Run(object model = null);
-        Task<string> RunAsync(object model = null);
+        R Run(object model = null);
+        Task<R> RunAsync(object model = null);
     }
 }

@@ -4,13 +4,13 @@ using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-    public interface IRazorEngineCompiledTemplate<out T> where T : IRazorEngineTemplate
+    public interface IRazorEngineCompiledTemplate<out T, R> where T : IRazorEngineTemplate<R>
     {
         void SaveToStream(Stream stream);
         Task SaveToStreamAsync(Stream stream);
         void SaveToFile(string fileName);
         Task SaveToFileAsync(string fileName);
-        string Run(Action<T> initializer);
-        Task<string> RunAsync(Action<T> initializer);
+        R Run(Action<T> initializer);
+        Task<R> RunAsync(Action<T> initializer);
     }
 }

@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-    public abstract class RazorEngineTemplateBase : IRazorEngineTemplate
+    public abstract class RazorEngineTemplateBase : IRazorEngineTemplate<string>
     {
-        private readonly StringBuilder stringBuilder = new StringBuilder();
+        private readonly StringBuilder stringBuilder = new();
 
         private string attributeSuffix = null;
 

@@ -2,7 +2,7 @@
 
 namespace RazorEngineCore
 {
-    public interface IRazorEngineTemplate
+    public interface IRazorEngineTemplate<T>
     {
         dynamic Model { get; set; }
         void WriteLiteral(string literal = null);
@@ -29,8 +29,8 @@ namespace RazorEngineCore
         
         Task ExecuteAsync();
         
-        string Result();
+        T Result();
         
-        Task<string> ResultAsync();
+        Task<T> ResultAsync();
     }
 }
