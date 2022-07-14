@@ -10,6 +10,8 @@ namespace RazorEngineCore
         Task SaveToStreamAsync(Stream stream);
         void SaveToFile(string fileName);
         Task SaveToFileAsync(string fileName);
+        void SavePdbToFile(string filename);
+        Task SavePdbToFileAsync(string fileName);
         string Run(Action<T> initializer);
         Task<string> RunAsync(Action<T> initializer);
     }

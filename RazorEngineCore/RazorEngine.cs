@@ -14,7 +14,7 @@ namespace RazorEngineCore
 {
     public class RazorEngine : IRazorEngine
     {
-        public IRazorEngineCompiledTemplate<T> Compile<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, bool addPdb = false) where T : IRazorEngineTemplate
+        public IRazorEngineCompiledTemplate<T> Compile<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
         {
             IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
             compilationOptionsBuilder.AddAssemblyReference(typeof(T).Assembly);
@@ -38,7 +38,7 @@ namespace RazorEngineCore
             return Task.Factory.StartNew(() => this.Compile<T>(content: content, builderAction: builderAction));
         }
 
-        public IRazorEngineCompiledTemplate Compile(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, bool addPdb = false)
+        public IRazorEngineCompiledTemplate Compile(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null)
         {
             IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
             compilationOptionsBuilder.Inherits(typeof(RazorEngineTemplateBase));
@@ -66,12 +66,13 @@ namespace RazorEngineCore
         {
             templateSource = this.WriteDirectives(templateSource, options);
             string projectPath = @".";
-            string pdbfileName = Path.GetRandomFileName() + ".cshtml";
+            string fileName = string.IsNullOrWhiteSpace(options.TemplateFilename) ? Path.GetRandomFileName() + ".cshtml" : options.TemplateFilename;
+
             if (options.GeneratePdbStream)
             {
                 projectPath = Path.GetTempPath();
                 Directory.CreateDirectory(projectPath);
-                File.WriteAllText(Path.Combine(projectPath, pdbfileName), templateSource);
+                File.WriteAllText(Path.Combine(projectPath, fileName), templateSource);
             }
 
             RazorProjectEngine engine = RazorProjectEngine.Create(
@@ -82,7 +83,6 @@ namespace RazorEngineCore
                     builder.SetNamespace(options.TemplateNamespace);
                 });
 
-            string fileName = string.IsNullOrWhiteSpace(options.TemplateFilename) ? Path.GetRandomFileName() : options.TemplateFilename;
 
             RazorSourceDocument document = RazorSourceDocument.Create(templateSource, fileName);
 
