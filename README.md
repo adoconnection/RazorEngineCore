@@ -1,5 +1,5 @@
 # RazorEngineCore
-.NET6 Razor Template Engine. No legacy code.
+.NET6 Razor Template Engine. No legacy code. No breaking changes.
 * .NET 6.0
 * .NET 5.0
 * .NET Standard 2.0
@@ -20,9 +20,14 @@ Every single star makes maintainer happy! ⭐
 Install-Package RazorEngineCore
 ```
 
+## Feature requests
+✅ Feel free to create new issues and vote for existing ones!
+
+
 ## Articles
 * [CodeProject: Building String Razor Template Engine with Bare Hands](https://www.codeproject.com/Articles/5260233/Building-String-Razor-Template-Engine-with-Bare-Ha)
-
+* [Razor syntax reference](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-6.0)
+ 
 ## Wiki
 * [Package comparison: RazorEngineCore / RazorLight / RazorEngine.NetCore](https://github.com/adoconnection/RazorEngineCore/wiki/Package-comparison)
 * [Strongly typed model](https://github.com/adoconnection/RazorEngineCore/wiki/Strongly-typed-model)
