@@ -14,7 +14,7 @@ namespace ExampleApp
     class Program
     {
         static string Content = @"
-Hello @Model.Name
+@(""Hello"" + Model.Name)111
 
 @foreach(var item in @Model.Items)
 {
