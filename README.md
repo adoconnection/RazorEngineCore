@@ -213,6 +213,8 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2022.8.1
+	# Proper namespace handling for nested types and types wiothut namespace #113 (thanks [@Kirmiir](https://github.com/Kirmiir))	
 * 2022.1.2
 	* #94 publish as single file fix 	
 * 2022.1.1
