@@ -6,6 +6,7 @@
 * .NET Framework 4.7.2
 * Windows / Linux
 * Publish as single file supported
+* Thread safe
 
 [![NuGet](https://img.shields.io/nuget/dt/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
 [![NuGet](https://img.shields.io/nuget/v/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
