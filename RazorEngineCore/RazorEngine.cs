@@ -17,15 +17,15 @@ namespace RazorEngineCore
         public IRazorEngineCompiledTemplate<T> Compile<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
         {
             IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
-            
+
             compilationOptionsBuilder.AddAssemblyReference(typeof(T).Assembly);
             compilationOptionsBuilder.Inherits(typeof(T));
 
             builderAction?.Invoke(compilationOptionsBuilder);
 
             MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
-           
-            return new RazorEngineCompiledTemplate<T>(memoryStream);
+
+            return new RazorEngineCompiledTemplate<T>(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
         }
 
         public Task<IRazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
@@ -37,20 +37,20 @@ namespace RazorEngineCore
         {
             IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
             compilationOptionsBuilder.Inherits(typeof(RazorEngineTemplateBase));
-             
+
             builderAction?.Invoke(compilationOptionsBuilder);
 
             MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
 
-            return new RazorEngineCompiledTemplate(memoryStream);
+            return new RazorEngineCompiledTemplate(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
         }
 
         public Task<IRazorEngineCompiledTemplate> CompileAsync(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null)
         {
             return Task.Factory.StartNew(() => this.Compile(content: content, builderAction: builderAction));
         }
-        
-        private MemoryStream CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options)
+
+        protected virtual MemoryStream CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options)
         {
             templateSource = this.WriteDirectives(templateSource, options);
 
@@ -63,10 +63,10 @@ namespace RazorEngineCore
                     options.ProjectEngineBuilderAction?.Invoke(builder);
                 });
 
-            string fileName = Path.GetRandomFileName();
+            string fileName = string.IsNullOrWhiteSpace(options.TemplateFilename) ? Path.GetRandomFileName() : options.TemplateFilename;
 
             RazorSourceDocument document = RazorSourceDocument.Create(templateSource, fileName);
-            
+
             RazorCodeDocument codeDocument = engine.Process(
                 document,
                 null,
@@ -124,7 +124,7 @@ namespace RazorEngineCore
             return memoryStream;
         }
 
-        private string WriteDirectives(string content, RazorEngineCompilationOptions options)
+        protected virtual string WriteDirectives(string content, RazorEngineCompilationOptions options)
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine($"@inherits {options.Inherits}");

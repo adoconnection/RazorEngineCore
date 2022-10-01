@@ -1,10 +1,12 @@
 # RazorEngineCore
-.NET5 Razor Template Engine. No legacy code.
+.NET6 Razor Template Engine. No legacy code. No breaking changes.
+* .NET 6.0
 * .NET 5.0
 * .NET Standard 2.0
 * .NET Framework 4.7.2
 * Windows / Linux
 * Publish as single file supported
+* Thread safe
 
 [![NuGet](https://img.shields.io/nuget/dt/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
 [![NuGet](https://img.shields.io/nuget/v/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
@@ -19,10 +21,16 @@ Every single star makes maintainer happy! ⭐
 Install-Package RazorEngineCore
 ```
 
+## Feature requests
+✅ Feel free to create new issues and vote for existing ones!
+
+
 ## Articles
 * [CodeProject: Building String Razor Template Engine with Bare Hands](https://www.codeproject.com/Articles/5260233/Building-String-Razor-Template-Engine-with-Bare-Ha)
-
+* [Razor syntax reference](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-6.0)
+ 
 ## Wiki
+* [Package comparison: RazorEngineCore / RazorLight / RazorEngine.NetCore](https://github.com/adoconnection/RazorEngineCore/wiki/Package-comparison)
 * [Strongly typed model](https://github.com/adoconnection/RazorEngineCore/wiki/Strongly-typed-model)
 * [@Include and @Layout](https://github.com/adoconnection/RazorEngineCore/wiki/@Include-and-@Layout)
 * [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw)
@@ -206,6 +214,18 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2022.8.1
+	* Proper namespace handling for nested types and types without namespace #113 (thanks [@Kirmiir](https://github.com/Kirmiir))	
+* 2022.1.2
+	* #94 publish as single file fix 	
+* 2022.1.1
+	* Make private methods in RazorEngine protected and virtual #PR88 (thanks [@wdcossey](https://github.com/wdcossey))	
+	* Dictionary bug in anonymous model #91 (thanks [@jddj007-hydra](https://github.com/jddj007-hydra))	
+	* Template name fix #PR84 (thanks [@Yazwh0](https://github.com/Yazwh0))	
+	* CI for GitHub Actions #PR69 (thanks [@304NotModified](https://github.com/304NotModified))	
+	* Added Source Link #PR67 (thanks [@304NotModified](https://github.com/304NotModified))	
+	* Microsoft.AspNetCore.Razor.Language 3.1.8 -> 6.0.1
+	* Microsoft.CodeAnalysis.CSharp 3.7.0 -> 4.0.1
 * 2021.7.1
 	* Better error messages #PR54 (thanks [@wdcossey](https://github.com/wdcossey))	
 	* More asyncs #PR53 (thanks [@wdcossey](https://github.com/wdcossey))
@@ -247,3 +267,6 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 * 2020.2.3
 	* Html attribute rendering fix
 	* Html attribute rendering tests
+
+## Supported by
+<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_square.svg" />

@@ -39,11 +39,26 @@ namespace RazorEngineCore
                 result = new AnonymousTypeWrapper(result);
             }
 
-            bool isEnumerable = typeof(IEnumerable).IsAssignableFrom(type);
-
-            if (isEnumerable && !(result is string))
+            if (result is IDictionary dictionary)
             {
-                result = ((IEnumerable<object>) result)
+                List<object> keys = new List<object>();
+
+                foreach(object key in dictionary.Keys)
+                {
+                    keys.Add(key);
+                }
+
+                foreach(object key in keys)
+                {
+                    if (dictionary[key].IsAnonymous())
+                    {
+                        dictionary[key] = new AnonymousTypeWrapper(dictionary[key]);
+                    }
+                }
+            }
+            else if (result is IEnumerable enumer && !(result is string))
+            {
+                result = enumer.Cast<object>()
                         .Select(e =>
                         {
                             if (e.IsAnonymous())
@@ -55,7 +70,7 @@ namespace RazorEngineCore
                         })
                         .ToList();
             }
-        
+
 
             return true;
         }

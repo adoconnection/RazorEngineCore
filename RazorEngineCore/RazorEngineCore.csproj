@@ -1,16 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>2021.7.1</Version>
+    <TargetFrameworks>net6.0;net5.0;netstandard2.0</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>2022.8.1</Version>
     <Authors>Alexander Selishchev, Simon Mourier, William David Cossey, Benjamin Smith, Dag H. Baardsen, krmr, jddj007-hydra</Authors>
     <PackageProjectUrl>https://github.com/adoconnection/RazorEngineCore</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/adoconnection/RazorEngineCore.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <Description>NET5 Razor Template Engine</Description>
-    <AssemblyVersion>2021.7.1</AssemblyVersion>
-    <FileVersion>2021.7.1</FileVersion>
-    <PackageReleaseNotes>PR53, PR54, strong key</PackageReleaseNotes>
+    <Description>NET6 Razor Template Engine</Description>
+    <AssemblyVersion>2022.8.1</AssemblyVersion>
+    <FileVersion>2022.8.1</FileVersion>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <Company>Alexander Selishchev, Simon Mourier, William David Cossey, Benjamin Smith, Dag H. Baardsen, krmr, jddj007-hydra</Company>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
@@ -22,8 +20,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="5.0.3" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.8.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="6.0.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.0.1" />
   </ItemGroup>
 </Project>

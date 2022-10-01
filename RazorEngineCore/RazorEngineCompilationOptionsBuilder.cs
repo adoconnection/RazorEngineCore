@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Microsoft.CodeAnalysis;
@@ -53,7 +54,14 @@ namespace RazorEngineCore
 
         private string RenderTypeName(Type type)
         {
-            string result = type.Namespace + "." + type.Name;
+            IList<string> elements = new List<string>()
+            {
+                type.Namespace,
+                RenderDeclaringType(type.DeclaringType),
+                type.Name
+            };
+
+            string result = string.Join(".", elements.Where(e => !string.IsNullOrWhiteSpace(e)));
 
             if (result.Contains('`'))
             {
@@ -66,6 +74,23 @@ namespace RazorEngineCore
             }
 
             return result + "<" + string.Join(",", type.GenericTypeArguments.Select(this.RenderTypeName)) + ">";
+        }
+
+        private string RenderDeclaringType(Type type)
+        {
+            if (type == null)
+            {
+                return null;
+            }
+
+            string parent = RenderDeclaringType(type.DeclaringType);
+
+            if (string.IsNullOrWhiteSpace(parent))
+            {
+                return type.Name;
+            }
+
+            return parent + "." + type.Name;
         }
     }
 }
