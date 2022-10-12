@@ -169,7 +169,7 @@ output:
 string content = @"Hello @A, @B, @Decorator(123)";
 
 IRazorEngine razorEngine = new RazorEngine();
-IRazorEngineCompiledTemplate<CustomModel> template = razorEngine.Compile<CustomModel>(content);
+IRazorEngineCompiledTemplate<CustomTemplate> template = razorEngine.Compile<CustomTemplate>(content);
 
 string result = template.Run(instance =>
 {
@@ -180,7 +180,7 @@ string result = template.Run(instance =>
 Console.WriteLine(result);
 ```
 ```cs
-public class CustomModel : RazorEngineTemplateBase
+public class CustomTemplate : RazorEngineTemplateBase
 {
     public int A { get; set; }
     public string B { get; set; }
