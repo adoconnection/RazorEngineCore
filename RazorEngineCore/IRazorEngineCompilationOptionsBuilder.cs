@@ -14,6 +14,6 @@ namespace RazorEngineCore
         void AddMetadataReference(MetadataReference reference);
         void AddUsing(string namespaceName);
         void Inherits(Type type);
-        void GeneratePdbSteram(bool flag);
+        void GeneratePdbStream(bool flag);
     }
 }

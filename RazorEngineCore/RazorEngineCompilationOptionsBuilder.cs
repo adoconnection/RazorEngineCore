@@ -93,7 +93,7 @@ namespace RazorEngineCore
             return parent + "." + type.Name;
         }
         
-        public void GeneratePdbSteram(bool flag)
+        public void GeneratePdbStream(bool flag)
         {
             this.Options.GeneratePdbStream = flag;
         }
