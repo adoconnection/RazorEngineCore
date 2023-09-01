@@ -13,6 +13,7 @@ using RazorEngineCore.Tests.Models;
 namespace RazorEngineCore.Tests
 {
     using System.Runtime.InteropServices;
+    using System.Threading;
 
     [TestClass]
     public class TestCompileAndRun
@@ -726,6 +727,66 @@ namespace TestAssembly
             string actual = await template.RunAsync();
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestCompileCancellation_DynamicModel()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            using (CancellationTokenSource cancellationSource = new CancellationTokenSource())
+            {
+                cancellationSource.Cancel();
+
+                Assert.ThrowsException<OperationCanceledException>(() =>
+                {
+                    IRazorEngineCompiledTemplate template = razorEngine.Compile("Hello @Model.Name", null, cancellationSource.Token);
+                });
+            }
+        }
+
+        [TestMethod]
+        public async Task TestCompileCancellation_DynamicModelAsync()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            using (CancellationTokenSource cancellationSource = new CancellationTokenSource())
+            {
+                cancellationSource.Cancel();
+
+                await Assert.ThrowsExceptionAsync<OperationCanceledException>(async () =>
+                {
+                    IRazorEngineCompiledTemplate template = await razorEngine.CompileAsync("Hello @Model.Name", null, cancellationSource.Token);
+                });
+            }
+        }
+
+        [TestMethod]
+        public void TestCompileCancellation_TypedModel1()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            using (CancellationTokenSource cancellationSource = new CancellationTokenSource())
+            {
+                cancellationSource.Cancel();
+
+                Assert.ThrowsException<OperationCanceledException>(() =>
+                {
+                    IRazorEngineCompiledTemplate<TestTemplate1> template = razorEngine.Compile<TestTemplate1>("Hello @A @B @(A + B) @C @Decorator(\"777\")", null, cancellationSource.Token);
+                });
+            }
+        }
+
+        [TestMethod]
+        public async Task TestCompileCancellation_TypedModel1Async()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            using (CancellationTokenSource cancellationSource = new CancellationTokenSource())
+            {
+                cancellationSource.Cancel();
+
+                await Assert.ThrowsExceptionAsync<OperationCanceledException>(async () =>
+                {
+                    IRazorEngineCompiledTemplate<TestTemplate1> template = await razorEngine.CompileAsync<TestTemplate1>("Hello @A @B @(A + B) @C @Decorator(\"777\")", null, cancellationSource.Token);
+                });
+            }
         }
 
         private static List<MetadataReference> GetMetadataReferences()

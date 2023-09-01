@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Razor.Language;
 using Microsoft.CodeAnalysis;
@@ -16,6 +17,11 @@ namespace RazorEngineCore
     {
         public IRazorEngineCompiledTemplate<T> Compile<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
         {
+            return Compile<T>(content, builderAction, cancellationToken: default);
+        }
+
+        public IRazorEngineCompiledTemplate<T> Compile<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction, CancellationToken cancellationToken) where T : IRazorEngineTemplate
+        {
             IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
 
             compilationOptionsBuilder.AddAssemblyReference(typeof(T).Assembly);
@@ -23,34 +29,54 @@ namespace RazorEngineCore
 
             builderAction?.Invoke(compilationOptionsBuilder);
 
-            MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
+            MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options, cancellationToken);
 
             return new RazorEngineCompiledTemplate<T>(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
         }
 
         public Task<IRazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null) where T : IRazorEngineTemplate
         {
-            return Task.Factory.StartNew(() => this.Compile<T>(content: content, builderAction: builderAction));
+            return CompileAsync<T>(content, builderAction, cancellationToken: default);
+        }
+
+        public Task<IRazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction, CancellationToken cancellationToken) where T : IRazorEngineTemplate
+        {
+            return Task.Factory.StartNew(() => this.Compile<T>(content: content, builderAction: builderAction, cancellationToken: cancellationToken));
         }
 
         public IRazorEngineCompiledTemplate Compile(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null)
+        {
+            return Compile(content, builderAction, cancellationToken: default);
+        }
+
+        public IRazorEngineCompiledTemplate Compile(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction, CancellationToken cancellationToken)
         {
             IRazorEngineCompilationOptionsBuilder compilationOptionsBuilder = new RazorEngineCompilationOptionsBuilder();
             compilationOptionsBuilder.Inherits(typeof(RazorEngineTemplateBase));
 
             builderAction?.Invoke(compilationOptionsBuilder);
 
-            MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options);
+            MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options, cancellationToken);
 
             return new RazorEngineCompiledTemplate(memoryStream, compilationOptionsBuilder.Options.TemplateNamespace);
         }
 
         public Task<IRazorEngineCompiledTemplate> CompileAsync(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null)
         {
-            return Task.Factory.StartNew(() => this.Compile(content: content, builderAction: builderAction));
+            return CompileAsync(content, builderAction, cancellationToken: default);
+        }
+
+        public Task<IRazorEngineCompiledTemplate> CompileAsync(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction, CancellationToken cancellationToken)
+        {
+            return Task.Factory.StartNew(() => this.Compile(content: content, builderAction: builderAction, cancellationToken: cancellationToken));
         }
 
         protected virtual MemoryStream CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options)
+        {
+            return CreateAndCompileToStream(templateSource, options, cancellationToken: default);
+        }
+
+        protected virtual MemoryStream CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options, CancellationToken cancellationToken)
         {
             templateSource = this.WriteDirectives(templateSource, options);
 
@@ -74,7 +100,7 @@ namespace RazorEngineCore
 
             RazorCSharpDocument razorCSharpDocument = codeDocument.GetCSharpDocument();
 
-            SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(razorCSharpDocument.GeneratedCode);
+            SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(razorCSharpDocument.GeneratedCode, cancellationToken: cancellationToken);
 
             CSharpCompilation compilation = CSharpCompilation.Create(
                 fileName,
@@ -105,7 +131,7 @@ namespace RazorEngineCore
 
             MemoryStream memoryStream = new MemoryStream();
 
-            EmitResult emitResult = compilation.Emit(memoryStream);
+            EmitResult emitResult = compilation.Emit(memoryStream, cancellationToken: cancellationToken);
 
             if (!emitResult.Success)
             {
