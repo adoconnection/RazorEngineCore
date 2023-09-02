@@ -739,7 +739,7 @@ namespace TestAssembly
 
                 Assert.ThrowsException<OperationCanceledException>(() =>
                 {
-                    IRazorEngineCompiledTemplate template = razorEngine.Compile("Hello @Model.Name", null, cancellationSource.Token);
+                    IRazorEngineCompiledTemplate template = razorEngine.Compile("Hello @Model.Name", cancellationToken: cancellationSource.Token);
                 });
             }
         }
@@ -754,7 +754,7 @@ namespace TestAssembly
 
                 await Assert.ThrowsExceptionAsync<OperationCanceledException>(async () =>
                 {
-                    IRazorEngineCompiledTemplate template = await razorEngine.CompileAsync("Hello @Model.Name", null, cancellationSource.Token);
+                    IRazorEngineCompiledTemplate template = await razorEngine.CompileAsync("Hello @Model.Name", cancellationToken: cancellationSource.Token);
                 });
             }
         }
@@ -769,7 +769,7 @@ namespace TestAssembly
 
                 Assert.ThrowsException<OperationCanceledException>(() =>
                 {
-                    IRazorEngineCompiledTemplate<TestTemplate1> template = razorEngine.Compile<TestTemplate1>("Hello @A @B @(A + B) @C @Decorator(\"777\")", null, cancellationSource.Token);
+                    IRazorEngineCompiledTemplate<TestTemplate1> template = razorEngine.Compile<TestTemplate1>("Hello @A @B @(A + B) @C @Decorator(\"777\")", cancellationToken: cancellationSource.Token);
                 });
             }
         }
@@ -784,7 +784,7 @@ namespace TestAssembly
 
                 await Assert.ThrowsExceptionAsync<OperationCanceledException>(async () =>
                 {
-                    IRazorEngineCompiledTemplate<TestTemplate1> template = await razorEngine.CompileAsync<TestTemplate1>("Hello @A @B @(A + B) @C @Decorator(\"777\")", null, cancellationSource.Token);
+                    IRazorEngineCompiledTemplate<TestTemplate1> template = await razorEngine.CompileAsync<TestTemplate1>("Hello @A @B @(A + B) @C @Decorator(\"777\")", cancellationToken: cancellationSource.Token);
                 });
             }
         }
