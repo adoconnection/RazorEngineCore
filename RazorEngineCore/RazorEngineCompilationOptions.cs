@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Microsoft.CodeAnalysis;
 using System;
+using Microsoft.AspNetCore.Razor.Language;
 
 namespace RazorEngineCore
 {
@@ -21,6 +22,8 @@ namespace RazorEngineCore
             "System.Collections",
             "System.Collections.Generic"
         };
+
+        public Action<RazorProjectEngineBuilder> ProjectEngineBuilderAction { get; set; }
 
         public RazorEngineCompilationOptions()
         {

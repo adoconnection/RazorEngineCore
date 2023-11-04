@@ -1,11 +1,29 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
     public abstract class RazorEngineTemplateBase : IRazorEngineTemplate
     {
-        private readonly StringBuilder stringBuilder = new StringBuilder();
+        private readonly StringBuilder _stringBuilder = new StringBuilder();
+        private StringBuilder _captureStringBuilder;
+        private StringBuilder stringBuilder => _captureStringBuilder ?? _stringBuilder;
+
+        protected void BeginCapture()
+        {
+            if (_captureStringBuilder != null)
+                throw new InvalidOperationException("Already capturing");
+            _captureStringBuilder = new StringBuilder();
+        }
+        protected string EndCapture()
+        {
+            if (_captureStringBuilder == null)
+                throw new InvalidOperationException("Not capturing");
+            string result = _captureStringBuilder.ToString();
+            _captureStringBuilder = null;
+            return result;
+        }
 
         private string attributeSuffix = null;
 

@@ -60,6 +60,7 @@ namespace RazorEngineCore
                 (builder) =>
                 {
                     builder.SetNamespace(options.TemplateNamespace);
+                    options.ProjectEngineBuilderAction?.Invoke(builder);
                 });
 
             string fileName = string.IsNullOrWhiteSpace(options.TemplateFilename) ? Path.GetRandomFileName() : options.TemplateFilename;
