@@ -6,6 +6,7 @@
 * .NET Framework 4.7.2
 * Windows / Linux
 * Publish as single file supported
+* Thread safe
 
 [![NuGet](https://img.shields.io/nuget/dt/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
 [![NuGet](https://img.shields.io/nuget/v/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
@@ -168,7 +169,7 @@ output:
 string content = @"Hello @A, @B, @Decorator(123)";
 
 IRazorEngine razorEngine = new RazorEngine();
-IRazorEngineCompiledTemplate<CustomModel> template = razorEngine.Compile<CustomModel>(content);
+IRazorEngineCompiledTemplate<CustomTemplate> template = razorEngine.Compile<CustomTemplate>(content);
 
 string result = template.Run(instance =>
 {
@@ -179,7 +180,7 @@ string result = template.Run(instance =>
 Console.WriteLine(result);
 ```
 ```cs
-public class CustomModel : RazorEngineTemplateBase
+public class CustomTemplate : RazorEngineTemplateBase
 {
     public int A { get; set; }
     public string B { get; set; }
@@ -207,12 +208,31 @@ IRazorEngineCompiledTemplate compiledTemplate = razorEngine.Compile(templateText
 string result = compiledTemplate.Run(new { name = "Hello" });
 ```
 
+#### Debugging templates
+In the builder options, set GeneratePdbStream to true, and set the TemplateFilename.
+```cs
+razorEngine.Compile(templateSource, builder =>
+{
+    builder.Options.GeneratePdbStream = true;
+    builder.Options.TemplateFilename = "TemplateFilename.cshtml"
+});
+```
+Your debugger will popup a window asking you to find the source file, after which you can step through as normal. 
+
+To set a breakpoint add this line in a code block in the template.
+```cs
+System.Diagnostics.Debugger.Break();
+```
 
 #### Credits
 This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/47756437/267736)
 
 
 #### Changelog
+* 2022.8.1
+	* Proper namespace handling for nested types and types without namespace #113 (thanks [@Kirmiir](https://github.com/Kirmiir))	
+* 2022.7.6
+	* Added the option to genereate pdb alongside the assembly which allows debugging the templates.
 * 2022.1.2
 	* #94 publish as single file fix 	
 * 2022.1.1
