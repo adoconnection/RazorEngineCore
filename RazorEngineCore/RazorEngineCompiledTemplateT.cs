@@ -8,6 +8,7 @@ namespace RazorEngineCore
     public class RazorEngineCompiledTemplate<T> : IRazorEngineCompiledTemplate<T> where T : IRazorEngineTemplate
     {
         private readonly MemoryStream assemblyByteCode;
+        private readonly MemoryStream pdbByteCode;
         private readonly Type templateType;
 
         internal RazorEngineCompiledTemplate(MemoryStream assemblyByteCode, string templateNamespace)
@@ -16,6 +17,14 @@ namespace RazorEngineCore
 
             Assembly assembly = Assembly.Load(assemblyByteCode.ToArray());
             this.templateType = assembly.GetType($"{templateNamespace}.Template");
+        }
+        internal RazorEngineCompiledTemplate(MemoryStream assemblyByteCode, string templateNamespace, MemoryStream pdbByteCode)
+        {
+            this.assemblyByteCode = assemblyByteCode;
+            this.pdbByteCode = pdbByteCode;
+            
+            Assembly assembly = Assembly.Load(assemblyByteCode.ToArray(), pdbByteCode.ToArray());
+            this.templateType = assembly.GetType(templateNamespace + ".Template");
         }
 
         public static IRazorEngineCompiledTemplate<T> LoadFromFile(string fileName, string templateNamespace = "TemplateNamespace")
@@ -84,6 +93,24 @@ namespace RazorEngineCore
             }
         }
 
+        public void SavePdbToFile(string fileName)
+        {
+            this.SavePdbToFileAsync(fileName).GetAwaiter().GetResult();
+        }
+        public Task SavePdbToFileAsync(string fileName)
+        {
+            using (FileStream fileStream = new FileStream(
+                path: fileName,
+                mode: FileMode.OpenOrCreate,
+                access: FileAccess.Write,
+                share: FileShare.None,
+                bufferSize: 4096,
+                useAsync: true))
+            {
+                return pdbByteCode.CopyToAsync(fileStream);
+            }
+        }
+
         public string Run(Action<T> initializer)
         {
             return this.RunAsync(initializer).GetAwaiter().GetResult();
@@ -98,5 +125,7 @@ namespace RazorEngineCore
 
             return await instance.ResultAsync();
         }
+
+
     }
 }
