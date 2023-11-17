@@ -24,7 +24,7 @@ namespace RazorEngineCore
 
             builderAction?.Invoke(compilationOptionsBuilder);
 
-            MemoryStream memoryStream = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options, cancellationToken);
+            RazorEngineCompiledTemplateMeta meta = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options, cancellationToken);
 
             return new RazorEngineCompiledTemplate<T>(meta);
         }
