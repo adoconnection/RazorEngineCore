@@ -106,6 +106,8 @@ string result = template2.Run(new
     Title = "Welcome"
 });
 ```
+Place ```@{ Breakpoint(); }``` anywhere in template to stop at.
+
 
 #### Save / Load compiled templates
 Most expensive task is to compile template, you should not compile template every time you need to run it
