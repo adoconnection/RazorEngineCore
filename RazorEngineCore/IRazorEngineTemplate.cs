@@ -17,7 +17,7 @@ namespace RazorEngineCore
         void EndWriteAttribute();
         
         Task ExecuteAsync();
-        
-        string Result();
+
+        Task<string> ResultAsync();
     }
 }

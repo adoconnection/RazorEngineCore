@@ -47,11 +47,9 @@ namespace RazorEngineCore
             return Task.CompletedTask;
         }
 
-
-
-        public virtual string Result()
+        public virtual Task<string> ResultAsync()
         {
-            return this.stringBuilder.ToString();
+	        return Task.FromResult<string>(this.stringBuilder.ToString());
         }
-    }
+	}
 }
