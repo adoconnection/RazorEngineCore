@@ -26,8 +26,10 @@ Install-Package RazorEngineCore
 
 
 ## Articles
-* [CodeProject: Building String Razor Template Engine with Bare Hands](https://www.codeproject.com/Articles/5260233/Building-String-Razor-Template-Engine-with-Bare-Ha)
-* [Razor syntax reference](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-6.0)
+* [🚀 bakson.dev: How to make PDF invoice with text7](https://bakson.dev/2022/11/10/razor-engine-core.html)
+* [🚀 Christian Schou: How to send email with MailKit](https://blog.christian-schou.dk/send-emails-with-asp-net-core-with-mailkit/)
+* [🧑‍🎓 CodeProject: Building String Razor Template Engine with Bare Hands](https://www.codeproject.com/Articles/5260233/Building-String-Razor-Template-Engine-with-Bare-Ha)
+* [📕 Razor syntax reference](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-6.0)
  
 ## Wiki
 * [Package comparison: RazorEngineCore / RazorLight / RazorEngine.NetCore](https://github.com/adoconnection/RazorEngineCore/wiki/Package-comparison)
