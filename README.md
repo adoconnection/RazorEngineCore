@@ -92,8 +92,7 @@ Console.WriteLine(result);
 ```
 
 #### Debugging
-Compile template with ```IncludeDebuggingInfo()``` option and call ```EnableDebugging()``` before running template 
-If template was compiled with ```IncludeDebuggingInfo()``` option, saveing and loading will keep original template source code and pdb.
+Compile template with ```IncludeDebuggingInfo()``` option and call ```EnableDebugging()``` before running template. If template was compiled with ```IncludeDebuggingInfo()``` option, saveing and loading will keep original template source code and pdb.
 ```cs
 IRazorEngineCompiledTemplate template2 = razorEngine.Compile(templateText, builder =>
 {
