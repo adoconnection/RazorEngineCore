@@ -249,7 +249,7 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 #### Changelog
 * 2023.11.1
 	* Template debugging 🚀 PR#111	(thanks [@shehrozeee](https://github.com/shehrozeee) and [@TheAtomicOption](https://github.com/TheAtomicOption))
- 	* Add CancellationToken overloads to Compile methods #134 (thanks [@daviddotcs](https://github.com/daviddotcs))
+ 	* Add CancellationToken overloads to Compile methods PR#134 (thanks [@daviddotcs](https://github.com/daviddotcs))
   	* Package license information #133
   	* Code cleanup	
 * 2022.8.1
