@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -27,8 +28,22 @@ namespace RazorEngineCore
 
             return Attribute.IsDefined(type, typeof(CompilerGeneratedAttribute), false)
                    && type.IsGenericType && type.Name.Contains("AnonymousType")
-                   && (type.Name.StartsWith("<>") || type.Name.StartsWith("VB$"))
+                      && (type.Name.StartsWith("<>") || type.Name.StartsWith("VB$"))
                    && type.Attributes.HasFlag(TypeAttributes.NotPublic);
+        }
+
+        public static long ReadLong(this Stream stream)
+        {
+            byte[] buffer = new byte[8];
+            stream.Read(buffer, 0, 8);
+
+            return BitConverter.ToInt64(buffer, 0);
+        }
+
+        public static void WriteLong(this Stream stream, long value)
+        {
+            byte[] buffer = BitConverter.GetBytes(value);
+            stream.Write(buffer, 0, buffer.Length);
         }
     }
 }

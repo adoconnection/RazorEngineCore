@@ -92,10 +92,11 @@ namespace RazorEngineCore
 
             return parent + "." + type.Name;
         }
-        
-        public void GeneratePdbStream(bool flag)
+
+        public void IncludeDebuggingInfo()
         {
-            this.Options.GeneratePdbStream = flag;
+            this.Options.IncludeDebuggingInfo = true;
         }
+
     }
 }
