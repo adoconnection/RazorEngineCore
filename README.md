@@ -38,6 +38,8 @@ Install-Package RazorEngineCore
 * [Switch from RazorEngine cshtml templates](https://github.com/adoconnection/RazorEngineCore/wiki/Switch-from-RazorEngine-cshtml-templates)
 * [Azure Functions FileNotFoundException workaround](https://github.com/adoconnection/RazorEngineCore/wiki/Azure-Functions-FileNotFoundException-workaround)
 * [@Html implementation example](https://github.com/adoconnection/RazorEngineCore/wiki/@Html-implementation-example)
+* [Debugging](https://github.com/adoconnection/RazorEngineCore/wiki/Debugging)
+  
 
 ## Extensions
 * [wdcossey/RazorEngineCore.Extensions](https://github.com/wdcossey/RazorEngineCore.Extensions)
@@ -87,6 +89,23 @@ string result = template.Run(instance =>
 });
 
 Console.WriteLine(result);
+```
+
+#### Debugging
+Compile template with ```IncludeDebuggingInfo()``` option and call ```EnableDebugging()``` before running template 
+If template was compiled with ```IncludeDebuggingInfo()``` option, saveing and loading will keep original template source code and pdb.
+```cs
+IRazorEngineCompiledTemplate template2 = razorEngine.Compile(templateText, builder =>
+{
+    builder.IncludeDebuggingInfo();
+});
+
+template2.EnableDebugging(); // optional path to output directory
+
+string result = template2.Run(new
+{
+    Title = "Welcome"
+});
 ```
 
 #### Save / Load compiled templates
