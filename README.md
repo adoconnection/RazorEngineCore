@@ -226,23 +226,7 @@ IRazorEngineCompiledTemplate compiledTemplate = razorEngine.Compile(templateText
 });
 
 string result = compiledTemplate.Run(new { name = "Hello" });
-```
-
-#### Debugging templates
-In the builder options, set GeneratePdbStream to true, and set the TemplateFilename.
-```cs
-razorEngine.Compile(templateSource, builder =>
-{
-    builder.Options.GeneratePdbStream = true;
-    builder.Options.TemplateFilename = "TemplateFilename.cshtml"
-});
-```
-Your debugger will popup a window asking you to find the source file, after which you can step through as normal. 
-
-To set a breakpoint add this line in a code block in the template.
-```cs
-System.Diagnostics.Debugger.Break();
-```
+``
 
 #### Credits
 This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/47756437/267736)
