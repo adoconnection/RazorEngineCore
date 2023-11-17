@@ -92,5 +92,11 @@ namespace RazorEngineCore
 
             return parent + "." + type.Name;
         }
+
+        public void IncludeDebuggingInfo()
+        {
+            this.Options.IncludeDebuggingInfo = true;
+        }
+
     }
 }

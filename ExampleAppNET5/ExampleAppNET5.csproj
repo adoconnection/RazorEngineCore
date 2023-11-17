@@ -9,4 +9,13 @@
     <ProjectReference Include="..\RazorEngineCore\RazorEngineCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="template1.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="template2.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

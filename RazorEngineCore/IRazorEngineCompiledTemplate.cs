@@ -9,6 +9,7 @@ namespace RazorEngineCore
         Task SaveToStreamAsync(Stream stream);
         void SaveToFile(string fileName);
         Task SaveToFileAsync(string fileName);
+        void EnableDebugging(string debuggingOutputDirectory = null);
         string Run(object model = null);
         Task<string> RunAsync(object model = null);
     }

@@ -814,5 +814,128 @@ namespace TestAssembly
                            MetadataReference.CreateFromFile(Assembly.Load(new AssemblyName("System.Runtime")).Location)
                        };
         }
+
+
+
+        [TestMethod]
+        public void TestCompileAndRun_IncludeDebuggingForTypedMode_DisabledDebugging()
+        {
+            string templateText = @"
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngineCore.Tests.Models.TestModel>
+Hello @Model.Decorator(Model.C)
+";
+
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel>> template = razorEngine.Compile<RazorEngineTemplateBase<TestModel>>(templateText, builder =>
+            {
+                builder.IncludeDebuggingInfo();
+            });
+
+            string actual = template.Run(instance =>
+            {
+                instance.Model = new TestModel
+                {
+                    C = "Alex"
+                };
+            });
+
+            Assert.AreEqual("Hello -=Alex=-", actual.Trim());
+        }
+
+        [TestMethod]
+        public void TestCompileAndRun_IncludeDebuggingForTypedAnonymous_DisabledDebugging()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate template = razorEngine.Compile("<h1>Hello @Model.Name</h1>", builder =>
+            {
+                builder.IncludeDebuggingInfo();
+            });
+
+            string actual = template.Run(new
+            {
+                Name = "Alex"
+            });
+
+            Assert.AreEqual("<h1>Hello Alex</h1>", actual);
+        }
+
+
+
+
+        [TestMethod]
+        public void TestCompileAndRun_IncludeDebuggingForTypedMode_EnabledDebugging()
+        {
+            string templateText = @"
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngineCore.Tests.Models.TestModel>
+Hello @Model.Decorator(Model.C)
+";
+
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel>> template = razorEngine.Compile<RazorEngineTemplateBase<TestModel>>(templateText, builder =>
+            {
+                builder.IncludeDebuggingInfo();
+            });
+
+            template.EnableDebugging();
+
+            string actual = template.Run(instance =>
+            {
+                instance.Model = new TestModel
+                {
+                    C = "Alex"
+                };
+            });
+
+            Assert.AreEqual("Hello -=Alex=-", actual.Trim());
+        }
+
+        [TestMethod]
+        public void TestCompileAndRun_IncludeDebuggingForTypedAnonymous_EnabledDebugging()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate template = razorEngine.Compile("<h1>Hello @Model.Name</h1>", builder =>
+            {
+                builder.IncludeDebuggingInfo();
+            });
+
+            template.EnableDebugging();
+
+            string actual = template.Run(new
+            {
+                Name = "Alex"
+            });
+
+            Assert.AreEqual("<h1>Hello Alex</h1>", actual);
+        }
+
+        [TestMethod]
+        public void TestCompileAndRun_Typed_EnabledDebuggingThrowsException()
+        {
+            string templateText = @"
+@inherits RazorEngineCore.RazorEngineTemplateBase<RazorEngineCore.Tests.Models.TestModel>
+Hello @Model.Decorator(Model.C)
+";
+
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel>> template = razorEngine.Compile<RazorEngineTemplateBase<TestModel>>(templateText);
+
+            Assert.ThrowsException<RazorEngineException>(() =>
+            {
+                template.EnableDebugging();
+            });
+        }
+
+        [TestMethod]
+        public void TestCompileAndRun_Anonymous_EnabledDebuggingThrowsException()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate template = razorEngine.Compile("<h1>Hello @Model.Name</h1>");
+
+            Assert.ThrowsException<RazorEngineException>(() =>
+            {
+                template.EnableDebugging();
+            });
+
+        }
     }
 }

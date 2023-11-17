@@ -56,9 +56,9 @@ namespace RazorEngineCore
                     }
                 }
             }
-            else if (result is IEnumerable enumer && !(result is string))
+            else if (result is IEnumerable enumerable && !(result is string))
             {
-                result = enumer.Cast<object>()
+                result = enumerable.Cast<object>()
                         .Select(e =>
                         {
                             if (e.IsAnonymous())
