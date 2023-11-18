@@ -7,6 +7,7 @@
 * Windows / Linux
 * Publish as single file supported
 * Thread safe
+* Template debugging
 
 [![NuGet](https://img.shields.io/nuget/dt/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
 [![NuGet](https://img.shields.io/nuget/v/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
@@ -26,8 +27,11 @@ Install-Package RazorEngineCore
 
 
 ## Articles
-* [CodeProject: Building String Razor Template Engine with Bare Hands](https://www.codeproject.com/Articles/5260233/Building-String-Razor-Template-Engine-with-Bare-Ha)
-* [Razor syntax reference](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-6.0)
+* [🚀 Piotr Bakun: How to make PDF invoice with Playwright.NET](https://bakson.dev/2022/11/10/razor-engine-core.html)
+* [🚀 Christian Schou: How to send email with MailKit](https://blog.christian-schou.dk/send-emails-with-asp-net-core-with-mailkit/)
+* [🚀 Dave Glick: Difference between RazorEngineCore, RazorLight and Statiq, Send email using SendGrid API](https://www.twilio.com/blog/render-emails-using-razor-templating)
+* [🧑‍🎓 CodeProject: Building String Razor Template Engine with Bare Hands](https://www.codeproject.com/Articles/5260233/Building-String-Razor-Template-Engine-with-Bare-Ha)
+* [📕 Razor syntax reference](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-6.0)
  
 ## Wiki
 * [Package comparison: RazorEngineCore / RazorLight / RazorEngine.NetCore](https://github.com/adoconnection/RazorEngineCore/wiki/Package-comparison)
@@ -38,6 +42,8 @@ Install-Package RazorEngineCore
 * [Switch from RazorEngine cshtml templates](https://github.com/adoconnection/RazorEngineCore/wiki/Switch-from-RazorEngine-cshtml-templates)
 * [Azure Functions FileNotFoundException workaround](https://github.com/adoconnection/RazorEngineCore/wiki/Azure-Functions-FileNotFoundException-workaround)
 * [@Html implementation example](https://github.com/adoconnection/RazorEngineCore/wiki/@Html-implementation-example)
+* [Debugging](https://github.com/adoconnection/RazorEngineCore/wiki/Debugging)
+  
 
 ## Extensions
 * [wdcossey/RazorEngineCore.Extensions](https://github.com/wdcossey/RazorEngineCore.Extensions)
@@ -88,6 +94,24 @@ string result = template.Run(instance =>
 
 Console.WriteLine(result);
 ```
+
+#### Debugging
+Compile template with ```IncludeDebuggingInfo()``` option and call ```EnableDebugging()``` before running template. If template was compiled with ```IncludeDebuggingInfo()``` option, saving and loading will keep original template source code and pdb.
+```cs
+IRazorEngineCompiledTemplate template2 = razorEngine.Compile(templateText, builder =>
+{
+    builder.IncludeDebuggingInfo();
+});
+
+template2.EnableDebugging(); // optional path to output directory
+
+string result = template2.Run(new
+{
+    Title = "Welcome"
+});
+```
+Place ```@{ Breakpoint(); }``` anywhere in template to stop at.
+
 
 #### Save / Load compiled templates
 Most expensive task is to compile template, you should not compile template every time you need to run it
@@ -206,29 +230,18 @@ IRazorEngineCompiledTemplate compiledTemplate = razorEngine.Compile(templateText
 });
 
 string result = compiledTemplate.Run(new { name = "Hello" });
-```
-
-#### Debugging templates
-In the builder options, set GeneratePdbStream to true, and set the TemplateFilename.
-```cs
-razorEngine.Compile(templateSource, builder =>
-{
-    builder.Options.GeneratePdbStream = true;
-    builder.Options.TemplateFilename = "TemplateFilename.cshtml"
-});
-```
-Your debugger will popup a window asking you to find the source file, after which you can step through as normal. 
-
-To set a breakpoint add this line in a code block in the template.
-```cs
-System.Diagnostics.Debugger.Break();
-```
+``
 
 #### Credits
 This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/47756437/267736)
 
 
 #### Changelog
+* 2023.11.1
+	* Template debugging 🚀 PR#111	(thanks [@shehrozeee](https://github.com/shehrozeee) and [@TheAtomicOption](https://github.com/TheAtomicOption))
+ 	* Add CancellationToken overloads to Compile methods PR#134 (thanks [@daviddotcs](https://github.com/daviddotcs))
+  	* Package license information #133
+  	* Code cleanup	
 * 2022.8.1
 	* Proper namespace handling for nested types and types without namespace #113 (thanks [@Kirmiir](https://github.com/Kirmiir))	
 * 2022.7.6
@@ -286,4 +299,4 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 	* Html attribute rendering tests
 
 ## Supported by
-<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_square.svg" />
+[<img src="https://259506.selcdn.ru/sites-static/site609131/d7defb1c-34d5-4719-8dd8-5c0395badfeb/d7defb1c-34d5-4719-8dd8-5c0395badfeb-2809062.png" />](https://limetime.io)
