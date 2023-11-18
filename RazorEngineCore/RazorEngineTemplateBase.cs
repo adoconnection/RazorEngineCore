@@ -14,29 +14,29 @@ namespace RazorEngineCore
 
         public Action Breakpoint { get; set; } = () => { };
 
-        public void WriteLiteral(string literal = null)
+        public virtual void WriteLiteral(string literal = null)
         {
             this.stringBuilder.Append(literal);
         }
 
-        public void Write(object obj = null)
+        public virtual void Write(object obj = null)
         {
             this.stringBuilder.Append(obj);
         }
 
-        public void BeginWriteAttribute(string name, string prefix, int prefixOffset, string suffix, int suffixOffset,  int attributeValuesCount)
+        public virtual void BeginWriteAttribute(string name, string prefix, int prefixOffset, string suffix, int suffixOffset,  int attributeValuesCount)
         {
             this.attributeSuffix = suffix;
             this.stringBuilder.Append(prefix);
         }
 
-        public void WriteAttributeValue(string prefix, int prefixOffset, object value, int valueOffset, int valueLength, bool isLiteral)
+        public virtual void WriteAttributeValue(string prefix, int prefixOffset, object value, int valueOffset, int valueLength, bool isLiteral)
         {
             this.stringBuilder.Append(prefix);
             this.stringBuilder.Append(value);
         }
 
-        public void EndWriteAttribute()
+        public virtual void EndWriteAttribute()
         {
             this.stringBuilder.Append(this.attributeSuffix);
             this.attributeSuffix = null;
