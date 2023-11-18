@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-
     public class RazorEngineCompiledTemplateMeta
     {
         public byte[] AssemblyByteCode { get; set; }

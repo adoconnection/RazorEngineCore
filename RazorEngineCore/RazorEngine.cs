@@ -10,7 +10,6 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Emit;
 using System.Reflection.Metadata;
-using System.Resources;
 
 namespace RazorEngineCore
 {
@@ -47,13 +46,16 @@ namespace RazorEngineCore
 
         public Task<IRazorEngineCompiledTemplate> CompileAsync(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, CancellationToken cancellationToken = default)
         {
-            return Task.Factory.StartNew(() => this.Compile(content: content, builderAction: builderAction, cancellationToken: cancellationToken));
+            return Task.Factory.StartNew(() => this.Compile(
+                content, 
+                builderAction, 
+                cancellationToken));
         }
 
         protected virtual RazorEngineCompiledTemplateMeta CreateAndCompileToStream(string templateSource, RazorEngineCompilationOptions options, CancellationToken cancellationToken)
-
         {
             templateSource = this.WriteDirectives(templateSource, options);
+
             string projectPath = @".";
             string fileName = string.IsNullOrWhiteSpace(options.TemplateFilename) 
                 ? Path.GetRandomFileName() + ".cshtml" 
@@ -67,7 +69,6 @@ namespace RazorEngineCore
                     builder.SetNamespace(options.TemplateNamespace);
                 });
 
-
             RazorSourceDocument document = RazorSourceDocument.Create(templateSource, fileName);
 
             RazorCodeDocument codeDocument = engine.Process(
@@ -75,11 +76,9 @@ namespace RazorEngineCore
                 null,
                 new List<RazorSourceDocument>(),
                 new List<TagHelperDescriptor>());
-
             
             RazorCSharpDocument razorCSharpDocument = codeDocument.GetCSharpDocument();
             SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(razorCSharpDocument.GeneratedCode, cancellationToken: cancellationToken);
-
 
             CSharpCompilation compilation = CSharpCompilation.Create(
                 fileName,
@@ -114,7 +113,6 @@ namespace RazorEngineCore
 
             EmitResult emitResult = compilation.Emit(assemblyStream, pdbStream, cancellationToken: cancellationToken);
 
-
             if (!emitResult.Success)
             {
                 RazorEngineCompilationException exception = new RazorEngineCompilationException()
@@ -130,12 +128,11 @@ namespace RazorEngineCore
             {
                 AssemblyByteCode = assemblyStream.ToArray(),
                 PdbByteCode = pdbStream?.ToArray(),
-                GeneratedSourceCode = razorCSharpDocument.GeneratedCode,
-                TemplateSource = templateSource,
+                GeneratedSourceCode = options.IncludeDebuggingInfo ? razorCSharpDocument.GeneratedCode : null,
+                TemplateSource = options.IncludeDebuggingInfo ? templateSource : null,
                 TemplateNamespace = options.TemplateNamespace,
                 TemplateFileName = fileName
             };
-
         }
 
         protected virtual string WriteDirectives(string content, RazorEngineCompilationOptions options)
@@ -152,7 +149,5 @@ namespace RazorEngineCore
 
             return stringBuilder.ToString();
         }
-
-        
     }
 }

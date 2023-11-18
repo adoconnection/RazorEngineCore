@@ -65,7 +65,5 @@ namespace RazorEngineCore
 
             return await instance.ResultAsync();
 		}
-
-
     }
 }
