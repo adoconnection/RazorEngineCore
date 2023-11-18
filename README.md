@@ -237,11 +237,14 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2023.11.2
+	* Vertual keyword fixed
 * 2023.11.1
 	* Template debugging 🚀 PR#111	(thanks [@shehrozeee](https://github.com/shehrozeee) and [@TheAtomicOption](https://github.com/TheAtomicOption))
  	* Add CancellationToken overloads to Compile methods PR#134 (thanks [@daviddotcs](https://github.com/daviddotcs))
   	* Package license information #133
-  	* Code cleanup	
+  	* Code cleanup
+	* ⚠️ Breaking change for @Raw, [update your code from wiki](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw)
 * 2022.8.1
 	* Proper namespace handling for nested types and types without namespace #113 (thanks [@Kirmiir](https://github.com/Kirmiir))	
 * 2022.7.6
