@@ -12,9 +12,15 @@
 	<ItemGroup>
 	</ItemGroup>
 
+<<<<<<< HEAD
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
+=======
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+>>>>>>> a6e8e849f18a037f07982eed9acd2900900fabc1
 
 	<ItemGroup>
 		<ProjectReference Include="..\RazorEngineCore\RazorEngineCore.csproj" />

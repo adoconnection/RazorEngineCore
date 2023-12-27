@@ -30,7 +30,7 @@ namespace RazorEngineCore
 
         public Task<IRazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, CancellationToken cancellationToken = default) where T : IRazorEngineTemplate
         {
-            return Task.Factory.StartNew(() => this.Compile<T>(content: content, builderAction: builderAction, cancellationToken: cancellationToken));
+            return Task.Run(() => this.Compile<T>(content: content, builderAction: builderAction, cancellationToken: cancellationToken));
         }
 
         public IRazorEngineCompiledTemplate Compile(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, CancellationToken cancellationToken = default)
@@ -46,7 +46,7 @@ namespace RazorEngineCore
 
         public Task<IRazorEngineCompiledTemplate> CompileAsync(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, CancellationToken cancellationToken = default)
         {
-            return Task.Factory.StartNew(() => this.Compile(
+            return Task.Run(() => this.Compile(
                 content, 
                 builderAction, 
                 cancellationToken));
@@ -105,7 +105,9 @@ namespace RazorEngineCore
                    })
                     .Concat(options.MetadataReferences)
                     .ToList(),
-                new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+                new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
+                    .WithOptimizationLevel(OptimizationLevel.Release)
+                    .WithOverflowChecks(true));
 
 
             MemoryStream assemblyStream = new MemoryStream();

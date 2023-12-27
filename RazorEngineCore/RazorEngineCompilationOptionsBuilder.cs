@@ -63,9 +63,10 @@ namespace RazorEngineCore
 
             string result = string.Join(".", elements.Where(e => !string.IsNullOrWhiteSpace(e)));
 
-            if (result.Contains('`'))
+            int tildeLocation = result.IndexOf('`');
+            if (tildeLocation > -1)
             {
-                result = result.Substring(0, result.IndexOf("`"));
+                result = result.Substring(0, tildeLocation);
             }
 
             if (type.GenericTypeArguments.Length == 0)

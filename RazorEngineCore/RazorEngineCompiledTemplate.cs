@@ -22,13 +22,17 @@ namespace RazorEngineCore
 
         public static async Task<RazorEngineCompiledTemplate> LoadFromFileAsync(string fileName)
         {
+#if NETSTANDARD2_0
             using (FileStream fileStream = new FileStream(
-                path: fileName, 
-                mode: FileMode.Open, 
-                access: FileAccess.Read,
-                share: FileShare.None,
-                bufferSize: 4096, 
-                useAsync: true))
+#else
+            await using (FileStream fileStream = new FileStream(
+#endif
+                       path: fileName, 
+                       mode: FileMode.Open, 
+                       access: FileAccess.Read,
+                       share: FileShare.None,
+                       bufferSize: 4096, 
+                       useAsync: true))
             {
                 return await LoadFromStreamAsync(fileStream);
             }
