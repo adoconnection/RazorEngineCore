@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RazorEngineCore
@@ -19,7 +18,11 @@ namespace RazorEngineCore
 
         public async Task SaveToFileAsync(string fileName)
         {
+#if NETSTANDARD2_0
             using (FileStream fileStream = new FileStream(
+#else
+            await using (FileStream fileStream = new FileStream(
+#endif
                        path: fileName,
                        mode: FileMode.OpenOrCreate,
                        access: FileAccess.Write,
@@ -36,9 +39,9 @@ namespace RazorEngineCore
             this.SaveToStreamAsync(stream).GetAwaiter().GetResult();
         }
 
-        public async Task SaveToStreamAsync(Stream stream)
+        public Task SaveToStreamAsync(Stream stream)
         {
-            await this.Meta.Write(stream);
+            return this.Meta.Write(stream);
         }
 
         public void EnableDebugging(string debuggingOutputDirectory = null)

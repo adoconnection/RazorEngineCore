@@ -4,6 +4,7 @@ using System.Dynamic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
@@ -32,18 +33,25 @@ namespace RazorEngineCore
                    && type.Attributes.HasFlag(TypeAttributes.NotPublic);
         }
 
-        public static long ReadLong(this Stream stream)
+        public static async Task<long> ReadLong(this Stream stream)
         {
             byte[] buffer = new byte[8];
-            stream.Read(buffer, 0, 8);
-
+#if NETSTANDARD2_0
+            _ = await stream.ReadAsync(buffer, 0, buffer.Length);
+#else
+            _ = await stream.ReadAsync(buffer.AsMemory(0, buffer.Length));
+#endif
             return BitConverter.ToInt64(buffer, 0);
         }
 
-        public static void WriteLong(this Stream stream, long value)
+        public static async Task WriteLong(this Stream stream, long value)
         {
             byte[] buffer = BitConverter.GetBytes(value);
-            stream.Write(buffer, 0, buffer.Length);
+#if NETSTANDARD2_0
+            await stream.WriteAsync(buffer, 0, buffer.Length);
+#else
+            await stream.WriteAsync(buffer);
+#endif
         }
     }
 }
