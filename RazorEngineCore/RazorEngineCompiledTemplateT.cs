@@ -2,7 +2,6 @@
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace RazorEngineCore
 {
@@ -24,13 +23,17 @@ namespace RazorEngineCore
         
         public static async Task<RazorEngineCompiledTemplate<T>> LoadFromFileAsync(string fileName)
         {
+#if NETSTANDARD2_0
             using (FileStream fileStream = new FileStream(
-                       path: fileName,
-                       mode: FileMode.Open,
-                       access: FileAccess.Read,
-                       share: FileShare.None,
-                       bufferSize: 4096,
-                       useAsync: true))
+#else
+            await using (FileStream fileStream = new FileStream(
+#endif
+                             path: fileName,
+                             mode: FileMode.Open,
+                             access: FileAccess.Read,
+                             share: FileShare.None,
+                             bufferSize: 4096,
+                             useAsync: true))
             {
                 return await LoadFromStreamAsync(fileStream);
             }
@@ -53,7 +56,7 @@ namespace RazorEngineCore
         
         public async Task<string> RunAsync(Action<T> initializer)
         {
-            T instance = (T) Activator.CreateInstance(this.TemplateType);
+            var instance = (T) Activator.CreateInstance(this.TemplateType);
             initializer(instance);
 
             if (this.IsDebuggerEnabled && instance is RazorEngineTemplateBase instance2)

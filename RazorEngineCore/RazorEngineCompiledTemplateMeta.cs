@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +15,7 @@ namespace RazorEngineCore
 
         public async Task Write(Stream stream)
         {
-            stream.WriteLong(10001);
+            await stream.WriteLong(10001);
 
             await this.WriteBuffer(stream, this.AssemblyByteCode);
             await this.WriteBuffer(stream, this.PdbByteCode);
@@ -28,7 +27,7 @@ namespace RazorEngineCore
 
         public static async Task<RazorEngineCompiledTemplateMeta> Read(Stream stream)
         {
-            long version = stream.ReadLong();
+            long version = await stream.ReadLong();
 
             if (version == 10001)
             {
@@ -51,22 +50,26 @@ namespace RazorEngineCore
             };
         }
 
-        private async Task WriteString(Stream stream, string value)
+        private Task WriteString(Stream stream, string value)
         {
             byte[] buffer = value == null ? null : Encoding.UTF8.GetBytes(value);
-            await this.WriteBuffer(stream, buffer);
+            return this.WriteBuffer(stream, buffer);
         }
 
         private async Task WriteBuffer(Stream stream, byte[] buffer)
         {
             if (buffer == null)
             {
-                stream.WriteLong(0);
+                await stream.WriteLong(0);
                 return;
             }
 
-            stream.WriteLong(buffer.Length);
+            await stream.WriteLong(buffer.Length);
+#if NETSTANDARD2_0
             await stream.WriteAsync(buffer, 0, buffer.Length);
+#else
+            await stream.WriteAsync(buffer);
+#endif
         }
 
         private static async Task<string> ReadString(Stream stream)
@@ -77,7 +80,7 @@ namespace RazorEngineCore
 
         private static async Task<byte[]> ReadBuffer(Stream stream)
         {
-            long length = stream.ReadLong();
+            long length = await stream.ReadLong();
 
             if (length == 0)
             {
@@ -85,8 +88,11 @@ namespace RazorEngineCore
             }
 
             byte[] buffer = new byte[length];
-            await stream.ReadAsync(buffer, 0, buffer.Length);
-
+#if NETSTANDARD2_0
+            _ = await stream.ReadAsync(buffer, 0, buffer.Length);
+#else
+            _ = await stream.ReadAsync(buffer);
+#endif
             return buffer;
         }
     }

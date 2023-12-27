@@ -32,7 +32,7 @@ namespace RazorEngineCore
                 return true;
             }
 
-            var type = result.GetType();
+            //var type = result.GetType();
 
             if (result.IsAnonymous())
             {
@@ -41,12 +41,7 @@ namespace RazorEngineCore
 
             if (result is IDictionary dictionary)
             {
-                List<object> keys = new List<object>();
-
-                foreach(object key in dictionary.Keys)
-                {
-                    keys.Add(key);
-                }
+                List<object> keys = dictionary.Keys.Cast<object>().ToList();
 
                 foreach(object key in keys)
                 {
@@ -56,22 +51,13 @@ namespace RazorEngineCore
                     }
                 }
             }
-            else if (result is IEnumerable enumerable && !(result is string))
+            else if (result is IEnumerable enumerable and not string)
             {
                 result = enumerable.Cast<object>()
-                        .Select(e =>
-                        {
-                            if (e.IsAnonymous())
-                            {
-                                return new AnonymousTypeWrapper(e);
-                            }
-
-                            return e;
-                        })
+                        .Select(e => e.IsAnonymous() ? new AnonymousTypeWrapper(e) : e)
                         .ToList();
             }
-
-
+            
             return true;
         }
     }
