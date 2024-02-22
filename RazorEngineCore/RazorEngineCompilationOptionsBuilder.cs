@@ -59,7 +59,7 @@ namespace RazorEngineCore
         }
 
         /// <summary>
-            /// <para>Adds a default <c>using</c> to the compiled view. This is equivalent to adding <c>@using [NAMESPACE]</c> to every template rendered by the engine'</para>
+            /// <para>Adds a default <c>using</c> to the compiled view. This is equivalent to adding <c>@using [NAMESPACE]</c> to the template rendered by the engine'</para>
             /// Current Defaults: 
             /// <list type="bullet">
             ///     <listheader></listheader>
@@ -75,9 +75,9 @@ namespace RazorEngineCore
         }
 
         /// <summary>
-        /// Adds type to @inherit from in the template
+        /// Adds <c>@inherits</c> directive to the compiled template
         /// </summary>
-        /// <param name="type">Type to @inherit from</param>
+        /// <param name="type">Type to <c>@inherits</c> from</param>
         public void Inherits(Type type)
         {
             this.Options.Inherits = this.RenderTypeName(type);
