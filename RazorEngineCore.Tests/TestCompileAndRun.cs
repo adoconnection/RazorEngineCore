@@ -909,6 +909,27 @@ Hello @Model.Decorator(Model.C)
         }
 
         [TestMethod]
+        public void TestCompileAndRun_ProjectEngineBuilderAction_IsInvoked()
+        {
+            var builderActionIsInvoked = false; 
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate template = razorEngine.Compile("<h1>Hello @Model.Name</h1>", builder =>
+            {
+                builder.IncludeDebuggingInfo();
+                builder.Options.ProjectEngineBuilderAction = (x) => builderActionIsInvoked = true;
+            });
+
+            template.EnableDebugging();
+
+            string actual = template.Run(new
+            {
+                Name = "Alex"
+            });
+
+            Assert.IsTrue(builderActionIsInvoked);
+        }
+
+        [TestMethod]
         public void TestCompileAndRun_Typed_EnabledDebuggingThrowsException()
         {
             string templateText = @"
