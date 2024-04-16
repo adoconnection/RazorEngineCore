@@ -241,7 +241,7 @@ namespace RazorEngineCore.Tests
 
             string actual = template.Run(instance => instance.Model = new TestModel()
             {
-                    DateTime = dateTime
+                DateTime = dateTime
             });
 
             Assert.AreEqual("DateTime: " + dateTime, actual);
@@ -258,7 +258,7 @@ namespace RazorEngineCore.Tests
 
             string actual = template.Run(instance => instance.Model = new TestModel()
             {
-                    DateTime = dateTime
+                DateTime = dateTime
             });
 
             Assert.AreEqual("DateTime: " + dateTime, actual);
@@ -538,7 +538,7 @@ Hello @Model.Decorator(Model.C)
             {
                 instance.Model = new TestModel
                 {
-                        C = "Alex"
+                    C = "Alex"
                 };
             });
 
@@ -635,7 +635,7 @@ Hello @Model.Decorator(Model.C)
 ";
             string actual = template.Run(new
             {
-                    Numbers = new List<object>() {2, 1, 3}
+                Numbers = new List<object>() { 2, 1, 3 }
             });
 
             Assert.AreEqual(expected, actual);
@@ -911,12 +911,15 @@ Hello @Model.Decorator(Model.C)
         [TestMethod]
         public void TestCompileAndRun_ProjectEngineBuilderAction_IsInvoked()
         {
-            var builderActionIsInvoked = false; 
+            var builderActionIsInvoked = false;
             RazorEngine razorEngine = new RazorEngine();
             IRazorEngineCompiledTemplate template = razorEngine.Compile("<h1>Hello @Model.Name</h1>", builder =>
             {
                 builder.IncludeDebuggingInfo();
-                builder.Options.ProjectEngineBuilderAction = (x) => builderActionIsInvoked = true;
+                builder.ConfigureRazorEngineProject(engineBuilder =>
+                {
+                    builderActionIsInvoked = true;
+                });
             });
 
             template.EnableDebugging();

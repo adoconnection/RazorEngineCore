@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using Microsoft.AspNetCore.Razor.Language;
 using Microsoft.CodeAnalysis;
 
 namespace RazorEngineCore
@@ -56,5 +57,11 @@ namespace RazorEngineCore
         /// Enables debug info
         /// </summary>
         void IncludeDebuggingInfo();
+
+        /// <summary>
+        /// Access RazorProjectEngineBuilder to register new Features etc
+        /// </summary>
+        /// <param name="configure"></param>
+        void ConfigureRazorEngineProject(Action<RazorProjectEngineBuilder> configure);
     }
 }

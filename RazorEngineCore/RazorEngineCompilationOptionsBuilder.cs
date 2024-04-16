@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Microsoft.AspNetCore.Razor.Language;
 using Microsoft.CodeAnalysis;
 
 namespace RazorEngineCore
@@ -132,6 +133,14 @@ namespace RazorEngineCore
         public void IncludeDebuggingInfo()
         {
             this.Options.IncludeDebuggingInfo = true;
+        }
+
+        /// <summary>
+        /// Enables debug info
+        /// </summary>
+        public void ConfigureRazorEngineProject(Action<RazorProjectEngineBuilder> configure)
+        {
+            this.Options.ProjectEngineBuilder = configure;
         }
 
     }
