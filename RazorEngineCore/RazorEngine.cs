@@ -67,6 +67,7 @@ namespace RazorEngineCore
                 (builder) =>
                 {
                     builder.SetNamespace(options.TemplateNamespace);
+                    options.ProjectEngineBuilderAction?.Invoke(builder);
                 });
 
             RazorSourceDocument document = RazorSourceDocument.Create(templateSource, fileName);
