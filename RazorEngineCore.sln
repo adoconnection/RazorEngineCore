@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleAppNET472", "Example
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleAppNET5", "ExampleAppNET5\ExampleAppNET5.csproj", "{B19C090A-4EC1-441D-B702-ADD2ECA79198}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleAppNET8", "ExampleAppNET8\ExampleAppNET8.csproj", "{9E5835E0-F768-4ADE-9A1F-61FE6B411B8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{B19C090A-4EC1-441D-B702-ADD2ECA79198}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B19C090A-4EC1-441D-B702-ADD2ECA79198}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B19C090A-4EC1-441D-B702-ADD2ECA79198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E5835E0-F768-4ADE-9A1F-61FE6B411B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E5835E0-F768-4ADE-9A1F-61FE6B411B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E5835E0-F768-4ADE-9A1F-61FE6B411B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E5835E0-F768-4ADE-9A1F-61FE6B411B8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
