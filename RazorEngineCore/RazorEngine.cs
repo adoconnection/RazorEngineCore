@@ -107,7 +107,7 @@ namespace RazorEngineCore
                     .Concat(options.MetadataReferences)
                     .ToList(),
                 new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
-                    .WithOptimizationLevel(OptimizationLevel.Release)
+                    .WithOptimizationLevel(options.IncludeDebuggingInfo ? OptimizationLevel.Debug : OptimizationLevel.Release)
                     .WithOverflowChecks(true));
 
 
