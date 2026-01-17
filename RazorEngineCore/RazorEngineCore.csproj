@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net7.0;net6.0;net5.0;netstandard2.0</TargetFrameworks>
+		<TargetFrameworks>net10.0;net9.0;net8.0;net7.0;net6.0;net5.0;netstandard2.0</TargetFrameworks>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>2024.4.1</Version>
+		<Version>2026.1.1</Version>
 		<Authors>Alexander Selishchev, Simon Mourier, William David Cossey, Benjamin Smith, Dag H. Baardsen, krmr, jddj007-hydra, shehrozeee, TheAtomicOption, ItWorksOnMyMachine</Authors>
 		<PackageProjectUrl>https://github.com/adoconnection/RazorEngineCore</PackageProjectUrl>
-		<Description>NET6 Razor Template Engine</Description>
-		<AssemblyVersion>2024.4.1</AssemblyVersion>
-		<FileVersion>2024.4.1</FileVersion>
+		<Description>NET10 Razor Template Engine</Description>
+		<AssemblyVersion>2026.1.1</AssemblyVersion>
+		<FileVersion>2026.1.1</FileVersion>
 		<PackageReleaseNotes></PackageReleaseNotes>
 		<Company>Alexander Selishchev</Company>
 		<SignAssembly>true</SignAssembly>
@@ -21,9 +21,9 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="6.0.25" />
-		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="6.0.36" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.102" PrivateAssets="All" />
 	</ItemGroup>
 	<PropertyGroup>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>

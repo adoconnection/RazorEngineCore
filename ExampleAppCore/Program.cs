@@ -1,7 +1,6 @@
-﻿using System;
+﻿using RazorEngineCore;
+using System;
 using System.Collections.Generic;
-using RazorEngineCore;
-
 namespace ExampleApp
 {
     public class TestModel : RazorEngineTemplateBase
@@ -41,12 +40,21 @@ namespace ExampleApp
 
         static void Main(string[] args)
         {
+            RegularExample();
+            CachedHtmlSafeExample();
+
+            Console.ReadKey();
+        }
+
+
+        static void RegularExample()
+        {
             IRazorEngine razorEngine = new RazorEngine();
             IRazorEngineCompiledTemplate template = razorEngine.Compile(Content);
 
             string result = template.Run(new
             {
-                Name = "Alexander",
+                Name = "<b>Alex</b>",
                 Items = new List<string>()
                 {
                     "item 1",
@@ -55,7 +63,12 @@ namespace ExampleApp
             });
 
             Console.WriteLine(result);
-            Console.ReadKey();
+        }
+
+        static void CachedHtmlSafeExample()
+        {
+            string result = RazorTemplateCache.RenderHtmlSafe("Hello <h1>@Model.Name</h1>", new { Name = "<b>Alex</b>" });
+            Console.WriteLine(result);
         }
     }
 }
