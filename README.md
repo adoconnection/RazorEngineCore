@@ -237,8 +237,12 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2024.4.1
+	* Expose RazorProjectEngineBuilder 🚀 #141 (thanks [@cutslikeaknife](https://github.com/ItWorksOnMyMachine))
+ 	* Documentation for RazorEngineCompilationOptionsBuilder #140 (thanks [@MichaelCleverdon](https://github.com/MichaelCleverdon))
+ 	* More asyncs #138 (thanks [@Adam Kauffman](https://github.com/A9G-Data-Droid))
 * 2023.11.2
-	* Vertual keyword fixed
+	* Virtual keyword fixed
 * 2023.11.1
 	* Template debugging 🚀 PR#111	(thanks [@shehrozeee](https://github.com/shehrozeee) and [@TheAtomicOption](https://github.com/TheAtomicOption))
  	* Add CancellationToken overloads to Compile methods PR#134 (thanks [@daviddotcs](https://github.com/daviddotcs))
