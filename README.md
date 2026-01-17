@@ -321,4 +321,4 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 	* Html attribute rendering tests
 
 ## Supported by
-[<img src="https://builder.ltcdn.ru/Yalio-136e239b-c037-42cc-ba93-615cf6f2176e/2dc690a0-89a2-498d-a71b-fe69711416ae/2900fac9-6295-4f79-b652-79160caa0bb9/14aa66a3-e3bc-45fd-934c-d817e8de980b.png" />](https://limetime.io)
+[<img src="https://builder.ltcdn.ru/Yalio-136e239b-c037-42cc-ba93-615cf6f2176e/2dc690a0-89a2-498d-a71b-fe69711416ae/2900fac9-6295-4f79-b652-79160caa0bb9/14aa66a3-e3bc-45fd-934c-d817e8de980b.png" />](https://limetime.io/en)
