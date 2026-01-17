@@ -161,6 +161,17 @@ private string RenderTemplate(string template, object model)
 }
 ```
 
+Or use [RazorTemplateCache.cs](https://github.com/adoconnection/RazorEngineCore/blob/master/ExampleAppCore/RazorTemplateCache.cs)
+```cs
+static void CachedHtmlSafeExample()
+{
+	string result = RazorTemplateCache.RenderHtmlSafe("Hello <h1>@Model.Name</h1>", new { Name = "<b>Alex</b>" });
+	Console.WriteLine(result);
+}
+```
+
+
+
 #### Template functions
 ASP.NET Core way of defining template functions:
 ```
@@ -237,6 +248,10 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 
 
 #### Changelog
+* 2026.1.1
+	* NET10 target
+ 	* [RazorTemplateCache.cs](https://github.com/adoconnection/RazorEngineCore/blob/master/ExampleAppCore/RazorTemplateCache.cs) in Example App
+  	* [HtmlSafeTemplate.cs](https://github.com/adoconnection/RazorEngineCore/blob/master/ExampleAppCore/HtmlSafeTemplate.cs) in Example App  	
 * 2024.4.1
 	* Expose RazorProjectEngineBuilder 🚀 #141 (thanks [@cutslikeaknife](https://github.com/ItWorksOnMyMachine))
  	* Documentation for RazorEngineCompilationOptionsBuilder #140 (thanks [@MichaelCleverdon](https://github.com/MichaelCleverdon))
