@@ -23,7 +23,7 @@ namespace ExampleApp
         {
             object value = obj is RawContent rawContent
                 ? rawContent.Value
-                : System.Web.HttpUtility.HtmlEncode(obj);
+                : System.Text.Encodings.Web.HtmlEncoder.Default.Encode(obj?.ToString() ?? string.Empty);
 
             base.Write(value);
         }
@@ -32,7 +32,7 @@ namespace ExampleApp
         {
             value = value is RawContent rawContent
                 ? rawContent.Value
-                : System.Web.HttpUtility.HtmlAttributeEncode(value?.ToString());
+                : System.Text.Encodings.Web.HtmlEncoder.Default.Encode(value?.ToString() ?? string.Empty);
 
             base.WriteAttributeValue(prefix, prefixOffset, value, valueOffset, valueLength, isLiteral);
         }
