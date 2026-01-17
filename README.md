@@ -1,7 +1,7 @@
 # RazorEngineCore
 .NET6 Razor Template Engine. No legacy code. No breaking changes.
-* .NET 6.0
-* .NET 5.0
+* .NET 10
+* .NET 5, 6, 7, 8, 9
 * .NET Standard 2.0
 * .NET Framework 4.7.2
 * Windows / Linux
