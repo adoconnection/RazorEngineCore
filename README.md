@@ -1,5 +1,5 @@
 # RazorEngineCore
-.NET6 Razor Template Engine. No legacy code. No breaking changes.
+.NET10 Razor Template Engine. No legacy code. No breaking changes.
 * .NET 10
 * .NET 5, 6, 7, 8, 9
 * .NET Standard 2.0
