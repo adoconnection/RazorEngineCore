@@ -1,0 +1,341 @@
+Build started 8/1/2026 10:33:21 PM.
+     1>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" on node 1 (Restore target(s)).
+     1>ValidateSolutionConfiguration:
+         Building solution configuration "Debug|Any CPU".
+       _GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+     1>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (1) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppCore/ExampleAppNET10.csproj" (4:5) on node 5 (_GenerateProjectRestoreGraph target(s)).
+     4>AddPrunePackageReferences:
+         Loading prune package data from PrunePackageData folder
+         Failed to load prune package data from PrunePackageData folder, loading from targeting packs instead
+         Looking for targeting packs in /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref
+         Pack directories found: /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref/10.0.10
+         Found package overrides file /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref/10.0.10/data/PackageOverrides.txt
+     4>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppCore/ExampleAppNET10.csproj" (_GenerateProjectRestoreGraph target(s)).
+     1>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (1) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:17) on node 1 (_GenerateProjectRestoreGraph target(s)).
+  2:17>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:17) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:22) on node 1 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>AddPrunePackageReferences:
+         Loading prune package data from PrunePackageData folder
+         Failed to load prune package data from PrunePackageData folder, loading from targeting packs instead
+         Looking for targeting packs in /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref
+         Pack directories found: /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref/10.0.10
+     1>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (1) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:11) on node 3 (_GenerateProjectRestoreGraph target(s)).
+  3:11>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:11) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:15) on node 3 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     3>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+     2>AddPrunePackageReferences:
+         Found package overrides file /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref/10.0.10/data/PackageOverrides.txt
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+  2:17>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:17) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:23) on node 5 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+  3:11>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:11) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:16) on node 2 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     3>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+  3:11>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:11) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:17) on node 3 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     3>AddPrunePackageReferences:
+         Loading prune package data from PrunePackageData folder
+         Failed to load prune package data from PrunePackageData folder, loading from targeting packs instead
+         Looking for targeting packs in /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref
+         Pack directories found: /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref/10.0.10
+         Found package overrides file /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref/10.0.10/data/PackageOverrides.txt
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (_GenerateProjectRestoreGraph target(s)).
+  2:17>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:17) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:24) on node 4 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+  2:17>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:17) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:25) on node 1 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GenerateProjectRestoreGraph target(s)).
+     1>Restore:
+         X.509 certificate chain validation will use the fallback certificate bundle at '/Users/lamontwarren/.dotnet/sdk/10.0.302/trustedroots/codesignctl.pem'.
+         X.509 certificate chain validation will use the fallback certificate bundle at '/Users/lamontwarren/.dotnet/sdk/10.0.302/trustedroots/timestampctl.pem'.
+         Assets file has not changed. Skipping assets file writing. Path: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/obj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNet472/obj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppCore/obj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/obj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/obj/project.assets.json
+         Restored /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj (in 15 ms).
+         Restored /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNet472/ExampleAppNET472.csproj (in 15 ms).
+         Restored /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppCore/ExampleAppNET10.csproj (in 15 ms).
+         Restored /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj (in 15 ms).
+         Restored /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj (in 15 ms).
+         
+         NuGet Config files used:
+             /Users/lamontwarren/.nuget/NuGet/NuGet.Config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+         All projects are up-to-date for restore.
+     1>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (Restore target(s)).
+   1:2>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" on node 1 (VSTest target(s)).
+     1>ValidateSolutionConfiguration:
+         Building solution configuration "Debug|Any CPU".
+   1:2>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (1:2) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:26) on node 5 (VSTest target(s)).
+     2>BuildProject:
+         Build started, please wait...
+   1:2>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (1:2) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:18) on node 4 (VSTest target(s)).
+     3>BuildProject:
+         Build started, please wait...
+  2:26>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:26) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:27) on node 5 (Build target(s)).
+     2>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+       _GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net10.0/RazorEngineCore.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/bin/Debug/net10.0/RazorEngineCore.dll
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target(s)).
+  2:26>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:26) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:32) on node 8 (Build target(s)).
+     2>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+  2:26>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:26) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:30) on node 7 (Build target(s)).
+     2>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+     2>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/netstandard2.0/RazorEngineCore.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/bin/Debug/netstandard2.0/RazorEngineCore.dll
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target(s)).
+  2:26>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:26) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:31) on node 6 (Build target(s)).
+     2>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+     2>CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+       _GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net9.0/RazorEngineCore.sourcelink.json' is up-to-date.
+     2>CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+     2>CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+     2>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net8.0/RazorEngineCore.sourcelink.json' is up-to-date.
+     2>CopyFilesToOutputDirectory:
+         RazorEngineCore -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/bin/Debug/net9.0/RazorEngineCore.dll
+     2>CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target(s)).
+     2>GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/bin/Debug/net8.0/RazorEngineCore.dll
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target(s)).
+  3:18>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:18) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:20) on node 9 (Build target(s)).
+     3>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+  3:18>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:18) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:21) on node 10 (Build target(s)).
+     3>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+  3:18>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:18) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:19) on node 4 (Build target(s)).
+     3>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+     3>CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+     3>CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+     2>GenerateNuspec:
+       Skipping target "GenerateNuspec" because all output files are up-to-date with respect to the input files.
+       BuildProject:
+         Build completed.
+         
+     3>CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+     3>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net9.0/RazorEngineCore.Tests.sourcelink.json' is up-to-date.
+     3>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net10.0/RazorEngineCore.Tests.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+     3>CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+     3>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net8.0/RazorEngineCore.Tests.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+     3>_CopyOutOfDateSourceItemsToOutputDirectory:
+       Skipping target "_CopyOutOfDateSourceItemsToOutputDirectory" because all output files are up-to-date with respect to the input files.
+     3>_CopyOutOfDateSourceItemsToOutputDirectory:
+       Skipping target "_CopyOutOfDateSourceItemsToOutputDirectory" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildRuntimeConfigurationFiles:
+       Skipping target "GenerateBuildRuntimeConfigurationFiles" because all output files are up-to-date with respect to the input files.
+     3>GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildRuntimeConfigurationFiles:
+       Skipping target "GenerateBuildRuntimeConfigurationFiles" because all output files are up-to-date with respect to the input files.
+     3>CopyFilesToOutputDirectory:
+         RazorEngineCore.Tests -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net9.0/RazorEngineCore.Tests.dll
+     3>CopyFilesToOutputDirectory:
+         RazorEngineCore.Tests -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net10.0/RazorEngineCore.Tests.dll
+     3>_CopyOutOfDateSourceItemsToOutputDirectory:
+       Skipping target "_CopyOutOfDateSourceItemsToOutputDirectory" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target(s)).
+     3>GenerateBuildRuntimeConfigurationFiles:
+       Skipping target "GenerateBuildRuntimeConfigurationFiles" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore.Tests -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net8.0/RazorEngineCore.Tests.dll
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (Build target(s)).
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (Build target(s)).
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (Build target(s)).
+     3>BuildProject:
+         Build completed.
+         
+Test run for /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net9.0/RazorEngineCore.Tests.dll (.NETCoreApp,Version=v9.0)
+Test run for /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net10.0/RazorEngineCore.Tests.dll (.NETCoreApp,Version=v10.0)
+Test run for /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net8.0/RazorEngineCore.Tests.dll (.NETCoreApp,Version=v8.0)
+A total of 1 test files matched the specified pattern.
+A total of 1 test files matched the specified pattern.
+A total of 1 test files matched the specified pattern.
+You must install or update .NET to run this application.
+App: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net8.0/testhost.dll
+Architecture: arm64
+Framework: 'Microsoft.NETCore.App', version '8.0.0' (arm64)
+.NET location: /Users/lamontwarren/.dotnet/
+The following frameworks were found:
+  10.0.10 at [/Users/lamontwarren/.dotnet/shared/Microsoft.NETCore.App]
+Learn more:
+https://aka.ms/dotnet/app-launch-failed
+To install missing framework, download:
+https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=8.0.0&arch=arm64&rid=osx-arm64&os=osx.26
+You must install or update .NET to run this application.
+App: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net9.0/testhost.dll
+Architecture: arm64
+Framework: 'Microsoft.NETCore.App', version '9.0.0' (arm64)
+.NET location: /Users/lamontwarren/.dotnet/
+The following frameworks were found:
+  10.0.10 at [/Users/lamontwarren/.dotnet/shared/Microsoft.NETCore.App]
+Learn more:
+https://aka.ms/dotnet/app-launch-failed
+To install missing framework, download:
+https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=9.0.0&arch=arm64&rid=osx-arm64&os=osx.26
+Testhost process for source(s) '/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net8.0/RazorEngineCore.Tests.dll' exited with error: You must install or update .NET to run this application.
+App: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net8.0/testhost.dll
+Architecture: arm64
+Framework: 'Microsoft.NETCore.App', version '8.0.0' (arm64)
+.NET location: /Users/lamontwarren/.dotnet/
+The following frameworks were found:
+  10.0.10 at [/Users/lamontwarren/.dotnet/shared/Microsoft.NETCore.App]
+Learn more:
+https://aka.ms/dotnet/app-launch-failed
+To install missing framework, download:
+https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=8.0.0&arch=arm64&rid=osx-arm64&os=osx.26
+. Please check the diagnostic logs for more information.
+Testhost process for source(s) '/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net9.0/RazorEngineCore.Tests.dll' exited with error: You must install or update .NET to run this application.
+App: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net9.0/testhost.dll
+Architecture: arm64
+Framework: 'Microsoft.NETCore.App', version '9.0.0' (arm64)
+.NET location: /Users/lamontwarren/.dotnet/
+The following frameworks were found:
+  10.0.10 at [/Users/lamontwarren/.dotnet/shared/Microsoft.NETCore.App]
+Learn more:
+https://aka.ms/dotnet/app-launch-failed
+To install missing framework, download:
+https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=9.0.0&arch=arm64&rid=osx-arm64&os=osx.26
+. Please check the diagnostic logs for more information.
+
+Test Run Aborted.
+
+Test Run Aborted.
+  3:18>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:18) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:23) on node 9 (VSTest target(s)).
+     3>_VSTestConsole:
+         MSB4181: The "VSTestTask" task returned false but did not log an error.
+  3:18>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:18) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:22) on node 10 (VSTest target(s)).
+     3>_VSTestConsole:
+         MSB4181: The "VSTestTask" task returned false but did not log an error.
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target(s)) -- FAILED.
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target(s)) -- FAILED.
+  Passed TestCompile [468 ms]
+  Passed TestCompileAsync [8 ms]
+  Passed TestCompileAndRun_HtmlLiteral [26 ms]
+  Passed TestCompileAndRun_HtmlLiteralAsync [8 ms]
+  Passed TestCompileAndRun_InAttributeVariables [38 ms]
+  Passed TestCompileAndRun_InAttributeVariables2 [8 ms]
+  Passed TestCompileAndRun_InAttributeVariablesAsync [13 ms]
+  Passed TestCompileAndRun_HtmlAttribute [8 ms]
+  Passed TestCompileAndRun_HtmlAttributeAsync [8 ms]
+  Passed TestCompileAndRun_DynamicModel_Plain [13 ms]
+  Passed TestCompileAndRun_DynamicModel_PlainAsync [9 ms]
+  Passed TestCompileAndRun_StructList [27 ms]
+  Passed TestCompileAndRun_DynamicModel_Nested [13 ms]
+  Passed TestCompileAndRun_DynamicModel_NestedAsync [8 ms]
+  Passed TestCompileAndRun_NullModel [7 ms]
+  Passed TestCompileAndRun_NullablePropertyWithValue [16 ms]
+  Passed TestCompileAndRun_NullablePropertyWithoutValue [8 ms]
+  Passed TestCompileAndRun_NullModelAsync [7 ms]
+  Passed TestCompileAndRun_NullNestedObject [8 ms]
+  Passed TestCompileAndRun_NullNestedObjectAsync [11 ms]
+  Passed TestCompileAndRun_DynamicModel_Lists [9 ms]
+  Passed TestCompileAndRun_DynamicModel_ListsAsync [9 ms]
+  Passed TestCompileAndRun_DynamicModel_Dictionary1 [15 ms]
+  Passed TestCompileAndRun_DynamicModel_Dictionary2 [8 ms]
+  Passed TestCompileAndRun_TestFunction [33 ms]
+  Passed TestCompileAndRun_TypedModel1 [11 ms]
+  Passed TestCompileAndRun_TypedModel1Async [6 ms]
+  Passed TestCompileAndRun_TypedModel2 [6 ms]
+  Passed TestCompileAndRun_TypedModel3 [10 ms]
+  Passed TestCompileAndRun_TypedModel2Async [13 ms]
+  Passed TestCompileAndRun_AnonymousModelWithArrayOfObjects [40 ms]
+  Passed TestCompileAndRun_StronglyTypedModelLinq [7 ms]
+  Passed TestCompileAndRun_DynamicModelLinq [14 ms]
+  Passed TestCompileAndRun_LinqAsync [8 ms]
+  Passed TestCompileAndRun_MetadataReference [20 ms]
+  Passed TestCompileCancellation_DynamicModel [< 1 ms]
+  Passed TestCompileCancellation_DynamicModelAsync [1 ms]
+  Passed TestCompileCancellation_TypedModel1 [< 1 ms]
+  Passed TestCompileCancellation_TypedModel1Async [< 1 ms]
+  Passed TestCompileAndRun_IncludeDebuggingForTypedMode_DisabledDebugging [23 ms]
+  Passed TestCompileAndRun_IncludeDebuggingForTypedAnonymous_DisabledDebugging [8 ms]
+  Passed TestCompileAndRun_IncludeDebuggingForTypedMode_EnabledDebugging [7 ms]
+  Passed TestCompileAndRun_IncludeDebuggingForTypedAnonymous_EnabledDebugging [12 ms]
+  Passed TestCompileAndRun_ProjectEngineBuilderAction_IsInvoked [9 ms]
+  Passed TestCompileAndRun_Typed_EnabledDebuggingThrowsException [7 ms]
+  Passed TestCompileAndRun_Anonymous_EnabledDebuggingThrowsException [8 ms]
+  Passed TestSaveToStream [18 ms]
+  Passed TestSaveToStreamAsync [9 ms]
+  Passed TestSaveToFile_Typed [10 ms]
+  Passed TestSaveToFile_Anonymous [15 ms]
+  Passed TestSaveToFileAsync [10 ms]
+  Passed TestSave_RazorEngineCompiledTemplateMeta_1 [< 1 ms]
+  Passed TestSave_RazorEngineCompiledTemplateMeta_2 [< 1 ms]
+  Passed TestSettingTemplateFilename [22 ms]
+  Passed TestModelNestedTypes [7 ms]
+  Passed TestModelNoNamespace [9 ms]
+  Passed TestSettingTemplateNamespace [8 ms]
+  Passed TestSettingTemplateNamespaceT [6 ms]
+
+Test Run Successful.
+Total tests: 58
+     Passed: 58
+ Total time: 1.4870 Seconds
+     3>DispatchToInnerBuildsWithVSTestTarget:
+         Build continuing because "ContinueOnError" on the task "MSBuild" is set to "ErrorAndContinue".
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target(s)) -- FAILED.
+     1>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target(s)) -- FAILED.
+
+Build FAILED.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.25
