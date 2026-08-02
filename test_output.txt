@@ -1,0 +1,830 @@
+Build started 8/1/2026 10:20:25 PM.
+     1>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" on node 1 (Restore target(s)).
+     1>ValidateSolutionConfiguration:
+         Building solution configuration "Debug|Any CPU".
+       _GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+     1>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (1) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj" (5:4) on node 3 (_GenerateRestoreGraphProjectEntry target(s)).
+     5>/Users/lamontwarren/.dotnet/sdk/10.0.302/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.EolTargetFrameworks.targets(32,5): warning NETSDK1138: The target framework 'net5.0' is out of support and will not receive security updates in the future. Please refer to https://aka.ms/dotnet-core-support for more information about the support policy. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj]
+     5>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj" (_GenerateRestoreGraphProjectEntry target(s)).
+     1>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (1) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppCore/ExampleAppNET10.csproj" (4:5) on node 2 (_GenerateProjectRestoreGraph target(s)).
+     4>AddPrunePackageReferences:
+         Loading prune package data from PrunePackageData folder
+         Failed to load prune package data from PrunePackageData folder, loading from targeting packs instead
+         Looking for targeting packs in /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref
+         Pack directories found: /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref/10.0.10
+         Found package overrides file /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref/10.0.10/data/PackageOverrides.txt
+     4>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppCore/ExampleAppNET10.csproj" (_GenerateProjectRestoreGraph target(s)).
+     1>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (1) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:17) on node 4 (_GenerateProjectRestoreGraph target(s)).
+  3:17>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:17) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:24) on node 4 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     3>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+  3:17>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:17) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:25) on node 3 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     3>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+     1>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (1) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:23) on node 1 (_GenerateProjectRestoreGraph target(s)).
+  2:23>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:23) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:31) on node 1 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>AddPrunePackageReferences:
+         Loading prune package data from PrunePackageData folder
+         Failed to load prune package data from PrunePackageData folder, loading from targeting packs instead
+         Looking for targeting packs in /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref
+         Pack directories found: /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref/10.0.10
+         Found package overrides file /Users/lamontwarren/.dotnet/packs/Microsoft.NETCore.App.Ref/10.0.10/data/PackageOverrides.txt
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+  2:23>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:23) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:32) on node 2 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+  3:17>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:17) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:26) on node 4 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     3>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+  2:23>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:23) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:33) on node 5 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+  2:23>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:23) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:34) on node 1 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+  2:23>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:23) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:35) on node 2 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+  3:17>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:17) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:28) on node 4 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     3>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+  2:23>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:23) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:36) on node 3 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (_GenerateProjectRestoreGraph target(s)).
+  2:23>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:23) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:37) on node 1 (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>AddPrunePackageReferences:
+         Loaded prune package data from framework packages
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GenerateProjectRestoreGraphPerFramework target(s)).
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GenerateProjectRestoreGraph target(s)).
+     1>Restore:
+         X.509 certificate chain validation will use the fallback certificate bundle at '/Users/lamontwarren/.dotnet/sdk/10.0.302/trustedroots/codesignctl.pem'.
+         X.509 certificate chain validation will use the fallback certificate bundle at '/Users/lamontwarren/.dotnet/sdk/10.0.302/trustedroots/timestampctl.pem'.
+         Assets file has not changed. Skipping assets file writing. Path: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppCore/obj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/obj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/obj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNet472/obj/project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/obj/project.assets.json
+         Restored /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj (in 15 ms).
+         Restored /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj (in 15 ms).
+         Restored /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppCore/ExampleAppNET10.csproj (in 15 ms).
+         Restored /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNet472/ExampleAppNET472.csproj (in 15 ms).
+         Restored /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj (in 15 ms).
+         
+         NuGet Config files used:
+             /Users/lamontwarren/.nuget/NuGet/NuGet.Config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+         All projects are up-to-date for restore.
+     1>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (Restore target(s)).
+   1:2>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" on node 1 (VSTest target(s)).
+     1>ValidateSolutionConfiguration:
+         Building solution configuration "Debug|Any CPU".
+   1:2>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (1:2) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:30) on node 5 (VSTest target(s)).
+     3>BuildProject:
+         Build started, please wait...
+   1:2>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (1:2) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) on node 2 (VSTest target(s)).
+     2>BuildProject:
+         Build started, please wait...
+  2:38>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:39) on node 2 (Build target(s)).
+     2>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+       _GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net10.0/RazorEngineCore.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/bin/Debug/net10.0/RazorEngineCore.dll
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target(s)).
+   1:2>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (1:2) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj" (5:6) on node 1 (VSTest target(s)).
+     5>/Users/lamontwarren/.nuget/packages/system.runtime.compilerservices.unsafe/6.1.0/buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets(4,5): warning : System.Runtime.CompilerServices.Unsafe 6.1.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj]
+     5>/Users/lamontwarren/.nuget/packages/system.text.encoding.codepages/8.0.0/buildTransitive/netcoreapp2.0/System.Text.Encoding.CodePages.targets(4,5): warning : System.Text.Encoding.CodePages 8.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj]
+     5>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj]
+     5>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj]
+     5>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj" (VSTest target(s)).
+  3:30>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:30) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:31) on node 4 (Build target(s)).
+     3>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net6.0]
+     3>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net6.0]
+  3:30>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:30) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:33) on node 3 (Build target(s)).
+     3>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net7.0]
+     3>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net7.0]
+  2:38>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:43) on node 2 (Build target(s)).
+     2>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+       _GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/netstandard2.0/RazorEngineCore.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/bin/Debug/netstandard2.0/RazorEngineCore.dll
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target(s)).
+  2:38>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:44) on node 8 (Build target(s)).
+     2>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net7.0]
+     2>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net7.0]
+  2:38>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:46) on node 6 (Build target(s)).
+     2>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net6.0]
+     2>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net6.0]
+  2:38>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:48) on node 9 (Build target(s)).
+     2>/Users/lamontwarren/.nuget/packages/system.runtime.compilerservices.unsafe/6.1.0/buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets(4,5): warning : System.Runtime.CompilerServices.Unsafe 6.1.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+     2>/Users/lamontwarren/.nuget/packages/system.text.encoding.codepages/8.0.0/buildTransitive/netcoreapp2.0/System.Text.Encoding.CodePages.targets(4,5): warning : System.Text.Encoding.CodePages 8.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+     2>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+     2>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+  2:38>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:45) on node 7 (Build target(s)).
+     2>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+     2>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+     2>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+  2:38>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:47) on node 10 (Build target(s)).
+     2>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+     2>CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+     2>CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+     2>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net9.0/RazorEngineCore.sourcelink.json' is up-to-date.
+     2>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net6.0/RazorEngineCore.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+     2>CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+     2>CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+     2>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net7.0/RazorEngineCore.sourcelink.json' is up-to-date.
+     2>GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+     2>CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+     2>CopyFilesToOutputDirectory:
+         RazorEngineCore -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/bin/Debug/net6.0/RazorEngineCore.dll
+     2>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net8.0/RazorEngineCore.sourcelink.json' is up-to-date.
+     2>GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/bin/Debug/net9.0/RazorEngineCore.dll
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target(s)).
+     2>CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target(s)).
+     2>CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+     2>GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/bin/Debug/net7.0/RazorEngineCore.dll
+     2>GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/bin/Debug/net8.0/RazorEngineCore.dll
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target(s)).
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target(s)).
+     2>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+       _GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net5.0/RazorEngineCore.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/bin/Debug/net5.0/RazorEngineCore.dll
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target(s)).
+  3:30>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:30) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:34) on node 1 (Build target(s)).
+     3>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+  3:30>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:30) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:32) on node 2 (Build target(s)).
+     3>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+     3>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+     3>CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+     3>CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+     3>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+     3>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net8.0/RazorEngineCore.Tests.sourcelink.json' is up-to-date.
+     3>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net9.0/RazorEngineCore.Tests.sourcelink.json' is up-to-date.
+     3>CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+     3>CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+     3>CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+     3>_CopyOutOfDateSourceItemsToOutputDirectory:
+       Skipping target "_CopyOutOfDateSourceItemsToOutputDirectory" because all output files are up-to-date with respect to the input files.
+     3>_CopyOutOfDateSourceItemsToOutputDirectory:
+       Skipping target "_CopyOutOfDateSourceItemsToOutputDirectory" because all output files are up-to-date with respect to the input files.
+     3>GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+     3>GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+     3>GenerateBuildRuntimeConfigurationFiles:
+       Skipping target "GenerateBuildRuntimeConfigurationFiles" because all output files are up-to-date with respect to the input files.
+     3>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net7.0/RazorEngineCore.Tests.sourcelink.json' is up-to-date.
+     3>CopyFilesToOutputDirectory:
+         RazorEngineCore.Tests -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net8.0/RazorEngineCore.Tests.dll
+     3>CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+     3>GenerateBuildRuntimeConfigurationFiles:
+       Skipping target "GenerateBuildRuntimeConfigurationFiles" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore.Tests -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net9.0/RazorEngineCore.Tests.dll
+     3>CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (Build target(s)).
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (Build target(s)).
+     3>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net6.0/RazorEngineCore.Tests.sourcelink.json' is up-to-date.
+     3>_CopyOutOfDateSourceItemsToOutputDirectory:
+       Skipping target "_CopyOutOfDateSourceItemsToOutputDirectory" because all output files are up-to-date with respect to the input files.
+     3>CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+     3>GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildRuntimeConfigurationFiles:
+       Skipping target "GenerateBuildRuntimeConfigurationFiles" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore.Tests -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net7.0/RazorEngineCore.Tests.dll
+  3:30>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:30) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:35) on node 5 (Build target(s)).
+     3>GenerateBindingRedirects:
+       Skipping target "GenerateBindingRedirects" because all output files are up-to-date with respect to the input files.
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (Build target(s)).
+     3>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+  3:30>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:30) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:36) on node 4 (Build target(s)).
+     3>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+     3>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net472/RazorEngineCore.Tests.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+     3>_GenerateSourceLinkFile:
+         Source Link file 'obj/Debug/net10.0/RazorEngineCore.Tests.sourcelink.json' is up-to-date.
+  2:38>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:99) on node 8 (_GetFrameworkAssemblyReferences target(s)).
+     2>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net6.0]
+     2>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net6.0]
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+  2:38>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:101) on node 10 (_GetFrameworkAssemblyReferences target(s)).
+     2>/Users/lamontwarren/.nuget/packages/system.runtime.compilerservices.unsafe/6.1.0/buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets(4,5): warning : System.Runtime.CompilerServices.Unsafe 6.1.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+     2>/Users/lamontwarren/.nuget/packages/system.text.encoding.codepages/8.0.0/buildTransitive/netcoreapp2.0/System.Text.Encoding.CodePages.targets(4,5): warning : System.Text.Encoding.CodePages 8.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+     2>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+     2>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+  2:38>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:100) on node 6 (_GetFrameworkAssemblyReferences target(s)).
+     2>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net7.0]
+     2>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net7.0]
+     3>_CopyOutOfDateSourceItemsToOutputDirectory:
+       Skipping target "_CopyOutOfDateSourceItemsToOutputDirectory" because all output files are up-to-date with respect to the input files.
+       _CopyAppConfigFile:
+       Skipping target "_CopyAppConfigFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore.Tests -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net472/RazorEngineCore.Tests.dll
+     3>_CopyOutOfDateSourceItemsToOutputDirectory:
+       Skipping target "_CopyOutOfDateSourceItemsToOutputDirectory" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildRuntimeConfigurationFiles:
+       Skipping target "GenerateBuildRuntimeConfigurationFiles" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore.Tests -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net6.0/RazorEngineCore.Tests.dll
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (Build target(s)).
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GetFrameworkAssemblyReferences target(s)).
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GetFrameworkAssemblyReferences target(s)).
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GetFrameworkAssemblyReferences target(s)).
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (Build target(s)).
+     3>_CopyOutOfDateSourceItemsToOutputDirectory:
+       Skipping target "_CopyOutOfDateSourceItemsToOutputDirectory" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildRuntimeConfigurationFiles:
+       Skipping target "GenerateBuildRuntimeConfigurationFiles" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         RazorEngineCore.Tests -> /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net10.0/RazorEngineCore.Tests.dll
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (Build target(s)).
+     3>BuildProject:
+         Build completed.
+         
+     2>GenerateNuspec:
+       Skipping target "GenerateNuspec" because all output files are up-to-date with respect to the input files.
+       BuildProject:
+         Build completed.
+         
+Test run for /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net10.0/RazorEngineCore.Tests.dll (.NETCoreApp,Version=v10.0)
+Test run for /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net8.0/RazorEngineCore.Tests.dll (.NETCoreApp,Version=v8.0)
+  3:30>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:30) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:39) on node 8 (VSTest target(s)).
+     3>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net7.0]
+     3>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net7.0]
+Test run for /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net7.0/RazorEngineCore.Tests.dll (.NETCoreApp,Version=v7.0)
+  3:30>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:30) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:40) on node 10 (VSTest target(s)).
+     3>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net6.0]
+     3>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net6.0]
+Test run for /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net6.0/RazorEngineCore.Tests.dll (.NETCoreApp,Version=v6.0)
+Test run for /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net9.0/RazorEngineCore.Tests.dll (.NETCoreApp,Version=v9.0)
+  2:38>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:113) on node 2 (VSTest target(s)).
+     2>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net7.0]
+     2>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net7.0]
+Test run for /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net472/RazorEngineCore.Tests.dll (.NETFramework,Version=v4.7.2)
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target(s)).
+  2:38>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:116) on node 1 (VSTest target(s)).
+     2>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net6.0]
+     2>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net6.0]
+  2:38>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:38) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (2:117) on node 2 (VSTest target(s)).
+     2>/Users/lamontwarren/.nuget/packages/system.runtime.compilerservices.unsafe/6.1.0/buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets(4,5): warning : System.Runtime.CompilerServices.Unsafe 6.1.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+     2>/Users/lamontwarren/.nuget/packages/system.text.encoding.codepages/8.0.0/buildTransitive/netcoreapp2.0/System.Text.Encoding.CodePages.targets(4,5): warning : System.Text.Encoding.CodePages 8.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+     2>/Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+     2>/Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target(s)).
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target(s)).
+     2>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target(s)).
+A total of 1 test files matched the specified pattern.
+A total of 1 test files matched the specified pattern.
+A total of 1 test files matched the specified pattern.
+A total of 1 test files matched the specified pattern.
+A total of 1 test files matched the specified pattern.
+A total of 1 test files matched the specified pattern.
+You must install or update .NET to run this application.
+App: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net8.0/testhost.dll
+Architecture: arm64
+Framework: 'Microsoft.NETCore.App', version '8.0.0' (arm64)
+.NET location: /Users/lamontwarren/.dotnet/
+The following frameworks were found:
+  10.0.10 at [/Users/lamontwarren/.dotnet/shared/Microsoft.NETCore.App]
+Learn more:
+https://aka.ms/dotnet/app-launch-failed
+To install missing framework, download:
+https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=8.0.0&arch=arm64&rid=osx-arm64&os=osx.26
+You must install or update .NET to run this application.
+App: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net7.0/testhost.dll
+Architecture: arm64
+Framework: 'Microsoft.NETCore.App', version '7.0.0' (arm64)
+.NET location: /Users/lamontwarren/.dotnet/
+The following frameworks were found:
+  10.0.10 at [/Users/lamontwarren/.dotnet/shared/Microsoft.NETCore.App]
+Learn more:
+https://aka.ms/dotnet/app-launch-failed
+To install missing framework, download:
+https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=7.0.0&arch=arm64&rid=osx-arm64&os=osx.26
+You must install or update .NET to run this application.
+App: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net6.0/testhost.dll
+Architecture: arm64
+Framework: 'Microsoft.NETCore.App', version '6.0.0' (arm64)
+.NET location: /Users/lamontwarren/.dotnet/
+The following frameworks were found:
+  10.0.10 at [/Users/lamontwarren/.dotnet/shared/Microsoft.NETCore.App]
+Learn more:
+https://aka.ms/dotnet/app-launch-failed
+To install missing framework, download:
+https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=6.0.0&arch=arm64&rid=osx-arm64&os=osx.26
+You must install or update .NET to run this application.
+App: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net9.0/testhost.dll
+Architecture: arm64
+Framework: 'Microsoft.NETCore.App', version '9.0.0' (arm64)
+.NET location: /Users/lamontwarren/.dotnet/
+The following frameworks were found:
+  10.0.10 at [/Users/lamontwarren/.dotnet/shared/Microsoft.NETCore.App]
+Learn more:
+https://aka.ms/dotnet/app-launch-failed
+To install missing framework, download:
+https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=9.0.0&arch=arm64&rid=osx-arm64&os=osx.26
+System.IO.FileNotFoundException: Could not find 'mono' host. Make sure that 'mono' is installed on the machine and is available in PATH environment variable.
+   at Microsoft.VisualStudio.TestPlatform.CrossPlatEngine.Helpers.DotnetHostHelper.GetMonoPath() in /_/src/vstest/src/Microsoft.TestPlatform.CoreUtilities/Helpers/DotnetHostHelper.cs:line 100
+   at Microsoft.VisualStudio.TestPlatform.CrossPlatEngine.Hosting.DefaultTestHostManager.GetTestHostProcessStartInfo(IEnumerable`1 sources, IDictionary`2 environmentVariables, TestRunnerConnectionInfo connectionInfo) in /_/src/vstest/src/Microsoft.TestPlatform.TestHostProvider/Hosting/DefaultTestHostManager.cs:line 220
+   at Microsoft.VisualStudio.TestPlatform.CrossPlatEngine.Client.ProxyOperationManager.SetupChannel(IEnumerable`1 sources, String runSettings) in /_/src/vstest/src/Microsoft.TestPlatform.CrossPlatEngine/Client/ProxyOperationManager.cs:line 229
+   at Microsoft.VisualStudio.TestPlatform.CrossPlatEngine.Client.ProxyExecutionManager.InitializeTestRun(TestRunCriteria testRunCriteria, IInternalTestRunEventsHandler eventHandler) in /_/src/vstest/src/Microsoft.TestPlatform.CrossPlatEngine/Client/ProxyExecutionManager.cs:line 184
+Testhost process for source(s) '/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net7.0/RazorEngineCore.Tests.dll' exited with error: You must install or update .NET to run this application.
+App: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net7.0/testhost.dll
+Architecture: arm64
+Framework: 'Microsoft.NETCore.App', version '7.0.0' (arm64)
+.NET location: /Users/lamontwarren/.dotnet/
+The following frameworks were found:
+  10.0.10 at [/Users/lamontwarren/.dotnet/shared/Microsoft.NETCore.App]
+Learn more:
+https://aka.ms/dotnet/app-launch-failed
+To install missing framework, download:
+https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=7.0.0&arch=arm64&rid=osx-arm64&os=osx.26
+. Please check the diagnostic logs for more information.
+Testhost process for source(s) '/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net8.0/RazorEngineCore.Tests.dll' exited with error: You must install or update .NET to run this application.
+App: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net8.0/testhost.dll
+Architecture: arm64
+Framework: 'Microsoft.NETCore.App', version '8.0.0' (arm64)
+.NET location: /Users/lamontwarren/.dotnet/
+The following frameworks were found:
+  10.0.10 at [/Users/lamontwarren/.dotnet/shared/Microsoft.NETCore.App]
+Learn more:
+https://aka.ms/dotnet/app-launch-failed
+To install missing framework, download:
+https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=8.0.0&arch=arm64&rid=osx-arm64&os=osx.26
+. Please check the diagnostic logs for more information.
+Testhost process for source(s) '/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net6.0/RazorEngineCore.Tests.dll' exited with error: You must install or update .NET to run this application.
+App: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net6.0/testhost.dll
+Architecture: arm64
+Framework: 'Microsoft.NETCore.App', version '6.0.0' (arm64)
+.NET location: /Users/lamontwarren/.dotnet/
+The following frameworks were found:
+  10.0.10 at [/Users/lamontwarren/.dotnet/shared/Microsoft.NETCore.App]
+Learn more:
+https://aka.ms/dotnet/app-launch-failed
+To install missing framework, download:
+https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=6.0.0&arch=arm64&rid=osx-arm64&os=osx.26
+. Please check the diagnostic logs for more information.
+
+Test Run Aborted.
+
+Test Run Aborted.
+
+Test Run Aborted.
+
+Test Run Aborted.
+  3:30>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:30) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:42) on node 7 (VSTest target(s)).
+     3>_VSTestConsole:
+         MSB4181: The "VSTestTask" task returned false but did not log an error.
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target(s)) -- FAILED.
+Testhost process for source(s) '/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net9.0/RazorEngineCore.Tests.dll' exited with error: You must install or update .NET to run this application.
+App: /Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/bin/Debug/net9.0/testhost.dll
+Architecture: arm64
+Framework: 'Microsoft.NETCore.App', version '9.0.0' (arm64)
+.NET location: /Users/lamontwarren/.dotnet/
+The following frameworks were found:
+  10.0.10 at [/Users/lamontwarren/.dotnet/shared/Microsoft.NETCore.App]
+Learn more:
+https://aka.ms/dotnet/app-launch-failed
+To install missing framework, download:
+https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=9.0.0&arch=arm64&rid=osx-arm64&os=osx.26
+. Please check the diagnostic logs for more information.
+
+Test Run Aborted.
+  3:30>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:30) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:38) on node 6 (VSTest target(s)).
+     3>_VSTestConsole:
+         MSB4181: The "VSTestTask" task returned false but did not log an error.
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target(s)) -- FAILED.
+     3>_VSTestConsole:
+         MSB4181: The "VSTestTask" task returned false but did not log an error.
+     3>_VSTestConsole:
+         MSB4181: The "VSTestTask" task returned false but did not log an error.
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target(s)) -- FAILED.
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target(s)) -- FAILED.
+  3:30>Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:30) is building "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (3:41) on node 9 (VSTest target(s)).
+     3>_VSTestConsole:
+         MSB4181: The "VSTestTask" task returned false but did not log an error.
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target(s)) -- FAILED.
+  Passed TestCompile [636 ms]
+  Passed TestCompileAsync [11 ms]
+  Passed TestCompileAndRun_HtmlLiteral [41 ms]
+  Passed TestCompileAndRun_HtmlLiteralAsync [10 ms]
+  Passed TestCompileAndRun_InAttributeVariables [47 ms]
+  Passed TestCompileAndRun_InAttributeVariables2 [9 ms]
+  Passed TestCompileAndRun_InAttributeVariablesAsync [13 ms]
+  Passed TestCompileAndRun_HtmlAttribute [9 ms]
+  Passed TestCompileAndRun_HtmlAttributeAsync [10 ms]
+  Passed TestCompileAndRun_DynamicModel_Plain [14 ms]
+  Passed TestCompileAndRun_DynamicModel_PlainAsync [9 ms]
+  Passed TestCompileAndRun_StructList [30 ms]
+  Passed TestCompileAndRun_DynamicModel_Nested [16 ms]
+  Passed TestCompileAndRun_DynamicModel_NestedAsync [10 ms]
+  Passed TestCompileAndRun_NullModel [8 ms]
+  Passed TestCompileAndRun_NullablePropertyWithValue [18 ms]
+  Passed TestCompileAndRun_NullablePropertyWithoutValue [7 ms]
+  Passed TestCompileAndRun_NullModelAsync [8 ms]
+  Passed TestCompileAndRun_NullNestedObject [9 ms]
+  Passed TestCompileAndRun_NullNestedObjectAsync [12 ms]
+  Passed TestCompileAndRun_DynamicModel_Lists [11 ms]
+  Passed TestCompileAndRun_DynamicModel_ListsAsync [10 ms]
+  Passed TestCompileAndRun_DynamicModel_Dictionary1 [16 ms]
+  Passed TestCompileAndRun_DynamicModel_Dictionary2 [9 ms]
+  Passed TestCompileAndRun_TestFunction [36 ms]
+  Passed TestCompileAndRun_TypedModel1 [11 ms]
+  Passed TestCompileAndRun_TypedModel1Async [6 ms]
+  Passed TestCompileAndRun_TypedModel2 [6 ms]
+  Passed TestCompileAndRun_TypedModel3 [11 ms]
+  Passed TestCompileAndRun_TypedModel2Async [14 ms]
+  Passed TestCompileAndRun_AnonymousModelWithArrayOfObjects [42 ms]
+  Passed TestCompileAndRun_StronglyTypedModelLinq [9 ms]
+  Passed TestCompileAndRun_DynamicModelLinq [14 ms]
+  Passed TestCompileAndRun_LinqAsync [8 ms]
+  Passed TestCompileAndRun_MetadataReference [17 ms]
+  Passed TestCompileCancellation_DynamicModel [< 1 ms]
+  Passed TestCompileCancellation_DynamicModelAsync [1 ms]
+  Passed TestCompileCancellation_TypedModel1 [< 1 ms]
+  Passed TestCompileCancellation_TypedModel1Async [< 1 ms]
+  Passed TestCompileAndRun_IncludeDebuggingForTypedMode_DisabledDebugging [23 ms]
+  Passed TestCompileAndRun_IncludeDebuggingForTypedAnonymous_DisabledDebugging [8 ms]
+  Passed TestCompileAndRun_IncludeDebuggingForTypedMode_EnabledDebugging [7 ms]
+  Passed TestCompileAndRun_IncludeDebuggingForTypedAnonymous_EnabledDebugging [14 ms]
+  Passed TestCompileAndRun_ProjectEngineBuilderAction_IsInvoked [8 ms]
+  Passed TestCompileAndRun_Typed_EnabledDebuggingThrowsException [6 ms]
+  Passed TestCompileAndRun_Anonymous_EnabledDebuggingThrowsException [7 ms]
+  Passed TestSaveToStream [13 ms]
+  Passed TestSaveToStreamAsync [8 ms]
+  Passed TestSaveToFile_Typed [8 ms]
+  Passed TestSaveToFile_Anonymous [13 ms]
+  Passed TestSaveToFileAsync [9 ms]
+  Passed TestSave_RazorEngineCompiledTemplateMeta_1 [< 1 ms]
+  Passed TestSave_RazorEngineCompiledTemplateMeta_2 [< 1 ms]
+  Passed TestSettingTemplateFilename [21 ms]
+  Passed TestModelNestedTypes [7 ms]
+  Passed TestModelNoNamespace [13 ms]
+  Passed TestSettingTemplateNamespace [14 ms]
+  Passed TestSettingTemplateNamespaceT [6 ms]
+
+Test Run Successful.
+Total tests: 58
+     Passed: 58
+ Total time: 1.7052 Seconds
+     3>DispatchToInnerBuildsWithVSTestTarget:
+         Build continuing because "ContinueOnError" on the task "MSBuild" is set to "ErrorAndContinue".
+     3>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target(s)) -- FAILED.
+     1>Done Building Project "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target(s)) -- FAILED.
+
+Build FAILED.
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (Restore target) (1) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj" (_GenerateRestoreGraphProjectEntry target) (5:4) ->
+       (_CheckForEolTargetFrameworks target) -> 
+         /Users/lamontwarren/.dotnet/sdk/10.0.302/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.EolTargetFrameworks.targets(32,5): warning NETSDK1138: The target framework 'net5.0' is out of support and will not receive security updates in the future. Please refer to https://aka.ms/dotnet-core-support for more information about the support policy. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj" (VSTest target) (5:6) ->
+       (NETStandardCompatError_System_Runtime_CompilerServices_Unsafe_net6_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.runtime.compilerservices.unsafe/6.1.0/buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets(4,5): warning : System.Runtime.CompilerServices.Unsafe 6.1.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj" (VSTest target) (5:6) ->
+       (NETStandardCompatError_System_Text_Encoding_CodePages_net6_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.text.encoding.codepages/8.0.0/buildTransitive/netcoreapp2.0/System.Text.Encoding.CodePages.targets(4,5): warning : System.Text.Encoding.CodePages 8.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj" (VSTest target) (5:6) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj" (VSTest target) (5:6) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/ExampleAppNET5/ExampleAppNET5.csproj]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target) (3:30) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (Build target) (3:31) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net6.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target) (3:30) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (Build target) (3:31) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net6.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target) (3:30) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (Build target) (3:33) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net7.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target) (3:30) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (Build target) (3:33) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net7.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target) (2:44) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net7.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target) (2:44) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net7.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target) (2:46) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net6.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target) (2:46) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net6.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target) (2:48) ->
+       (NETStandardCompatError_System_Runtime_CompilerServices_Unsafe_net6_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.runtime.compilerservices.unsafe/6.1.0/buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets(4,5): warning : System.Runtime.CompilerServices.Unsafe 6.1.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target) (2:48) ->
+       (NETStandardCompatError_System_Text_Encoding_CodePages_net6_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.text.encoding.codepages/8.0.0/buildTransitive/netcoreapp2.0/System.Text.Encoding.CodePages.targets(4,5): warning : System.Text.Encoding.CodePages 8.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target) (2:48) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (Build target) (2:48) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GetFrameworkAssemblyReferences target) (2:99) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net6.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GetFrameworkAssemblyReferences target) (2:99) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net6.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GetFrameworkAssemblyReferences target) (2:101) ->
+       (NETStandardCompatError_System_Runtime_CompilerServices_Unsafe_net6_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.runtime.compilerservices.unsafe/6.1.0/buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets(4,5): warning : System.Runtime.CompilerServices.Unsafe 6.1.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GetFrameworkAssemblyReferences target) (2:101) ->
+       (NETStandardCompatError_System_Text_Encoding_CodePages_net6_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.text.encoding.codepages/8.0.0/buildTransitive/netcoreapp2.0/System.Text.Encoding.CodePages.targets(4,5): warning : System.Text.Encoding.CodePages 8.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GetFrameworkAssemblyReferences target) (2:101) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GetFrameworkAssemblyReferences target) (2:101) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GetFrameworkAssemblyReferences target) (2:100) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net7.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (_GetFrameworkAssemblyReferences target) (2:100) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net7.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target) (3:30) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target) (3:39) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net7.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target) (3:30) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target) (3:39) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net7.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target) (3:30) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target) (3:40) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net6.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target) (3:30) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" (VSTest target) (3:40) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.Tests/RazorEngineCore.Tests.csproj::TargetFramework=net6.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:113) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net7.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:113) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net7.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net7.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:116) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net6.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:116) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net6.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net6.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:117) ->
+       (NETStandardCompatError_System_Runtime_CompilerServices_Unsafe_net6_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.runtime.compilerservices.unsafe/6.1.0/buildTransitive/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.targets(4,5): warning : System.Runtime.CompilerServices.Unsafe 6.1.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:117) ->
+       (NETStandardCompatError_System_Text_Encoding_CodePages_net6_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.text.encoding.codepages/8.0.0/buildTransitive/netcoreapp2.0/System.Text.Encoding.CodePages.targets(4,5): warning : System.Text.Encoding.CodePages 8.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net6.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:117) ->
+       (NETStandardCompatError_System_Collections_Immutable_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.collections.immutable/9.0.0/buildTransitive/netcoreapp2.0/System.Collections.Immutable.targets(4,5): warning : System.Collections.Immutable 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+
+
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore.sln" (VSTest target) (1:2) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:38) ->
+       "/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj" (VSTest target) (2:117) ->
+       (NETStandardCompatError_System_Reflection_Metadata_net8_0 target) -> 
+         /Users/lamontwarren/.nuget/packages/system.reflection.metadata/9.0.0/buildTransitive/netcoreapp2.0/System.Reflection.Metadata.targets(4,5): warning : System.Reflection.Metadata 9.0.0 doesn't support net5.0 and has not been tested with it. Consider upgrading your TargetFramework to net8.0 or later. You may also set <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings> in the project file to ignore this warning and attempt to run in this unsupported configuration at your own risk. [/Users/lamontwarren/.copilot/repos/copilot-worktrees/RWMLabs/lwarren74-turbo-doodle/RazorEngineCore/RazorEngineCore/RazorEngineCore.csproj::TargetFramework=net5.0]
+
+    37 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.48
