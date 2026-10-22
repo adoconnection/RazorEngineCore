@@ -59,6 +59,14 @@ namespace RazorEngineCore
         void IncludeDebuggingInfo();
 
         /// <summary>
+        /// <para>Loads the compiled template into its own collectible AssemblyLoadContext, so it is unloaded on Dispose() or when garbage collected.</para>
+        /// <para>Use when compiling many unique templates in a long running process. First Run() of each template is significantly slower,
+        /// because the template gets its own copy of Microsoft.CSharp (see https://github.com/dotnet/runtime/issues/71629).</para>
+        /// <para>.NET 5+ only, ignored on netstandard2.0. Templates using dynamic are not unloaded in single-file apps.</para>
+        /// </summary>
+        void EnableUnloading();
+
+        /// <summary>
         /// Access RazorProjectEngineBuilder to register new Features etc
         /// </summary>
         /// <param name="configure"></param>

@@ -8,45 +8,67 @@ namespace RazorEngineCore
     public class RazorEngineCompiledTemplate<T> : RazorEngineCompiledTemplateBase, IRazorEngineCompiledTemplate<T> where T : IRazorEngineTemplate
     {
 
-        internal RazorEngineCompiledTemplate(RazorEngineCompiledTemplateMeta meta)
+        internal RazorEngineCompiledTemplate(RazorEngineCompiledTemplateMeta meta, bool enableUnloading = false)
         {
             this.Meta = meta;
-
-            Assembly assembly = Assembly.Load(meta.AssemblyByteCode, meta.PdbByteCode);
-            this.TemplateType = assembly.GetType(meta.TemplateNamespace + ".Template");
+            this.LoadTemplateType(enableUnloading);
         }
 
         public static RazorEngineCompiledTemplate<T> LoadFromFile(string fileName)
         {
-            return LoadFromFileAsync(fileName).GetAwaiter().GetResult();
+            return LoadFromFile(fileName, enableUnloading: false);
         }
-        
-        public static async Task<RazorEngineCompiledTemplate<T>> LoadFromFileAsync(string fileName)
+
+        /// <param name="enableUnloading">Load into a collectible AssemblyLoadContext, see <see cref="IRazorEngineCompilationOptionsBuilder.EnableUnloading"/></param>
+        public static RazorEngineCompiledTemplate<T> LoadFromFile(string fileName, bool enableUnloading)
+        {
+            return LoadFromFileAsync(fileName, enableUnloading).GetAwaiter().GetResult();
+        }
+
+        public static Task<RazorEngineCompiledTemplate<T>> LoadFromFileAsync(string fileName)
+        {
+            return LoadFromFileAsync(fileName, enableUnloading: false);
+        }
+
+        /// <param name="enableUnloading">Load into a collectible AssemblyLoadContext, see <see cref="IRazorEngineCompilationOptionsBuilder.EnableUnloading"/></param>
+        public static async Task<RazorEngineCompiledTemplate<T>> LoadFromFileAsync(string fileName, bool enableUnloading)
         {
 #if NETSTANDARD2_0
             using (FileStream fileStream = new FileStream(
 #else
             await using (FileStream fileStream = new FileStream(
 #endif
-                             path: fileName,
-                             mode: FileMode.Open,
-                             access: FileAccess.Read,
-                             share: FileShare.None,
-                             bufferSize: 4096,
-                             useAsync: true))
+                       path: fileName,
+                       mode: FileMode.Open,
+                       access: FileAccess.Read,
+                       share: FileShare.None,
+                       bufferSize: 4096,
+                       useAsync: true))
             {
-                return await LoadFromStreamAsync(fileStream);
+                return await LoadFromStreamAsync(fileStream, enableUnloading);
             }
         }
 
         public static IRazorEngineCompiledTemplate<T> LoadFromStream(Stream stream)
         {
-            return LoadFromStreamAsync(stream).GetAwaiter().GetResult();
+            return LoadFromStream(stream, enableUnloading: false);
         }
-        
-        public static async Task<RazorEngineCompiledTemplate<T>> LoadFromStreamAsync(Stream stream)
+
+        /// <param name="enableUnloading">Load into a collectible AssemblyLoadContext, see <see cref="IRazorEngineCompilationOptionsBuilder.EnableUnloading"/></param>
+        public static IRazorEngineCompiledTemplate<T> LoadFromStream(Stream stream, bool enableUnloading)
         {
-            return new RazorEngineCompiledTemplate<T>(await RazorEngineCompiledTemplateMeta.Read(stream));
+            return LoadFromStreamAsync(stream, enableUnloading).GetAwaiter().GetResult();
+        }
+
+        public static Task<RazorEngineCompiledTemplate<T>> LoadFromStreamAsync(Stream stream)
+        {
+            return LoadFromStreamAsync(stream, enableUnloading: false);
+        }
+
+        /// <param name="enableUnloading">Load into a collectible AssemblyLoadContext, see <see cref="IRazorEngineCompilationOptionsBuilder.EnableUnloading"/></param>
+        public static async Task<RazorEngineCompiledTemplate<T>> LoadFromStreamAsync(Stream stream, bool enableUnloading)
+        {
+            return new RazorEngineCompiledTemplate<T>(await RazorEngineCompiledTemplateMeta.Read(stream), enableUnloading);
         }
 
         public string Run(Action<T> initializer)
@@ -56,6 +78,8 @@ namespace RazorEngineCore
         
         public async Task<string> RunAsync(Action<T> initializer)
         {
+            this.ThrowIfDisposed();
+
             var instance = (T) Activator.CreateInstance(this.TemplateType);
             initializer(instance);
 
