@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RazorEngineCore.Tests.Models;
@@ -155,6 +156,46 @@ namespace RazorEngineCore.Tests
             Assert.AreEqual(meta1.TemplateNamespace, meta2.TemplateNamespace);
             Assert.AreEqual(meta1.GeneratedSourceCode, meta2.GeneratedSourceCode);
             Assert.AreEqual(meta1.TemplateSource, meta2.TemplateSource);
+        }
+
+        [TestMethod]
+        public async Task TestLoadFromStream_HandlesPartialReads()
+        {
+            RazorEngine razorEngine = new RazorEngine();
+            IRazorEngineCompiledTemplate initialTemplate = razorEngine.Compile("Hello @Model.Name");
+
+            using (MemoryStream serializedTemplate = new MemoryStream())
+            {
+                await initialTemplate.SaveToStreamAsync(serializedTemplate);
+
+                using (SingleByteReadStream partialReadStream = new SingleByteReadStream(serializedTemplate.ToArray()))
+                {
+                    IRazorEngineCompiledTemplate loadedTemplate = await RazorEngineCompiledTemplate.LoadFromStreamAsync(partialReadStream);
+                    string result = await loadedTemplate.RunAsync(new { Name = "Alex" });
+
+                    Assert.AreEqual("Hello Alex", result);
+                    Assert.AreEqual(serializedTemplate.Length, partialReadStream.Position);
+                }
+            }
+        }
+
+        private sealed class SingleByteReadStream : MemoryStream
+        {
+            public SingleByteReadStream(byte[] buffer) : base(buffer)
+            {
+            }
+
+            public override Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+            {
+                return base.ReadAsync(buffer, offset, Math.Min(1, count), cancellationToken);
+            }
+
+#if !NETFRAMEWORK
+            public override ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
+            {
+                return base.ReadAsync(buffer.Slice(0, Math.Min(1, buffer.Length)), cancellationToken);
+            }
+#endif
         }
     }
 }

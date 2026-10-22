@@ -88,11 +88,7 @@ namespace RazorEngineCore
             }
 
             byte[] buffer = new byte[length];
-#if NETSTANDARD2_0
-            _ = await stream.ReadAsync(buffer, 0, buffer.Length);
-#else
-            _ = await stream.ReadAsync(buffer);
-#endif
+            await stream.ReadExactlyAsync(buffer);
             return buffer;
         }
     }
