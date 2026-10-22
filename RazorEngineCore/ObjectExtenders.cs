@@ -33,14 +33,29 @@ namespace RazorEngineCore
                    && type.Attributes.HasFlag(TypeAttributes.NotPublic);
         }
 
+        internal static async Task ReadExactlyAsync(this Stream stream, byte[] buffer)
+        {
+            int offset = 0;
+            while (offset < buffer.Length)
+            {
+#if NETSTANDARD2_0
+                int bytesRead = await stream.ReadAsync(buffer, offset, buffer.Length - offset);
+#else
+                int bytesRead = await stream.ReadAsync(buffer.AsMemory(offset, buffer.Length - offset));
+#endif
+                if (bytesRead == 0)
+                {
+                    throw new EndOfStreamException();
+                }
+
+                offset += bytesRead;
+            }
+        }
+
         public static async Task<long> ReadLong(this Stream stream)
         {
             byte[] buffer = new byte[8];
-#if NETSTANDARD2_0
-            _ = await stream.ReadAsync(buffer, 0, buffer.Length);
-#else
-            _ = await stream.ReadAsync(buffer.AsMemory(0, buffer.Length));
-#endif
+            await stream.ReadExactlyAsync(buffer);
             return BitConverter.ToInt64(buffer, 0);
         }
 
