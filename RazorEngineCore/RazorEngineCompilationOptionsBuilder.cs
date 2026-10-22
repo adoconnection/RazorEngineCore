@@ -136,6 +136,14 @@ namespace RazorEngineCore
         }
 
         /// <summary>
+        /// Loads the compiled template into its own collectible AssemblyLoadContext, so it can be unloaded
+        /// </summary>
+        public void EnableUnloading()
+        {
+            this.Options.EnableUnloading = true;
+        }
+
+        /// <summary>
         /// Enables debug info
         /// </summary>
         public void ConfigureRazorEngineProject(Action<RazorProjectEngineBuilder> configure)

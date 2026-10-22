@@ -25,7 +25,7 @@ namespace RazorEngineCore
 
             RazorEngineCompiledTemplateMeta meta = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options, cancellationToken);
 
-            return new RazorEngineCompiledTemplate<T>(meta);
+            return new RazorEngineCompiledTemplate<T>(meta, compilationOptionsBuilder.Options.EnableUnloading);
         }
 
         public Task<IRazorEngineCompiledTemplate<T>> CompileAsync<T>(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, CancellationToken cancellationToken = default) where T : IRazorEngineTemplate
@@ -41,7 +41,7 @@ namespace RazorEngineCore
             builderAction?.Invoke(compilationOptionsBuilder);
  
             RazorEngineCompiledTemplateMeta meta = this.CreateAndCompileToStream(content, compilationOptionsBuilder.Options, cancellationToken);
-            return new RazorEngineCompiledTemplate(meta);
+            return new RazorEngineCompiledTemplate(meta, compilationOptionsBuilder.Options.EnableUnloading);
         }
 
         public Task<IRazorEngineCompiledTemplate> CompileAsync(string content, Action<IRazorEngineCompilationOptionsBuilder> builderAction = null, CancellationToken cancellationToken = default)

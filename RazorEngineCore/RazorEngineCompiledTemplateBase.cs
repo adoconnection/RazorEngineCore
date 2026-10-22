@@ -1,15 +1,68 @@
 ﻿using System.IO;
 using System;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace RazorEngineCore
 {
-    public abstract class RazorEngineCompiledTemplateBase
+    public abstract class RazorEngineCompiledTemplateBase : IDisposable
     {
         protected RazorEngineCompiledTemplateMeta Meta { get; set; }
         protected Type TemplateType { get; set; }
 
         protected bool IsDebuggerEnabled { get; set; }
+
+        private bool isDisposed;
+
+#if !NETSTANDARD2_0
+        private RazorTemplateLoadContext loadContext;
+#endif
+
+        private protected void LoadTemplateType(bool enableUnloading)
+        {
+#if NETSTANDARD2_0
+            Assembly assembly = Assembly.Load(this.Meta.AssemblyByteCode, this.Meta.PdbByteCode);
+#else
+            Assembly assembly;
+
+            if (enableUnloading)
+            {
+                this.loadContext = new RazorTemplateLoadContext();
+
+                using MemoryStream assemblyStream = new MemoryStream(this.Meta.AssemblyByteCode);
+                using MemoryStream pdbStream = this.Meta.PdbByteCode?.Length > 0
+                    ? new MemoryStream(this.Meta.PdbByteCode)
+                    : null;
+
+                assembly = this.loadContext.LoadFromStream(assemblyStream, pdbStream);
+            }
+            else
+            {
+                assembly = Assembly.Load(this.Meta.AssemblyByteCode, this.Meta.PdbByteCode);
+            }
+#endif
+            this.TemplateType = assembly.GetType(this.Meta.TemplateNamespace + ".Template");
+        }
+
+        private protected void ThrowIfDisposed()
+        {
+            if (this.isDisposed)
+            {
+                throw new ObjectDisposedException(this.GetType().Name);
+            }
+        }
+
+        public void Dispose()
+        {
+            this.isDisposed = true;
+            this.TemplateType = null;
+#if !NETSTANDARD2_0
+            // no finalizer needed: a dropped collectible AssemblyLoadContext unloads itself from its own finalizer,
+            // calling Unload() from ours races with it and crashes the runtime on .NET 6
+            this.loadContext?.Unload();
+            this.loadContext = null;
+#endif
+        }
 
         public void SaveToFile(string fileName)
         {
