@@ -12,8 +12,6 @@
 [![NuGet](https://img.shields.io/nuget/dt/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
 [![NuGet](https://img.shields.io/nuget/v/RazorEngineCore.svg?style=flat-square)](https://www.nuget.org/packages/RazorEngineCore)
 
-
-
 Every single star makes maintainer happy! ⭐
 
 ## NuGet
@@ -27,14 +25,15 @@ Install-Package RazorEngineCore
 
 ## Articles
 * [🚀 Piotr Bakun: How to make PDF invoice with Playwright.NET](https://bakson.dev/2022/11/10/razor-engine-core.html)
-* [🚀 Christian Schou: How to send email with MailKit](https://blog.christian-schou.dk/send-emails-with-asp-net-core-with-mailkit/)
-* [🚀 Dave Glick: Difference between RazorEngineCore, RazorLight and Statiq, Send email using SendGrid API](https://www.twilio.com/blog/render-emails-using-razor-templating)
+* [🚀 Christian Schou: How to send email with MailKit](https://christian-schou.com/blog/send-emails-with-asp-net-core-with-mailkit/)
+* [🚀 Dave Glick: Difference between RazorEngineCore, RazorLight and Statiq, Send email using SendGrid API](https://www.twilio.com/en-us/blog/developers/community/render-emails-using-razor-templating)
 * [🧑‍🎓 Alexander Selishchev: Building String Razor Template Engine with Bare Hands](https://www.codeproject.com/Articles/5260233/Building-String-Razor-Template-Engine-with-Bare-Ha)
-* [📕 Razor syntax reference](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-6.0)
+* [📕 Razor syntax reference](https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor)
  
 ## Wiki
-* [Package comparison: RazorEngineCore / RazorLight / RazorEngine.NetCore](https://github.com/adoconnection/RazorEngineCore/wiki/Package-comparison)
+* [Package comparison: RazorEngineCore / RazorLight / RazorEngine.NetCore / Razor.Templating.Core](https://github.com/adoconnection/RazorEngineCore/wiki/Package-comparison)
 * [Strongly typed model](https://github.com/adoconnection/RazorEngineCore/wiki/Strongly-typed-model)
+* [@model and Visual Studio IntelliSense](https://github.com/adoconnection/RazorEngineCore/wiki/@model-and-Visual-Studio-IntelliSense)
 * [@Include and @Layout](https://github.com/adoconnection/RazorEngineCore/wiki/@Include-and-@Layout)
 * [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw)
 * [@Inject and referencing other assemblies](https://github.com/adoconnection/RazorEngineCore/wiki/@Inject-and-referencing-other-assemblies)
@@ -42,10 +41,11 @@ Install-Package RazorEngineCore
 * [Azure Functions FileNotFoundException workaround](https://github.com/adoconnection/RazorEngineCore/wiki/Azure-Functions-FileNotFoundException-workaround)
 * [@Html implementation example](https://github.com/adoconnection/RazorEngineCore/wiki/@Html-implementation-example)
 * [Debugging](https://github.com/adoconnection/RazorEngineCore/wiki/Debugging)
+* [Memory usage and unloading templates](https://github.com/adoconnection/RazorEngineCore/wiki/Memory-usage-and-unloading-templates)
   
 
 ## Extensions
-* [wdcossey/RazorEngineCore.Extensions](https://github.com/wdcossey/RazorEngineCore.Extensions)
+* [wdcossey/RazorEngineCore.Extensions](https://github.com/wdcossey/RazorEngineCore.Extensions) (not maintained since 2021)
 	- HTML values encoded by default (See [issue #65](https://github.com/adoconnection/RazorEngineCore/issues/65) and [@Raw](https://github.com/adoconnection/RazorEngineCore/wiki/@Raw))
 	- Template precompiling
 	- Direct model usage without RazorEngineTemplateBase
@@ -111,9 +111,11 @@ string result = template2.Run(new
 ```
 Place ```@{ Breakpoint(); }``` anywhere in template to stop at.
 
+Starting with 2026.10.1, templates compiled with ```IncludeDebuggingInfo()``` are built without optimizations, so local variables can be inspected while debugging. Such templates run slower, don't use this option in production. See [Debugging](https://github.com/adoconnection/RazorEngineCore/wiki/Debugging) for details.
+
 
 #### Save / Load compiled templates
-Most expensive task is to compile template, you should not compile template every time you need to run it
+The most expensive task is compiling a template, so you should not compile it every time you need to run it.
 ```cs
 IRazorEngine razorEngine = new RazorEngine();
 IRazorEngineCompiledTemplate template = razorEngine.Compile("Hello @Model.Name");
@@ -132,28 +134,26 @@ IRazorEngineCompiledTemplate template2 = RazorEngineCompiledTemplate.LoadFromStr
 ```
 
 ```cs
-IRazorEngineCompiledTemplate<MyBase> template1 = RazorEngineCompiledTemplate<MyBase>.LoadFromFile<MyBase>("myTemplate.dll");
-IRazorEngineCompiledTemplate<MyBase> template2 = RazorEngineCompiledTemplate<MyBase>.LoadFromStream<MyBase>(myStream);
+IRazorEngineCompiledTemplate<MyBase> template1 = RazorEngineCompiledTemplate<MyBase>.LoadFromFile("myTemplate.dll");
+IRazorEngineCompiledTemplate<MyBase> template2 = RazorEngineCompiledTemplate<MyBase>.LoadFromStream(myStream);
 ```
 
 #### Caching
-RazorEngineCore is not responsible for caching. Each team and project has their own caching frameworks and conventions therefore making it impossible to have builtin solution for all possible needs. 
+RazorEngineCore is not responsible for caching. Each team and project has their own caching frameworks and conventions, which makes it impossible to have a built-in solution for all possible needs.
 
-If you dont have one, use following static ConcurrentDictionary example as a simplest thread safe solution.
+If you don't have one, use the following static ConcurrentDictionary example as the simplest thread safe solution.
 
 ```cs
-private static ConcurrentDictionary<int, IRazorEngineCompiledTemplate> TemplateCache = new ConcurrentDictionary<int, IRazorEngineCompiledTemplate>();
+private static ConcurrentDictionary<string, IRazorEngineCompiledTemplate> TemplateCache = new ConcurrentDictionary<string, IRazorEngineCompiledTemplate>();
 ```
 
 ```cs
 private string RenderTemplate(string template, object model)
 {
-    int hashCode = template.GetHashCode();
-
-    IRazorEngineCompiledTemplate compiledTemplate = TemplateCache.GetOrAdd(hashCode, i =>
+    IRazorEngineCompiledTemplate compiledTemplate = TemplateCache.GetOrAdd(template, templateText =>
     {
         RazorEngine razorEngine = new RazorEngine();
-        return razorEngine.Compile(Content);
+        return razorEngine.Compile(templateText);
     });
 
     return compiledTemplate.Run(model);
@@ -266,7 +266,7 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 * 2022.8.1
 	* Proper namespace handling for nested types and types without namespace #113 (thanks [@Kirmiir](https://github.com/Kirmiir))	
 * 2022.7.6
-	* Added the option to genereate pdb alongside the assembly which allows debugging the templates.
+	* Added the option to generate pdb alongside the assembly which allows debugging the templates.
 * 2022.1.2
 	* #94 publish as single file fix 	
 * 2022.1.1
@@ -314,7 +314,7 @@ This package is inspired by [Simon Mourier SO post](https://stackoverflow.com/a/
 * 2020.2.4
 	* Null values in model correct handling
 	* Null model fix
-	* Netstandard2 insted of netcore3.1
+	* Netstandard2 instead of netcore3.1
 * 2020.2.3
 	* Html attribute rendering fix
 	* Html attribute rendering tests
